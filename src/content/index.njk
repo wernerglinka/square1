@@ -1,0 +1,75 @@
+---
+title: Page Title
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: home has-page-banner has-full-page-banner hasVideo
+
+# page banner
+hasBanner: true
+hasVideo: true
+banner_classes: has-video
+banner_video_src: /assets/media/test.m4v
+banner_video_controls: autoplay loop
+banner_video_poster: /assets/media/test-poster.jpg
+---
+
+{% extends "default.njk" %}
+
+{% block banner %}
+    {% if hasVideo %}
+    <div class="banner has-video">
+        <video src="{{ banner_video_src }}" type="video/mp4" {{ banner_video_controls }} poster="{{ banner_video_poster}}"></video>
+    {% elseif hasImage %}
+    <div class="banner has-image">
+        <img src="{{ banner_image_src }}" alt="{{ banner_image_alt }}" />
+    {% endif %}
+
+        <div class="banner-content-wrapper">
+            <div class="banner-content">
+                <h1 class="page-title">Beautiful background video loop</h1>
+                <p>Nullam id dolor id nibh ultricies vehicula ut id elit. <a href="/">Integer posuere erat</a> a ante venenatis dapibus posuere velit aliquet.</p>
+                <a class="btn btn-b1" href="/">See what's cooking</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <section class="content-wrapper">
+        <div class="container">
+            <h2>Home Page Title</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper <strong>nulla non metus auctor fringilla</strong>. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+
+            <p>Videos may be played inline or in an overlay. Here is an example of a video played in an overlay:</p>
+
+            <a class="modal-video" href="https://youtu.be/30sorJ54rdM" data-video-id="30sorJ54rdM"  data-video-attr="">Test Video Link<i class="icon icon-play inline-video-link"></i></a>
+
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+            
+            <h3>Cras Dapibus Justo</h3>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <p>Here is an example of a video played inline:</p>
+
+            <div class="youtube-video" data-video-tn="/assets/images/video-tns/video1.jpg" data-video-id="3HG7lcKh3w4" data-additional-attributes="?enablejsapi=1&rel=0"></div>
+
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>  
+
+            <blockquote>Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</blockquote>
+
+            <p>Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+
+            <h2>Pharetra Etiam Mattis Condimentum</h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+
+            <p>Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        </div>
+    </section>
+{% endblock %}

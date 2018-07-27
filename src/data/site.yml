@@ -1,0 +1,21 @@
+title: Site Title
+locale: en_US
+url: https://www.sitename.com
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.
+owner:
+    name: Sitename, Inc.
+    email: info@sitename.com
+    tel: 123-456-7890
+    disqus_shortname: "disqus-name"
+    twitter: "twittername"
+    facebook: "facebookname"
+    google:
+        analytics: 
+        verify:
+    bing_verify:
+    github: Sitename
+    linkedin: sitename
+    marketo:
+        munchkin: 001-ABC-123
+
+footer_background_image: /assets/images/banners/footer-banner.jpg
