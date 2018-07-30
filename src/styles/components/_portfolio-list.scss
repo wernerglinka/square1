@@ -1,0 +1,137 @@
+.portfolio-list {
+    margin: 5vw;
+    padding-top: 5vw;
+
+    > li {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding: 0 0 50%;
+        margin: 0;
+        display: flex;
+
+        > div {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+
+            
+            &:first-child {
+                left: 0;
+                background-color: #f0f0f0;
+            }
+        }
+
+        // change order every second li
+        &:nth-child(2n) {
+            > div {
+                left: 0;
+
+                &:first-child {
+                    left: 50%;
+                }
+            }
+        }
+    }
+
+    .has-background-image {
+        background-size: 100%;
+        background-position: center;
+        filter: grayscale(100%);
+        transition: background-size 0.4s;
+    }
+
+    .full-size {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        &:hover.has-background-image {
+            background-size: 110%;
+        }
+    }
+
+    
+
+    .portfolio-item-text {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        justify-content: center;
+        text-align: center;
+        padding: 0 30px;
+        color: #fff;
+        background-color: rgba(0,0,0,0.5);
+
+        .header-preamble {
+            color: #fff;
+            margin: 0;
+        }
+    }
+
+    .half-size {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+            height: 50%;
+
+        > div {
+            width: 50%;
+            height: 100%;
+            order: 2;
+        }
+
+        &:first-child {
+            .portfolio-item-text {
+                order: 1;
+            }
+        }
+
+        &:hover .has-background-image {
+            background-size: 110%;
+        }
+
+        .portfolio-item-text {
+            position: relative;
+            background: none;
+            color: #333;
+            font-size: 0.8em;
+
+            .header-preamble {
+                font-weight: 600;
+                color: blue;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                display: block;
+                height: 0;
+                width: 0;
+                border: 16px solid #fff;
+                border-color:  transparent transparent transparent #fff;
+                right: -32px;
+                top: 50%;
+                margin-top: -16px;
+                transition: all 0.4s;
+            }
+        }
+
+        &:hover .portfolio-item-text:after {
+            border-width: 20px;
+            right: -40px;
+            margin-top: -20px;
+        }
+
+        &:nth-child(2) {
+            .portfolio-item-text:after {
+                right: auto;
+                left: -32px;
+                border-color:  transparent #fff transparent transparent;
+            }
+
+        }
+    }
+}

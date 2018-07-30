@@ -1,0 +1,92 @@
+---
+title: Portfolio
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: portfolio has-page-banner
+
+# page banner
+hasImage: true
+banner_image_src: /assets/images/banners/portfolio.jpg
+banner_image_alt: An example portfolio image
+---
+
+{% extends "default.njk" %}
+
+{% block banner %}
+    {% if hasVideo %}
+    <div class="banner has-video">
+        <video src="{{ banner_video_src }}" type="video/mp4" {{ banner_video_controls }} poster="{{ banner_video_poster}}"></video>
+    {% elseif hasImage %}
+    <div class="banner has-image">
+        <img src="{{ banner_image_src }}" alt="{{ banner_image_alt }}" />
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+    <ul class="portfolio-list list-unstyled">
+        <li>
+            <div class="full-size has-background-image" style="background-image: url('/assets/images/portfolio/portfolio1.jpg');">
+                <div class="portfolio-item-text">  
+                    <p class="header-preamble">Justo Ipsum Vehicula</p>
+                    <h2>Dapibus Inceptos Tortor Nullam</h2>
+                </div>
+            </div>
+            <div>
+                <div class="half-size" >
+                    <div class="portfolio-item-image has-background-image" style="background-image: url('/assets/images/portfolio/portfolio2.jpg');">
+                    </div>
+                    <div class="portfolio-item-text">  
+                        <p class="header-preamble">Ultricies Lorem Ullamcorper</p>
+                        <h2>Mattis Ridiculus Malesuada Fusce</h2>
+                    </div>
+                </div>
+                <div class="half-size">
+                    <div class="portfolio-item-image has-background-image" style="background-image: url('/assets/images/portfolio/portfolio3.jpg');">
+                    </div>
+                    <div class="portfolio-item-text">  
+                        <p class="header-preamble">Porta Lorem Sollicitudin</p>
+                        <h2>Amet Nullam Pharetra Cursus</h2>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="full-size has-background-image" style="background-image: url('/assets/images/portfolio/portfolio4.jpg');">
+                <div class="portfolio-item-text">  
+                    <p class="header-preamble">Justo Ipsum Vehicula</p>
+                    <h2>Dapibus Inceptos Tortor Nullam</h2>
+                </div>
+            </div>
+            <div>
+                <div class="half-size" >
+                    <div class="portfolio-item-image has-background-image" style="background-image: url('/assets/images/portfolio/portfolio5.jpg');">
+                    </div>
+                    <div class="portfolio-item-text">  
+                        <p class="header-preamble">Ultricies Lorem Ullamcorper</p>
+                        <h2>Mattis Ridiculus Malesuada Fusce</h2>
+                    </div>
+                </div>
+                <div class="half-size">
+                    <div class="portfolio-item-image has-background-image" style="background-image: url('/assets/images/portfolio/portfolio6.jpg');">
+                    </div>
+                    <div class="portfolio-item-text">  
+                        <p class="header-preamble">Porta Lorem Sollicitudin</p>
+                        <h2>Amet Nullam Pharetra Cursus</h2>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+</div>
+{% endblock %}

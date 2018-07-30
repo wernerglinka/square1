@@ -17,6 +17,10 @@
             object-fit: cover;  // will not work if height is set to 'auto'
         }
     }
+
+    &.has-image {
+        top: $header-height;
+    }
 }
 
 .has-full-page-banner .banner {
