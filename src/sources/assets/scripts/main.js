@@ -127,6 +127,42 @@ var modalVideos = function ($, undefined) {
         init: init
     };
 }(jQuery);
+'use strict';
+
+/*jslint es6*/
+/*global jQuery, window*/
+
+var scrolledIntoView = function ($, undefined) {
+    "use strict";
+
+    var init = function init() {
+        var animateWhenInView = $('.initial');
+
+        $(window).scroll(function () {
+
+            if (animateWhenInView.length) {
+                animateWhenInView.each(function () {
+                    var thisElement = $(this);
+
+                    if (intoView(thisElement) && thisElement.hasClass('initial')) {
+                        thisElement.removeClass('initial');
+                    }
+                });
+            }
+        });
+    };
+
+    var intoView = function intoView(element) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        return elementTop <= docViewBottom && elementTop >= docViewTop;
+    };
+
+    return {
+        init: init
+    };
+}(jQuery);
 "use strict";
 
 /*eslint no-unused-vars: 0*/
@@ -281,7 +317,7 @@ var youTubeVideos = function ($, undefined) {
 'use strict';
 
 /*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, hoverMenu, mobileMenu, youTubeVideos, lineNumbers, externalLinks, modifyMarketoForm, scrollHomeNav, smallImage, bannerBackground, scrollToTop, confirmLeave, modalVideos*/
+/*global Event, jQuery, document, window, touchClick, hoverMenu, youTubeVideos, externalLinks, bannerBackground, scrollToTop, modalVideos, scrolledIntoView*/
 
 (function ($) {
     'use strict';
@@ -293,6 +329,7 @@ var youTubeVideos = function ($, undefined) {
         bannerBackground.init();
         scrollToTop.init();
         modalVideos.init();
+        scrolledIntoView.init();
     });
     // end ready function
 })(jQuery);

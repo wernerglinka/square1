@@ -45,6 +45,7 @@ const addCanonicalURL = require('metalsmith-add-canonical');
 const srcPath = './src/content/';
 const destPath = './build/';
 const metadataPath = './src/data/site.yml';
+const portfolioPath = './src/data/portfolio.yml';
 const stylePath = './src/styles/';
 const scriptPath = './src/scripts/';
 const assetPath = './src/sources/';
@@ -60,7 +61,8 @@ function setUpMS(callback) {
 
         .use(metadata({
             "files": {
-                "site": metadataPath
+                "site": metadataPath,
+                "portfolio": portfolioPath
             },
             "config": {
                 isExternalSrc: true

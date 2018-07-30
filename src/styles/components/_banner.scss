@@ -10,8 +10,7 @@
         height: $banner-height;
         overflow: hidden;
 
-        video,
-        img {
+        video {
             width: 100%;
             height: 100%;
             object-fit: cover;  // will not work if height is set to 'auto'
@@ -20,6 +19,13 @@
 
     &.has-image {
         top: $header-height;
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
     }
 }
 
