@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*global Event, jQuery, document, window, touchClick, hoverMenu, youTubeVideos, externalLinks, bannerBackground, scrollToTop, modalVideos, scrolledIntoView*/
+/*global Event, jQuery, document, window, touchClick, hoverMenu, youTubeVideos, externalLinks, bannerBackground, scrollToTop, modalVideos, scrolledIntoView, modalVideosNew*/
 
 (function ($) {
     'use strict';
@@ -10,7 +10,7 @@
         externalLinks.init();
         bannerBackground.init();
         scrollToTop.init();
-        modalVideos.init();
+        modalVideosNew.init();
         scrolledIntoView.init();
     });
     // end ready function
