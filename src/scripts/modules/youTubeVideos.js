@@ -60,7 +60,7 @@ var youTubeVideos = (function ($, undefined) {
                 });
             });
 
-            // initially the video thumbnail is visible. on click fadeout the tn, show and play the video]
+            // initially the video thumbnail is visible. on click fadeout the tn, show and play the video
             allVideos.each(function (i) {
                 var thisVideo = $(this);
                 thisVideo.find(".video-tn").on("touchclick", function () {
