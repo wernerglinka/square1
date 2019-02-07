@@ -22,7 +22,10 @@
         <div id="toTop"><i class="icon icon-chevron-up"></i></div>
         {% endblock %}
         
+        {% block body_scripts %}
         {% include "partials/scripts.njk" %}
+        {% endblock %}
+        
         {% include "partials/google-analytics.njk" %}
     </body>
 </html>

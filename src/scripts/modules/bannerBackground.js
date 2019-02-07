@@ -1,29 +1,33 @@
-/*jslint browser: true*/
-/*global jQuery, undefined, window */
+/*
+    global window, document
+*/
 
 // function for change nav background opacity when banner is scrolled up
-var bannerBackground = (function ($, undefined) {
-    "use strict";
+const bannerBackground = (function (d) {
+  const banner = d.querySelector('.banner');
+  let bannerHeight;
 
-    var bannerHeight = $(".banner").height(),
-        hasBanner = $(".has-page-banner").length,
-        init = function () {
-            if (hasBanner) {
-                $(window).scroll(function () {
-                    var thisWindow = $(window),
-                        thisHeader = $("header");
-                    if (thisWindow.scrollTop() >= bannerHeight && !thisHeader.hasClass("noOpacity")) {
-                        thisHeader.addClass("noOpacity");
-                    }
-                    if (thisWindow.scrollTop() < bannerHeight && thisHeader.hasClass("noOpacity")) {
-                        thisHeader.removeClass("noOpacity");
-                    }
-                });
-            }
-        };
+  if (banner) {
+    bannerHeight = d.querySelector('.banner').getBoundingClientRect().height;
+  }
 
-    return {
-        init: init
-    };
+  const hasBanner = d.body.classList.contains('has-page-banner');
 
-}(jQuery));
+  const init = function () {
+    if (hasBanner) {
+      window.addEventListener('scroll', () => {
+        const doc = d.documentElement;
+        const thisHeader = d.querySelector('header');
+
+        if ((window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0) >= bannerHeight && !thisHeader.classList.contains('noOpacity')) {
+          thisHeader.classList.add('noOpacity');
+        }
+        if ((window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0) < bannerHeight && thisHeader.classList.contains('noOpacity')) {
+          thisHeader.classList.remove('noOpacity');
+        }
+      });
+    }
+  };
+
+  return { init };
+}(document));

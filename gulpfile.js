@@ -20,6 +20,7 @@ const templateConfig = {
     }
 };
 
+const fileList = require('./local_modules/gulp-filelist');
 const path = require("path");
 const gulp = require('gulp');
 const sequence = require('gulp-sequence');
@@ -196,4 +197,17 @@ gulp.task("default", ["buildDev"], function () {
         stylePath + "**/*",
         scriptPath + "**/*"
     ], ["refresh"]);
+});
+
+// run this task after new images are added to folder image-widget
+// and after a new build so we get the proper final paths for each image
+// then run the build again
+// add new images -> run gulp -> run gulp imageList -> run gulp
+gulp.task('imageList', function () {
+    'use strict';
+    return gulp.src([
+        path.join(__dirname, destPath, 'assets/images/image-widget/*.jpg')
+    ])
+        .pipe(fileList('imagelist.json', {file_names_only: true}))
+        .pipe(gulp.dest(path.join(__dirname, assetPath, 'assets/images/image-widget/')));
 });

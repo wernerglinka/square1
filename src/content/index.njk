@@ -43,10 +43,129 @@ banner_video_poster: /assets/media/test-poster.jpg
 {% block body %}
     <section class="content-wrapper">
         <div class="container">
+            <h2>Example of Inline-SVG</h2>
+            <p>svg code created in Sketch, then exported into code editor and classes and styles added</p>
+
+            <style>
+
+            .shield,
+            .carding,
+            .account-abuse,
+            .scrapping,
+            .account-takeover,
+            .marketing-fraud {
+                    width: 200px;
+                }
+
+                .shield-border {
+                    stroke-width: 5px;
+                    stroke: black;
+                    fill: white;
+                }
+
+                .shield-shadow {
+                    stroke-width: 0;
+                    fill: #f8f8f8;
+                }
+
+                .shield-checkmark {
+                    stroke-width: 4px;
+                    stroke: red;
+                }
+
+                .card-border {
+                    stroke-width: 5px;
+                }
+
+                .card-stripe {
+                    stroke-width: 5px;
+                    fill: yellow;
+                }
+
+                .carding circle {
+                    fill: #f8f8f8;
+                    stroke-width: 5px;
+                }
+
+                .circle-x {
+                    stroke-width: 6px;
+                    stroke: red;
+                }
+
+                .card-symbols {
+                    stroke-width: 0;
+                    fill: red;
+                }
+
+                .account-abuse path {
+                    stroke-width: 5px;
+                }
+
+                .shopping-card-circle {
+                    fill: #f8f8f8;
+                }
+
+                .shopping-card-checkmark {
+                    stroke-width: 6px;
+                    stroke: red;
+                }
+                .shopping-card-basket {
+                    fill: #f5f5f5;
+                }
+
+                .doc-border {
+                    stroke-width: 5px;
+                    fill: #F8f8f8;
+                }
+
+                .doc-edge {
+                    stroke-width: 5px;
+                    fill: #999;
+                }
+
+                .avatar {
+                    stroke-width: 5px;
+                }
+
+                .avatar-icon.circle {
+                    stroke-width: 5px;
+                    fill: #f8f8f8;
+                }
+
+                .avatar-icon.lock,
+                .avatar-icon.lock-top,
+                .avatar-icon.lock-inner {
+                    stroke-width: 4px;
+                    stroke: red;
+                }
+
+                .mask {
+                    stroke-width: 4px;
+                    stroke: red;
+                    fill: #f8f8f8;
+                }
+
+
+
+            </style>
+
+            <div class="svg-trial">
+                {% include "inline-svg-icons/shield.svg" %}
+                {% include "inline-svg-icons/carding.svg" %}
+                {% include "inline-svg-icons/account-abuse.svg" %}
+                {% include "inline-svg-icons/scrapping.svg" %}
+                {% include "inline-svg-icons/account-takeover.svg" %}
+                {% include "inline-svg-icons/marketing-fraud.svg" %}
+            </div>
+
             <h2>Home Page Title</h2>
+
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper <strong>nulla non metus auctor fringilla</strong>. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
 
             <p>Videos may be played inline or in an overlay. Here is an example of videos played in an overlay:</p>
+
+            <h2>Example of an external Link</h2>
+            <a href="http://apple.com">Link to Apple</a>
 
             <h3>Great Guitar Solos</h3>
             <ul class="best-guitar-solos">

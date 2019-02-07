@@ -1,0 +1,30 @@
+---
+title: Image Widget
+
+#social media meta data settings
+#-------------------------------
+#Note: global social media settings are located in ./src/data/site.yml
+includeSocialMetaData: true
+page:
+ image:
+    thumb: /path/to/image.png
+
+body_classes: image-widget-page has-page-banner
+
+# page banner
+hasImage: false
+banner_image_src: /assets/images/banners/portfolio.jpg
+banner_image_alt: An example portfolio image
+---
+
+{% extends "default.njk" %}
+
+
+{% block body %}
+<div class="content-wrapper">
+    <div id="responsive-grid-container">
+        <div class="loader" id="image-loader">LOADING...</div>
+    </div>
+</div>
+{% endblock %}
+

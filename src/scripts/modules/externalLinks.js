@@ -1,17 +1,18 @@
-/*jslint browser: true, this: true*/
-/*global jQuery, undefined, window */
+/*
+  global document, window
+*/
 
-// function to add "target='_blank'" to all external links
-var externalLinks = (function ($, undefined) {
-    "use strict";
-    let allExternalLinks = $('a[href^="http://"], a[href^="https://"]');
-    let init = function () {
-        allExternalLinks.each(function () {
-            var thisExternalLink = $(this);
-            thisExternalLink.attr("target", "_blank");
-        });
-    };
-    return {
-        init: init
-    };
-}(jQuery));
+/**
+ *  Function to add "target='_blank'" to all external links
+ *  External links must include their protocol identifier, e.g. http or https
+ */
+const externalLinks = (function (d) {
+  const allExternalLinks = Array.from(d.querySelectorAll('a[href^="http://"], a[href^="https://"]'));
+
+  const init = function () {
+    allExternalLinks.forEach((link) => {
+      link.setAttribute('target', '_blank');
+    });
+  };
+  return { init };
+}(document));

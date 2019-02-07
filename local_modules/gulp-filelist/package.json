@@ -1,0 +1,159 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "gulp-filelist",
+        "scope": null,
+        "escapedName": "gulp-filelist",
+        "name": "gulp-filelist",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/wernerglinka/Desktop/Active Projects/px01"
+    ]
+  ],
+  "_from": "gulp-filelist@latest",
+  "_id": "gulp-filelist@1.0.0",
+  "_inCache": true,
+  "_location": "/gulp-filelist",
+  "_nodeVersion": "6.7.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/gulp-filelist-1.0.0.tgz_1479241830685_0.915462575154379"
+  },
+  "_npmUser": {
+    "name": "cjroth",
+    "email": "chris@cjroth.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {
+    "clone": "1.0.2",
+    "clone-stats": "0.0.1",
+    "replace-ext": "0.0.1"
+  },
+  "_requested": {
+    "raw": "gulp-filelist",
+    "scope": null,
+    "escapedName": "gulp-filelist",
+    "name": "gulp-filelist",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/gulp-filelist/-/gulp-filelist-1.0.0.tgz",
+  "_shasum": "21e2408298a3d30de0ea60ed1f72fcab15c86889",
+  "_shrinkwrap": null,
+  "_spec": "gulp-filelist",
+  "_where": "/Users/wernerglinka/Desktop/Active Projects/px01",
+  "author": {
+    "name": "Chris Roth",
+    "email": "chris@cjroth.com",
+    "url": "https://github.com/cjroth"
+  },
+  "bugs": {
+    "url": "https://github.com/cjroth/gulp-filelist/issues"
+  },
+  "contributors": [
+    {
+      "name": "Alex DeJarnatt",
+      "url": "https://github.com/alexdej"
+    },
+    {
+      "name": "Andrea Paciolla",
+      "email": "andreapaciolla@gmail.com",
+      "url": "https://github.com/AndreaPaciolla"
+    },
+    {
+      "name": "Bach Ly",
+      "url": "https://github.com/bachly"
+    },
+    {
+      "name": "Colm McBarron",
+      "url": "https://github.com/ColmMcBarron"
+    },
+    {
+      "name": "Florian Wendelborn",
+      "email": "florianwendgithub@gmail.com",
+      "url": "https://github.com/dodekeract"
+    },
+    {
+      "name": "Ian Renyard",
+      "url": "https://github.com/renyard"
+    },
+    {
+      "name": "Maxwell Barvian",
+      "email": "max@barvian.me",
+      "url": "https://github.com/barvian"
+    },
+    {
+      "name": "Paul Apostol",
+      "url": "https://github.com/devel-pa"
+    },
+    {
+      "name": "Paul Welsh",
+      "email": "spacedawwwg@gmail.com",
+      "url": "https://github.com/spacedawwwg"
+    },
+    {
+      "name": "Sebastián González",
+      "url": "https://github.com/tagae"
+    }
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "path": "^0.12.7",
+    "through2": "^2.0.0",
+    "vinyl": "^1.1.0"
+  },
+  "description": "Convert list of file paths in current stream to a JSON file.",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "21e2408298a3d30de0ea60ed1f72fcab15c86889",
+    "tarball": "https://registry.npmjs.org/gulp-filelist/-/gulp-filelist-1.0.0.tgz"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "gitHead": "50e51bb2ed659dadbb6f097e051b876215739920",
+  "homepage": "https://github.com/cjroth/gulp-filelist/",
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "extension",
+    "absolute",
+    "path",
+    "combine",
+    "json"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "cjroth",
+      "email": "chris@cjroth.com"
+    }
+  ],
+  "name": "gulp-filelist",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjroth/gulp-filelist.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --bail --check-leaks --require should test/",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks --require should test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks --require should test/"
+  },
+  "version": "1.0.0"
+}

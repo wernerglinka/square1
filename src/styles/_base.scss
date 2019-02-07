@@ -78,6 +78,25 @@ a {
     &:focus {
         text-decoration: none;
     }
+
+    &[href*='http'] {
+        &:after {
+            content: $icon-arrow-up-right;
+            font-family: '#{$icomoon-font-family}' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;   
+        }
+    }
+
+    &.modal-video {
+        &:after {
+           content: ""; 
+        }
+    }
 }
 
 // clearfix

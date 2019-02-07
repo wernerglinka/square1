@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 @import "../../node_modules/normalize-css/normalize";
 
 // icon fonts
@@ -28,6 +28,8 @@
 @import "components/modals";
 @import "components/inline-video-link";
 @import "components/portfolio-list";
+@import "components/marketo-modals";
+@import "components/image-widget";
 
 @import "pages/has-sidebar";
 @import "pages/blog";

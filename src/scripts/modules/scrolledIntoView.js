@@ -1,34 +1,30 @@
-/*jslint es6*/
-/*global jQuery, window*/
+/*
+  global jQuery, window
+*/
 
-var scrolledIntoView = (function ($, undefined) {
-    "use strict";
+const scrolledIntoView = (function ($, undefined) {
+  const init = function () {
+    const animateWhenInView = $('.initial');
 
-    let init = function () {
-        let animateWhenInView = $('.initial');
+    const intoView = (element) => {
+      const docViewTop = $(window).scrollTop();
+      const docViewBottom = docViewTop + $(window).height();
+      const elementTop = $(element).offset().top;
+      return ((elementTop <= docViewBottom) && (elementTop >= docViewTop));
+    };
 
-        $(window).scroll(function (){
+    $(window).scroll(() => {
+      if (animateWhenInView.length) {
+        animateWhenInView.each(function () {
+          const thisElement = $(this);
 
-            if (animateWhenInView.length) {
-                animateWhenInView.each(function () {
-                    let thisElement = $(this);
-
-                    if(intoView(thisElement) && thisElement.hasClass('initial')) {
-                        thisElement.removeClass('initial');
-                    }
-                });
-            }
+          if (intoView(thisElement) && thisElement.hasClass('initial')) {
+            thisElement.removeClass('initial');
+          }
         });
-    };
+      }
+    });
+  };
 
-    let intoView = function (element) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-        var elementTop = $(element).offset().top;
-        return ((elementTop <= docViewBottom) && (elementTop >= docViewTop));
-    };
-
-    return {
-        init: init
-    };
+  return { init };
 }(jQuery));

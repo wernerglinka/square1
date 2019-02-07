@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'square1';
   src:
-    url('fonts/square1.ttf?hpc9e') format('truetype'),
-    url('fonts/square1.woff?hpc9e') format('woff'),
-    url('fonts/square1.svg?hpc9e#square1') format('svg');
+    url('fonts/square1.ttf?tdtoa1') format('truetype'),
+    url('fonts/square1.woff?tdtoa1') format('woff'),
+    url('fonts/square1.svg?tdtoa1#square1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,6 +23,15 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-mail:before {
+  content: "\e926";
+}
+.icon-map-pin:before {
+  content: "\e927";
+}
+.icon-phone:before {
+  content: "\e928";
+}
 .icon-arrow-down:before {
   content: "\e900";
 }
