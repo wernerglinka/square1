@@ -39,7 +39,8 @@
     "metalsmith-writemetadata": "^0.4.5",
     "normalize-css": "^2.3.1",
     "normalize-scss": "^7.0.1",
-    "nunjucks-capture": "^1.0.4"
+    "nunjucks-capture": "^1.0.4",
+    "velocity-animate": "^1.5.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'square1';
   src:
-    url('fonts/square1.ttf?tdtoa1') format('truetype'),
-    url('fonts/square1.woff?tdtoa1') format('woff'),
-    url('fonts/square1.svg?tdtoa1#square1') format('svg');
+    url('fonts/square1.ttf?uptbtw') format('truetype'),
+    url('fonts/square1.woff?uptbtw') format('woff'),
+    url('fonts/square1.svg?uptbtw#square1') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -137,10 +137,10 @@ i {
 .icon-wifi:before {
   content: "\e922";
 }
-.icon-x:before {
+.icon-close:before {
   content: "\e923";
 }
-.icon-x-circle:before {
+.icon-close-circle:before {
   content: "\e924";
 }
 .icon-youtube:before {

@@ -1,5 +1,4 @@
-/* jslint es6, this:true */
-/* global jQuery, YT, window */
+/* global jQuery, YT, window, videoAPIReady, youTubePromise */
 
 // function to play inline youTube videos
 // allows videos to be inserted with minimal html
@@ -49,6 +48,10 @@ const inlineVideos = (function ($, undefined) {
   };
 
   const init = function () {
+    if (!$('body').hasClass('hasVideo')) {
+      return;
+    }
+
     // add all videos to the DOM
     allVideos.each(function (i) {
       const thisVideo = $(this);
@@ -61,9 +64,10 @@ const inlineVideos = (function ($, undefined) {
       thisVideo.append(thisVideoHTML);
     });
 
-    // initialize all video players on a page
-    // videoAPIReady is a custom event triggered when the Youtube API has been loaded
-    $(window).on('videoAPIReady', () => {
+    // initialize all inline video players on this page
+    // videoAPIReady is a promise object for when the Youtube API has been loaded
+    videoAPIReady.then(() => {
+      console.log('init inline videos');
       allVideos.each((i) => {
         const videoID = allVideos.eq(i).data('video-id');
         const startTime = allVideos.eq(i).data('start-time');
@@ -82,7 +86,7 @@ const inlineVideos = (function ($, undefined) {
           rel: 0 // disable other video suggestions after video end
         };
 
-        // create the video player object
+        // create the video player objects
         allPlayers[i] = new YT.Player(videoTarget, {
           videoId: videoID,
           playerVars,

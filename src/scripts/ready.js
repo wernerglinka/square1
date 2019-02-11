@@ -1,6 +1,6 @@
 /*
-  global document, touchClick, inlineVideos,
-  externalLinks, bannerBackground, scrollToTop, modalVideos, scrolledIntoView,
+  global document, touchClick, inlineVideos, modalVideos, youTubeVideos,
+  externalLinks, bannerBackground, scrollToTop, scrolledIntoView,
   getImageList, buildImageGrid, autoUpdateImageGrid, backgroundVideo, marketoModal
 */
 
@@ -8,10 +8,10 @@
 (function () {
   touchClick.init();
   inlineVideos.init();
+  modalVideos.init();
   externalLinks.init();
   bannerBackground.init();
   scrollToTop.init();
-  modalVideos.init();
   scrolledIntoView.init();
   backgroundVideo.init();
 

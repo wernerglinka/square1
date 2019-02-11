@@ -1,5 +1,5 @@
 /*
-global YT, jQuery, window, setInterval, clearInterval
+  global window, jQuery, YT, videoAPIReady
 */
 
 // reference: https://developers.google.com/youtube/iframe_api_reference
@@ -8,7 +8,7 @@ global YT, jQuery, window, setInterval, clearInterval
 // implements the YouTube iFrame API to display multiple videos - one-at-the-time - in a modal overlay.
 // page must have body class hasVideo
 // page may have multiple video links "<a class="modal-video" data-video-link="https://youtu.be/30sorJ54rdM" data-video-id="30sorJ54rdM"  data-video-attr="" disabled>Test Video Link 1</a>"
-// initially, video links do not have "href" attribute but have attribute "disabled"
+// initially, video links do not have a "href" attribute but have attribute "disabled"
 // once the api has been loaded and is ready to play videos, all links are activated by adding "href" attribute and removing "disabled" attribute
 // the video object is given the first videoID. Videos will be played, after the overlay is active, by calling either videoPlay() when the video has been loaded
 // or by loadVideoById() when a new video is requested
@@ -23,7 +23,7 @@ const modalVideos = (function ($, undefined) {
   // initialize all video links when the player is ready
   const initVideoLinks = function () {
     videoOverlay = $('#video-overlay');
-    const closeVideoOverlay = videoOverlay.find('.icon-x');
+    const closeVideoOverlay = videoOverlay.find('.icon-close');
 
     modalVideoTriggers.each(function () {
       const thisTrigger = $(this);
@@ -34,6 +34,8 @@ const modalVideos = (function ($, undefined) {
       // turn data-video-link into a href attribute and remove disabled attribute
       thisTrigger
         .attr('href', thisTrigger.data('video-link'))
+        .attr('target', '_blank')
+        .attr('rel', 'noopener noreferrer')
         .removeAttr('data-video-link')
         .removeAttr('disabled');
 
@@ -41,6 +43,7 @@ const modalVideos = (function ($, undefined) {
         e.preventDefault();
         e.stopPropagation();
         videoOverlay.fadeIn(400);
+        $('body').addClass('modalActive');
 
         // load the appropriate video ID
         // if the requested videoID is equal to what the player has already loaded
@@ -73,6 +76,7 @@ const modalVideos = (function ($, undefined) {
         player.setVolume(currentVolume);
       }, 100);
       videoOverlay.fadeOut();
+      $('body').removeClass('modalActive');
     });
   };
 
@@ -110,18 +114,20 @@ const modalVideos = (function ($, undefined) {
       return;
     }
 
-    // on videoAPIReady we add a video overlay and create a video player in div#ytvideo
-    $(window).on('videoAPIReady', () => {
+    // initialize all video players on a page
+    // videoAPIReady is a defered jQuery object for when the Youtube API has been loaded
+    videoAPIReady.then(() => {
+      // $(window).on('videoAPIReady', () => {
       // create an video overlay
       $('body').append(`
-            <div id="video-overlay" class="video-overlay">
-                <i class="icon icon-x"></i>
-                <div class="responsive-wrapper">
-                    <div class="video-container">
-                        <div id="ytvideo"></div>
-                    </div>
-                </div>
-            </div>`);
+          <div id="video-overlay" class="video-overlay">
+              <i class="icon icon-close"></i>
+              <div class="responsive-wrapper">
+                  <div class="video-container">
+                      <div id="ytvideo"></div>
+                  </div>
+              </div>
+          </div>`);
 
       videoOverlay = $('#video-overlay');
       const videoID = modalVideoTriggers.eq(0).data('video-id'); // the first video link
@@ -133,7 +139,7 @@ const modalVideos = (function ($, undefined) {
         autoplay: 0,
         start: startTime || null, // if no start or end time is specified go trom 0 to end
         end: endTime || null, // start/stop via js commands
-        controls: 1, // show video controls
+        controls: 0, // show video controls
         enablejsapi: 1, // enable the js api so we can control then player with js
         wmode: 'opaque', // allow other elements to cover video, e.g. dropdowns or pop-ups
         origin: window.location.origin, // prevent "Failed to execute 'postMessage' on 'DOMWindow'" error

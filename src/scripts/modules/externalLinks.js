@@ -4,6 +4,8 @@
 
 /**
  *  Function to add "target='_blank'" to all external links
+ *  We also add "rel='noopener noreferrer'" according to
+ *  source: https://medium.com/@ali.dev/how-to-fix-target-blank-a-security-and-performance-issue-in-web-pages-2118eba1ce2f
  *  External links must include their protocol identifier, e.g. http or https
  */
 const externalLinks = (function (d) {
@@ -11,7 +13,15 @@ const externalLinks = (function (d) {
 
   const init = function () {
     allExternalLinks.forEach((link) => {
-      link.setAttribute('target', '_blank');
+      const targetAttr = link.getAttribute('target');
+
+      console.log(targetAttr);
+      console.log(link.getAttribute('href'));
+
+      if (targetAttr === null) {
+        link.setAttribute('target', '_blank');
+      }
+      link.setAttribute('rel', 'noopener noreferrer');
     });
   };
   return { init };

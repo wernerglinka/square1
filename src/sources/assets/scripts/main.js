@@ -4,6 +4,29 @@
     global window, document
 */
 
+// load the youTube video JS api
+// https://developers.google.com/youtube/iframe_api_reference
+// This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// use a promise to manage the async onYouTubeIframeAPIReady function
+var videoAPIReady = new Promise(function (resolve) {
+  // upon YouTube API Ready we resolve the promise
+  // we can then initialize video players in other modules
+  // e.g. videoAPIReady.then(() => {})
+  window.onYouTubeIframeAPIReady = function () {
+    return resolve();
+  };
+});
+'use strict';
+
+/*
+    global window, document
+*/
+
 // function for change nav background opacity when banner is scrolled up
 var bannerBackground = function (d) {
   var banner = d.querySelector('.banner');
@@ -41,6 +64,8 @@ var bannerBackground = function (d) {
 
 /**
  *  Function to add "target='_blank'" to all external links
+ *  We also add "rel='noopener noreferrer'" according to
+ *  source: https://medium.com/@ali.dev/how-to-fix-target-blank-a-security-and-performance-issue-in-web-pages-2118eba1ce2f
  *  External links must include their protocol identifier, e.g. http or https
  */
 var externalLinks = function (d) {
@@ -48,7 +73,15 @@ var externalLinks = function (d) {
 
   var init = function init() {
     allExternalLinks.forEach(function (link) {
-      link.setAttribute('target', '_blank');
+      var targetAttr = link.getAttribute('target');
+
+      console.log(targetAttr);
+      console.log(link.getAttribute('href'));
+
+      if (targetAttr === null) {
+        link.setAttribute('target', '_blank');
+      }
+      link.setAttribute('rel', 'noopener noreferrer');
     });
   };
   return { init: init };
@@ -247,8 +280,7 @@ var autoUpdateImageGrid = function () {
 }();
 'use strict';
 
-/* jslint es6, this:true */
-/* global jQuery, YT, window */
+/* global jQuery, YT, window, videoAPIReady, youTubePromise */
 
 // function to play inline youTube videos
 // allows videos to be inserted with minimal html
@@ -298,6 +330,10 @@ var inlineVideos = function ($, undefined) {
   };
 
   var init = function init() {
+    if (!$('body').hasClass('hasVideo')) {
+      return;
+    }
+
     // add all videos to the DOM
     allVideos.each(function (i) {
       var thisVideo = $(this);
@@ -310,9 +346,10 @@ var inlineVideos = function ($, undefined) {
       thisVideo.append(thisVideoHTML);
     });
 
-    // initialize all video players on a page
-    // videoAPIReady is a custom event triggered when the Youtube API has been loaded
-    $(window).on('videoAPIReady', function () {
+    // initialize all inline video players on this page
+    // videoAPIReady is a promise object for when the Youtube API has been loaded
+    videoAPIReady.then(function () {
+      console.log('init inline videos');
       allVideos.each(function (i) {
         var videoID = allVideos.eq(i).data('video-id');
         var startTime = allVideos.eq(i).data('start-time');
@@ -331,7 +368,7 @@ var inlineVideos = function ($, undefined) {
           rel: 0 // disable other video suggestions after video end
         };
 
-        // create the video player object
+        // create the video player objects
         allPlayers[i] = new YT.Player(videoTarget, {
           videoId: videoID,
           playerVars: playerVars,
@@ -444,7 +481,7 @@ var marketoModal = function ($) {
 'use strict';
 
 /*
-global YT, jQuery, window, setInterval, clearInterval
+  global window, jQuery, YT, videoAPIReady
 */
 
 // reference: https://developers.google.com/youtube/iframe_api_reference
@@ -453,7 +490,7 @@ global YT, jQuery, window, setInterval, clearInterval
 // implements the YouTube iFrame API to display multiple videos - one-at-the-time - in a modal overlay.
 // page must have body class hasVideo
 // page may have multiple video links "<a class="modal-video" data-video-link="https://youtu.be/30sorJ54rdM" data-video-id="30sorJ54rdM"  data-video-attr="" disabled>Test Video Link 1</a>"
-// initially, video links do not have "href" attribute but have attribute "disabled"
+// initially, video links do not have a "href" attribute but have attribute "disabled"
 // once the api has been loaded and is ready to play videos, all links are activated by adding "href" attribute and removing "disabled" attribute
 // the video object is given the first videoID. Videos will be played, after the overlay is active, by calling either videoPlay() when the video has been loaded
 // or by loadVideoById() when a new video is requested
@@ -468,7 +505,7 @@ var modalVideos = function ($, undefined) {
   // initialize all video links when the player is ready
   var initVideoLinks = function initVideoLinks() {
     videoOverlay = $('#video-overlay');
-    var closeVideoOverlay = videoOverlay.find('.icon-x');
+    var closeVideoOverlay = videoOverlay.find('.icon-close');
 
     modalVideoTriggers.each(function () {
       var thisTrigger = $(this);
@@ -477,12 +514,13 @@ var modalVideos = function ($, undefined) {
       var endTime = thisTrigger.data('end-time');
 
       // turn data-video-link into a href attribute and remove disabled attribute
-      thisTrigger.attr('href', thisTrigger.data('video-link')).removeAttr('data-video-link').removeAttr('disabled');
+      thisTrigger.attr('href', thisTrigger.data('video-link')).attr('target', '_blank').attr('rel', 'noopener noreferrer').removeAttr('data-video-link').removeAttr('disabled');
 
       thisTrigger.on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
         videoOverlay.fadeIn(400);
+        $('body').addClass('modalActive');
 
         // load the appropriate video ID
         // if the requested videoID is equal to what the player has already loaded
@@ -515,6 +553,7 @@ var modalVideos = function ($, undefined) {
         player.setVolume(currentVolume);
       }, 100);
       videoOverlay.fadeOut();
+      $('body').removeClass('modalActive');
     });
   };
 
@@ -552,10 +591,12 @@ var modalVideos = function ($, undefined) {
       return;
     }
 
-    // on videoAPIReady we add a video overlay and create a video player in div#ytvideo
-    $(window).on('videoAPIReady', function () {
+    // initialize all video players on a page
+    // videoAPIReady is a defered jQuery object for when the Youtube API has been loaded
+    videoAPIReady.then(function () {
+      // $(window).on('videoAPIReady', () => {
       // create an video overlay
-      $('body').append('\n            <div id="video-overlay" class="video-overlay">\n                <i class="icon icon-x"></i>\n                <div class="responsive-wrapper">\n                    <div class="video-container">\n                        <div id="ytvideo"></div>\n                    </div>\n                </div>\n            </div>');
+      $('body').append('\n          <div id="video-overlay" class="video-overlay">\n              <i class="icon icon-close"></i>\n              <div class="responsive-wrapper">\n                  <div class="video-container">\n                      <div id="ytvideo"></div>\n                  </div>\n              </div>\n          </div>');
 
       videoOverlay = $('#video-overlay');
       var videoID = modalVideoTriggers.eq(0).data('video-id'); // the first video link
@@ -567,7 +608,7 @@ var modalVideos = function ($, undefined) {
         autoplay: 0,
         start: startTime || null, // if no start or end time is specified go trom 0 to end
         end: endTime || null, // start/stop via js commands
-        controls: 1, // show video controls
+        controls: 0, // show video controls
         enablejsapi: 1, // enable the js api so we can control then player with js
         wmode: 'opaque', // allow other elements to cover video, e.g. dropdowns or pop-ups
         origin: window.location.origin, // prevent "Failed to execute 'postMessage' on 'DOMWindow'" error
@@ -778,89 +819,9 @@ var backgroundVideo = function ($, undefined) {
 }(jQuery);
 'use strict';
 
-/* global jQuery, YT, window */
-
-// function to play youTube videos
-// allows videos to be inserted with minimal html
-// example: "<div class="youtube-video" data-video-tn="<path/to/img>" data-video-id="<youtube id>" data-additional-attributes="?enablejsapi=1&rel=0"></div>
-var youTubeVideos = function ($, undefined) {
-  var allVideos = $('.youtube-video');
-
-  var _getTnHTML = function _getTnHTML(videoTn) {
-    //eslint-disable-line
-    var videoHTML = "<div class='video-tn'>";
-    videoHTML += '<img src=\'' + videoTn + '\' alt=\'\' />';
-    videoHTML += '</div>';
-    return videoHTML;
-  };
-
-  var _getVideoHTML = function _getVideoHTML(videoID, videoIndex, addAttr) {
-    //eslint-disable-line
-    var videoHTML = "<div class='video-wrapper'>";
-    var addAttributes = addAttr || '';
-    videoHTML += '<iframe id=\'player' + videoIndex + '\' src=\'https://www.youtube.com/embed/' + videoID + addAttributes + ' frameborder=\'0\'></iframe>';
-    videoHTML += '</div>';
-    return videoHTML;
-  };
-
-  var init = function init() {
-    var allPlayers = [];
-
-    // add all videos to the DOM
-    allVideos.each(function (i) {
-      var thisVideo = $(this);
-      var thisVideoIndex = i;
-      // add the thumbnail
-      var thisVideoTnHTML = _getTnHTML(thisVideo.data('video-tn'));
-      thisVideo.append(thisVideoTnHTML);
-      // and the video
-      var thisVideoHTML = _getVideoHTML(thisVideo.data('video-id'), thisVideoIndex, thisVideo.data('additional-attributes'));
-      thisVideo.append(thisVideoHTML);
-    });
-
-    // initialize all video players on a page
-    // videoAPIReady is a custom event triggered when the Youtube API has been loaded
-    $(window).on('videoAPIReady', function () {
-      allVideos.each(function (i) {
-        allPlayers[i] = new YT.Player('player' + i, {
-          events: {
-            onStateChange: function onStateChange(event) {
-              // if (event.data === YT.PlayerState.PAUSED) {}
-              // if (event.data == YT.PlayerState.PLAYING) {}
-              if (event.data === YT.PlayerState.ENDED) {
-                // get the player ID
-                var currentPlayer = $('#' + event.target.a.id);
-                var videoTn = currentPlayer.parent().prev();
-                currentPlayer.parent().fadeOut();
-                videoTn.fadeIn();
-              }
-            }
-          }
-        });
-      });
-
-      // initially the video thumbnail is visible. on click fadeout the tn, show and play the video
-      allVideos.each(function (i) {
-        var thisVideo = $(this);
-        thisVideo.find('.video-tn').on('touchclick', function () {
-          var thisVideoTn = $(this);
-          thisVideoTn.fadeOut();
-          thisVideoTn.next().fadeIn();
-          allPlayers[i].playVideo();
-        });
-      });
-    });
-  };
-
-  return {
-    init: init
-  };
-}(jQuery);
-'use strict';
-
 /*
-  global document, touchClick, inlineVideos,
-  externalLinks, bannerBackground, scrollToTop, modalVideos, scrolledIntoView,
+  global document, touchClick, inlineVideos, modalVideos, youTubeVideos,
+  externalLinks, bannerBackground, scrollToTop, scrolledIntoView,
   getImageList, buildImageGrid, autoUpdateImageGrid, backgroundVideo, marketoModal
 */
 
@@ -868,10 +829,10 @@ var youTubeVideos = function ($, undefined) {
 (function () {
   touchClick.init();
   inlineVideos.init();
+  modalVideos.init();
   externalLinks.init();
   bannerBackground.init();
   scrollToTop.init();
-  modalVideos.init();
   scrolledIntoView.init();
   backgroundVideo.init();
 
