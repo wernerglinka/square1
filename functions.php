@@ -142,10 +142,10 @@ function square1_scripts() {
 	wp_style_add_data( 'square1-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'square1-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script('square1-scripts', get_template_directory_uri() . '/scripts.js', array(), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+
+	
 }
 add_action( 'wp_enqueue_scripts', 'square1_scripts' );
 
@@ -163,11 +163,6 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
