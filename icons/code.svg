@@ -1,0 +1,9 @@
+<svg viewBox="0 0 26 14">
+    <g id="code" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Group" transform="translate(1.000000, 1.000000)" stroke="#000000" stroke-width="2">
+            <polyline id="Path" points="18 12 24 6 18 0"></polyline>
+            <polyline id="Path" points="6 0 0 6 6 12"></polyline>
+            <line x1="15" y1="0" x2="9" y2="12" id="Line"></line>
+        </g>
+    </g>
+</svg>

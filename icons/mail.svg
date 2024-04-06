@@ -1,0 +1,8 @@
+<svg viewBox="0 0 20 16" role="presentation">
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#000000" stroke-width="2">
+      <rect id="Rectangle" x="0" y="0" width="20" height="16" rx="2"></rect>
+      <path d="M20,3 L11.03,8.7 C10.4000469,9.09468127 9.59995309,9.09468127 8.97,8.7 L0,3" ></path>
+    </g>
+  </g>
+</svg>

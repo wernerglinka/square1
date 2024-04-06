@@ -1,6 +1,6 @@
 <?php
 /**
- * Page section for displaying a banner
+ * Inner part of a banner page section
  * 
  * @package square1
  */
@@ -9,8 +9,7 @@
   $text = $props['text'];
 ?>
 
-<div class="container">
-  <div class="text">
-    <?php render_text_component($text); ?>
-  </div>
-</div><!-- .container -->
+<div class="text">
+  <?php render_text_component($text); ?>
+</div>
+

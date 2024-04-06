@@ -17,9 +17,8 @@
   $is_external = $props['is_external'];
 ?>
 
-<div class="container">
-  <a href="<?php  echo $link; ?>" <?php if($is_external) echo "target='_blank' rel='noopener noreferrer'"; ?>>
-    <div class="message"><?php echo $message; ?> <?php echo $button_text; ?></div>
-  </a>
-</div><!-- .container -->
+<a href="<?php  echo $link; ?>" <?php if($is_external) echo "target='_blank' rel='noopener noreferrer'"; ?>>
+  <div class="message"><?php echo $message; ?> <?php echo $button_text; ?></div>
+</a>
+
 

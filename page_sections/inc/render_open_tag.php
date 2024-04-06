@@ -5,26 +5,14 @@ function render_open_tag($section) {
   // Get the properties for the current section
   $props = get_sub_field($section);
 
-
   // common section fields are set, was check before function call
   $common_fields = $props['common_section_fields'];
-
-  // Get the background image, if any
-  $background_image = $common_fields ? $props['common_section_fields']['background_image'] : [];
 
   // Get the wrapper type, default to 'section' if not set
   $wrapper_type = $common_fields ? $props['common_section_fields']['wrapper_element'] : 'section';
 
   // Build the class string for the body
   $body_classes = build_section_class_string($props);
-
-  // Check if the section should have a background image
-  $with_background_image = isset($props['with_background_image']) ? $props['with_background_image'] : false;
-
-  // If the section should have a background image, add the class
-  if ($with_background_image) {
-      $body_classes .= " with-background-image";
-  }
 
   // Build the styles string for the body
   $body_styles = build_section_styles_string($props);
@@ -44,10 +32,10 @@ function render_open_tag($section) {
   if ($body_styles) {
       echo sprintf("style='%s'", $body_styles);
   }
-  // Close the the wrapper element tag
+  // Close the the opening wrapper element tag
   echo ">";
 
-
+  echo "<div class='container'>";
 }
 
 ?>

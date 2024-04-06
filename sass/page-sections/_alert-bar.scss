@@ -1,6 +1,9 @@
 .page-section.alert-bar {
-  background-color: $color__brand_highlight;
   color: $color__text-main;
+
+  &.is-dark {
+    color: $color__text-dark-background;
+  }
 
   .container {
     padding: 1.5rem;

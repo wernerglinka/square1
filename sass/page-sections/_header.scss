@@ -1,0 +1,57 @@
+#masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: $header-height;
+  /* the background */
+  @include glass($color__glass);
+
+
+  @media (max-width: $tablet-width-portrait) {
+    height: $header-height-small-screen;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $header-height;
+    //padding: 0 unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+
+    @media (max-width: $tablet-width-portrait) {
+    height: $header-height-small-screen;
+  }
+  }
+
+  .site-branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      display: block;
+    }
+    
+    svg {
+      display: block;
+      width: auto;
+      height: 6rem;
+
+      
+    }
+  }
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  
+  }
+}
+
+.admin-bar.logged-in #masthead {
+  top: $adminbar-height;
+}

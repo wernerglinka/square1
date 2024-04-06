@@ -1052,6 +1052,127 @@ button.wpforms-submit, .button.wpforms-submit {
   max-height: 0;
 }
 
+.accessibility-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  width: 320px;
+  transform: translateX(-260px);
+  transition: transform 0.3s ease-in-out;
+}
+.accessibility-menu.is-active {
+  transform: translateX(0);
+}
+.accessibility-menu svg {
+  width: 32px;
+  height: 32px;
+}
+.accessibility-menu .accessibility-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: #005798;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+.accessibility-menu .accessibility-icon:hover {
+  opacity: 0.6;
+}
+.accessibility-menu .accessibility-icon g {
+  stroke: #fff;
+}
+.accessibility-menu .accessibility-list {
+  margin: 0 60px 0 0;
+  padding: 40px 0 40px 40px;
+  list-style: none;
+  /* the background */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+.accessibility-menu .accessibility-list li {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+.accessibility-menu .accessibility-list li svg {
+  margin-right: 20px;
+}
+.accessibility-menu .accessibility-list li:last-child {
+  padding-bottom: 0;
+}
+.accessibility-menu .accessibility-list li.decrease-text {
+  display: none;
+}
+
+.fontsizePlus .decrease-text {
+  display: block !important;
+}
+
+.fontsizePlus .increase-text {
+  display: none !important;
+}
+
+#masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 10rem;
+  /* the background */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+@media (max-width: 76.7rem) {
+  #masthead {
+    height: 8rem;
+  }
+}
+#masthead .container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10rem;
+}
+@media (max-width: 76.7rem) {
+  #masthead .container {
+    height: 8rem;
+  }
+}
+#masthead .site-branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#masthead .site-branding a {
+  display: block;
+}
+#masthead .site-branding svg {
+  display: block;
+  width: auto;
+  height: 6rem;
+}
+#masthead .button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.admin-bar.logged-in #masthead {
+  top: 3.2rem;
+}
+
 .page-section {
   position: relative;
   margin: 5rem 0;
@@ -1159,8 +1280,10 @@ button.wpforms-submit, .button.wpforms-submit {
 }
 
 .page-section.alert-bar {
-  background-color: #fdb034;
   color: #00080f;
+}
+.page-section.alert-bar.is-dark {
+  color: #fff;
 }
 .page-section.alert-bar .container {
   padding: 1.5rem;
