@@ -1,0 +1,63 @@
+/* wp-forms */
+.wpforms-container .wpforms-field-label {
+  font-size: 1.6rem;
+  padding-bottom: 0.5rem;
+  color: $color__brand_dark;
+}
+.wpforms-field-row.wpforms-field-medium {
+  width: 100%;
+  max-width: 100% !important;
+}
+.wpforms-container input.wpforms-field-medium {
+  width: 100%;
+  max-width: 100% !important;
+}
+.wpforms-container input[type=text] {
+  padding: 0.5rem 1rem;
+  color: $color__text-screen;
+}
+.wpforms-container textarea.wpforms-field-medium {
+  padding: 0.5rem 1rem;
+  color: $color__text-screen;
+}
+
+/*constant contact form*/
+.constant-contact-form {
+  text-align: left !important;
+
+  .prose {
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .ctct-form-header,
+  .ctct-form-text {
+    display: none;
+  }
+  #success_message_2 {
+    .ctct-form-header,
+    .ctct-form-text {
+      display: block;
+    }
+  }
+  .ctct-form-footer-img {
+    display: none !important;
+  }
+  label {
+    color: $color__brand_dark; 
+  }
+  div.ctct-form-embed form.ctct-form-custom input.ctct-form-element {
+    height: auto;
+    padding: 0.5rem 1rem;
+    color: $color__text-screen;
+    font-size: inherit;
+    font-weight: 400;
+  }
+  div.ctct-form-embed div.ctct-form-defaults {
+    padding: 0;
+  }
+}
+
+.page-section.cta-banner.constant-contact-form .container * {
+    text-align: left;
+}

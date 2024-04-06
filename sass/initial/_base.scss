@@ -1,0 +1,39 @@
+html {
+	scroll-behavior: smooth;
+	scroll-margin: -$header-height;
+	scroll-padding-top: $header-height;
+}
+
+body {
+	margin: 0;
+	padding-top: $header-height;
+	background: $color__background-body;
+
+	@media (max-width: $tablet-width-portrait) {
+    padding-top: $header-height-small-screen;
+	}
+
+	&.hamburger-active {
+		overflow: hidden;
+	}
+}
+
+#page {
+	// ensure that footer is at the bottom of the page even if content doesn't fill the viewport
+	min-height: calc(100vh - #{$header-height});
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	max-width: $max-content-width;
+	margin: 0 auto;
+	// fluid padding if the viewport is wider than 767px then the padding is 40px,
+	// if it's smaller than 767px then the padding is reduced until it sticks at 20px
+	padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+
+	&.narrow-width {
+		max-width: $narrow-content-width;
+	}
+
+}

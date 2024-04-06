@@ -1,0 +1,43 @@
+@mixin glass($color) {
+  background: rgba($color, 0.9);
+  box-shadow: $color__drop-shadow;
+  backdrop-filter: blur(5px);
+}
+
+@mixin default-padding {
+  // fluid padding if the viewport is wider than 767px then the padding is 40px,
+  // if it's smaller than 767px then the padding is reduced until it sticks at 20px
+  padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+}
+
+@mixin animate {
+  transform: translateY(0);
+  //transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+  animation: header-anime 0.5s ease-in-out;
+}
+@mixin animate-p {
+  transform: translateY(0);
+  //transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+  animation: p-anime 0.8s ease-in-out;
+}
+
+@keyframes header-anime {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes p-anime {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

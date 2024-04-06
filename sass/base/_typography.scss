@@ -1,0 +1,135 @@
+// build a fluid type scale
+// ref: https://www.smashingmagazine.com/2022/10/fluid-typography-clamp-sass-functions/
+// ref: https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
+// ref: https://www.aleksandrhovhannisyan.com/blog/fluid-type-scale-with-css-clamp/
+
+// clamp( value-min, value-prefered, value-max )
+// value-prefered = (value-min * slope) + intercept
+// slope = (value-max - value-min) / (max-width - min-width)
+// intercept = value-min - (slope * min-width)
+
+// unquote is used as SASS doesn't allow two different unit types in the same variable
+// e.g. rem and vw
+// as in unquote("clamp(3.790rem, 1.4vw + 3.243rem, 5.211rem)");
+
+html {
+	font-size: 62.5%;
+}
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: $color__text-main;
+	font-family: $font__main;
+	// fluid type scale - default font size 1.6rem to 2rem
+	font-size: unquote("clamp(1.6rem, 0.6cqw + 1.369rem, 2rem)");
+	font-weight: 300;
+	line-height: 1.4;
+}
+
+.is-dark {
+	:is(h1, h2, h3, h4, h5, h6, p) {
+    color: $color__text-dark-background;
+	}
+}
+
+
+:is(h1, h2, h3, h4, h5, h6) {
+	clear: both;
+	color: $color__text-screen;
+	font-family: $font__headers;
+	font-weight: 400;
+
+	span {
+		white-space: nowrap;
+	}
+}
+
+h1 {
+	// fluid type scale - h1 font size 3.79rem to 5.211rem 
+	font-size: unquote("clamp(3.790rem, 1.4cqw + 3.243rem, 5.211rem)");
+	line-height: normal;
+	margin-bottom: 0;
+	vertical-align: top;
+}
+h2 {
+	// fluid type scale - h2 font size 2.843rem to 3.909rem
+	font-size: unquote("clamp(2.843rem, 1.0cqw + 2.433rem, 3.909rem)");
+	line-height: 1.2;
+	margin-bottom: 0.6em;
+}
+h3 {
+	// fluid type scale - h3 font size 2.133rem to 2.933rem
+	font-size: unquote("clamp(2.133rem, 0.8cqw + 1.825rem, 2.933rem)");
+	line-height: 1.2;
+	margin-bottom: 0.6em;
+}
+
+.prefix {
+	// fluid type scale - prefix font size 1.8rem to 2.4rem
+	font-size: unquote("clamp(1.8rem, 0.6cqw + 1.569rem, 2.4rem)");
+	font-weight: 700;
+	color: var(--color-secondary);
+}
+
+.sub-title {
+	// fluid type scale - sub title font size 1.8rem to 2.4rem
+	font-size: unquote("clamp(1.8rem, 0.6cqw + 1.569rem, 2.4rem)");
+	font-weight: 300;
+	font-style: italic;
+	color: var(--color-secondary);
+
+	span {
+		white-space: nowrap;
+	}
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5em;
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+pre {
+	background: var(--color-tertiary);
+	font-family: "Courier 10 Pitch", courier, monospace;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+	font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+abbr,
+acronym {
+	cursor: help;
+}
+
+mark,
+ins {
+	background: var(--color-tertiary);
+	text-decoration: none;
+}

@@ -1,0 +1,27 @@
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    margin: 0 0.5rem;
+    border: 1px solid $color__border;
+
+    a, span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      padding: 1rem 1.5rem;
+      color: $color__brand_dark;
+      text-decoration: none;
+    }
+    span {
+      color: $color__border;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+    "key": "group_644fc82a9a0dd",
+    "title": "Icon Select Component",
+    "fields": [
+        {
+            "key": "field_644fc82c5ec9d",
+            "label": "Icons",
+            "name": "icons",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "choices": {
+                "none": "None",
+                "add-circle": "Add Circle",
+                "arrow-circle-up": "Arrow Circle Up",
+                "arrow-circle-right": "Arrow Circle Right",
+                "arrow-up": "Arrow Up",
+                "arrow-down": "Arrow Down",
+                "arrow-left": "Arrow Left",
+                "arrow-right": "Arrow Right",
+                "bridge": "Bridge",
+                "cancel": "Cancel",
+                "chat": "Chat",
+                "check": "Check",
+                "chevron-down": "Chevron Down",
+                "chevron-up": "Chevron Up",
+                "chevron-left": "Chevron Left",
+                "chevron-right": "Chevron Right",
+                "code": "Code",
+                "cloudinary": "Cloudinarty",
+                "facebook": "Facebook",
+                "feather": "Feather",
+                "linkedin": "LinkedIn",
+                "trees": "Trees",
+                "twitter": "Twitter",
+                "user": "User",
+                "vimeo": "Vimeo",
+                "youtube": "YouTube"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_644fef4db31d2",
+            "label": "Icon Classes",
+            "name": "icon_classes",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "show_in_graphql": 1,
+    "graphql_field_name": "iconSelectComponent",
+    "map_graphql_types_from_location_rules": 0,
+    "graphql_types": "",
+    "modified": 1685401396
+}

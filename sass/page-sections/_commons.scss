@@ -1,0 +1,146 @@
+.page-section {
+  position: relative;
+  margin: 5rem 0;
+  // used for section animations
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+
+  &.in-container {
+    max-width: $max-content-width;
+    margin: 0 auto;
+  }
+
+  &.no-top-margin {
+    margin-top: 0;
+  }
+  &.no-bottom-margin {
+    margin-bottom: 0;
+  }
+  &.no-top-padding {
+    .container {
+      padding-top: 0 !important;
+    }
+  }
+  &.extra-box-padding {
+    padding: 2rem 0;
+  }
+  // used for section animations
+  &.is-hidden {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  
+  .columns {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    .column {
+      flex: 1;
+    }
+  }
+
+  &.is-reversed {
+    .columns {
+      flex-direction: row-reverse;
+    }
+  }
+
+  img {
+    display: block;
+  }
+
+  .prose {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.has-background-image {
+
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255,255,255, 0.8);
+      }
+
+      figure {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      // important to overwrite the aspect-ratio set by the responsive image component
+      aspect-ratio: unset !important;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    }
+
+    &.no-screen-overlay, &.banner {
+      .background-image {
+        &:before {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .container {
+    *:first-child {
+      margin-top: 0;
+    }
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.narrow-width {
+    .container {
+      max-width: $narrow-content-width;
+      margin-left: auto;
+      margin-right: auto;
+      //box-shadow: $color__drop-shadow;
+    }
+    
+  }
+
+  &.center-text {
+    * {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  &.simple-banner + & {
+    padding-top: 5rem;
+  }
+
+  // animate headers
+  h2, h3, h4 {
+    @include animate;
+
+    & ~ p {
+      @include animate-p;
+    }
+  }
+
+  p {
+    @include animate-p;
+  }
+}

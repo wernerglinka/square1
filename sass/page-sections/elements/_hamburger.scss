@@ -1,0 +1,78 @@
+.hamburger {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin-left: 4rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: none;
+
+  &:hover {
+    box-shadow: none;
+    transform:none;
+  }
+
+  @media (max-width: $hamburger-break) {
+    display: block;
+  }
+
+  span,
+  span:before,
+  span:after {
+    cursor: pointer;
+    height: 4px;
+    width: 30px;
+    background: $color__brand_dark;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    display: block;
+    content: "";
+    transition: all 0.3s ease-in-out;
+  }
+  span:before {
+    top: -8px;
+  }
+  span:after {
+    top: auto;
+    bottom: -8px;
+  }
+  &:hover {
+    span,
+    span:before,
+    span:after {
+      background: $color__brand_highlight;
+    }
+  }
+
+  .hamburger-active & {
+    span {
+      background-color: transparent !important;
+    }
+    span:before,
+    span:after {
+      top: 0;
+    }
+    span:before {
+      transform: rotate(45deg);
+    }
+    span:after {
+      transform: rotate(-45deg);
+    }
+    &:hover {
+      span:before,
+      span:after {
+        background: $color__brand_highlight;
+      }
+    }
+  }
+}
+
+.hamburger-active .hamburger {
+  span,
+  span:before,
+  span:after {
+    background: $color__brand_highlight;
+  }
+}

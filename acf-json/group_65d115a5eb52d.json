@@ -1,0 +1,47 @@
+{
+    "key": "group_65d115a5eb52d",
+    "title": "Corporate Advisor Fields",
+    "fields": [
+        {
+            "key": "field_65d115a5ed4b1",
+            "label": "Max Logo Height",
+            "name": "max_logo_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Logos are rendered at 80px height. If the logo is too large when compared to others, type in a number smaller than 80 and see if that balances the logo weight with the others.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "corporate-advisors"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1708201434
+}

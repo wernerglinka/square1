@@ -1,0 +1,17 @@
+.text-link {
+  text-decoration: none;
+
+  &:after {
+    position: relative;
+    top: 0.2rem;
+    content: ">>";
+    padding-left: 0.5rem;
+    transition: padding-left 0.3s ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      padding-left: 1rem;
+    }
+  }
+}

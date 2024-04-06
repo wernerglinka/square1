@@ -20,43 +20,49 @@ if ( ! defined( '_S_VERSION' ) ) {
  * as indicating support for post thumbnails.
  */
 function square1_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on square1, use a find and replace
-		* to change 'square1' to the name of your theme in all the template files.
-		*/
+	/**
+	 * Make theme available for translation.
+	 * Translations can be filed in the /languages/ directory.
+	 * If you're building a theme based on square1, use a find and replace
+	 * to change 'square1' to the name of your theme in all the template files.
+	 */
 	load_theme_textdomain( 'square1', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
+	/**
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 * This is beneficial for SEO (Search Engine Optimization) as it allows 
+	 * each page or post to have a unique title, which can help search engines 
+	 * understand the content of the page better. It also improves the user 
+	 * experience by providing a meaningful title in the browser tab for each page.
+	 */
 	add_theme_support( 'title-tag' );
 
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
+	/**
+	 * Enable support for Post Thumbnails on posts and pages.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	 */
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	/**
+	 * This theme uses wp_nav_menu() in one location.
+	 */ 
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'square1' ),
 		)
 	);
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
+	/**
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
 	add_theme_support(
 		'html5',
 		array(
@@ -68,51 +74,21 @@ function square1_setup() {
 			'style',
 			'script',
 		)
-	);
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'square1_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
-
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+	);	 
 }
 add_action( 'after_setup_theme', 'square1_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
- *
  * Priority 0 to make it available to lower priority callbacks.
- *
  * @global int $content_width
- */
+ 
 function square1_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'square1_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'square1_content_width', 0 );
+*/
+
 
 /**
  * Register widget area.
@@ -139,20 +115,11 @@ add_action( 'widgets_init', 'square1_widgets_init' );
  */
 function square1_scripts() {
 	wp_enqueue_style( 'square1-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'square1-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'square1-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script('square1-scripts', get_template_directory_uri() . '/scripts.js', array(), _S_VERSION, true);
 
-
-	
 }
 add_action( 'wp_enqueue_scripts', 'square1_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -163,13 +130,6 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
 
 /** 
  * Modifications start here

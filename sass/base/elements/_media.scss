@@ -6,10 +6,7 @@ object {
 }
 
 img {
-	height: auto; // Make sure images are scaled correctly.
-	max-width: 100%; // Adhere to container width.
-}
-
-figure {
-	margin: 1em 0; // Extra wide images within figure tags don't overflow the content area.
+	display: block;
+	height: auto;
+	max-width: 100%;
 }

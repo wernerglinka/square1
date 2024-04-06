@@ -1,0 +1,16 @@
+.page-section.alert-bar {
+  background-color: $color__brand_highlight;
+  color: $color__text-main;
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+  }
+}
