@@ -1,4 +1,37 @@
-.page-section.banner {
-  min-height: 20rem;
-}
+.page-section.banner  {
+  height: 30rem;
+  z-index: 1;
 
+  .container {
+    height: 100%;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .text {
+    position: relative;
+    width: 100%;
+    max-width: 80rem;
+    margin: auto 0 2rem;
+
+    // fadein animation for h1
+    @keyframes fadein {
+      from {
+        opacity: 0;
+
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 1;
+      animation: fadein 2s ease-in-out;
+    }
+  }
+}

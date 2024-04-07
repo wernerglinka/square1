@@ -1,30 +1,42 @@
 (() => {
-  // js/modules/module1.js
-  var module1 = /* @__PURE__ */ function module12() {
+  // js/modules/navigation.js
+  var navigation = function() {
+    "use strict";
     const init = () => {
-      console.log("module1.js loaded");
+      console.log("enter init navigation");
+      if (!document.querySelector(".js-header")) {
+        return;
+      }
+      console.log("init navigation");
+      const header = document.querySelector(".js-header");
+      const mainMenu = document.querySelector(".js-main-menu");
+      const page = document.body;
+      const main = document.querySelector("#main");
+      header.addEventListener("click", (e) => {
+        if (e.target.matches(".js-hamburger, .js-hamburger *")) {
+          page.classList.toggle("hamburger-active");
+        }
+      });
+      mainMenu.addEventListener("click", (e) => {
+        if (e.target.matches("a")) {
+          page.classList.add("menu-fadeout");
+        }
+      });
+      window.addEventListener("scroll", (e) => {
+        if (window.scrollY >= 100) {
+          document.body.classList.add("is-scrolling");
+        } else {
+          document.body.classList.remove("is-scrolling");
+        }
+      });
     };
-    return {
-      init
-    };
+    return { init };
   }();
-  var module1_default = module1;
-
-  // js/modules/module2.js
-  var module2 = /* @__PURE__ */ function module22() {
-    const init = () => {
-      console.log("module2.js loaded");
-    };
-    return {
-      init
-    };
-  }();
-  var module2_default = module2;
+  var navigation_default = navigation;
 
   // js/main.js
   function initPage() {
-    module1_default.init();
-    module2_default.init();
+    navigation_default.init();
   }
   window.addEventListener("load", function() {
     initPage();

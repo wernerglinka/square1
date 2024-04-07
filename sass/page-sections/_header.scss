@@ -7,23 +7,20 @@
   height: $header-height;
   /* the background */
   @include glass($color__glass);
-
-
-  @media (max-width: $tablet-width-portrait) {
+  
+  @media (max-width: $hamburger-break) {
     height: $header-height-small-screen;
   }
 
   .container {
-    position: relative;
+    height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: $header-height;
-    //padding: 0 unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+    padding: 0 $default-padding;
 
-    @media (max-width: $tablet-width-portrait) {
-    height: $header-height-small-screen;
-  }
+    @media (max-width: $hamburger-break) {
+      height: $header-height-small-screen;
+    }
   }
 
   .site-branding {
@@ -40,7 +37,9 @@
       width: auto;
       height: 6rem;
 
-      
+      @media (max-width: $hamburger-break) {
+        height: 4rem;
+      }
     }
   }
 

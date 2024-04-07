@@ -9,8 +9,8 @@ body {
 	padding-top: $header-height;
 	background: $color__background-body;
 
-	@media (max-width: $tablet-width-portrait) {
-    padding-top: $header-height-small-screen;
+	@media (max-width: $hamburger-break) {
+		padding-top: $header-height-small-screen;
 	}
 
 	&.hamburger-active {

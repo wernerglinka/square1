@@ -75,13 +75,6 @@
 			<nav id="site-navigation" class="main-navigation js-main-menu">
 
 				<div class="search-wrapper mobile-search">
-					<button class="search-icon js-search-icon" role="button">
-						<?php
-						//include the search icon as menu item
-						include get_template_directory() . '/icons/search.svg';
-						?>
-						<span class="screen-reader-text"><?php echo _x('Open Search Pane', 'open search') ?></span>
-					</button><!-- .search-icon -->
 					<?php get_search_form();?>
 				</div><!-- .search-wrapper -->
 

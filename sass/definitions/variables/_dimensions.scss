@@ -11,15 +11,16 @@ $very-small-screen-width: 36rem;
 $large-card-width: 40rem;
 $default-card-width: 30rem;
 
-$header-height: 8rem;
+$header-height: 9rem;
 $header-clearance: 4rem;
-$header-height-small-screen: 6rem;
+$header-height-small-screen: 7rem;
 $header-small-clerance: 2rem;
 $hamburger-height: 3.6rem;
 
-$hamburger-break: 80rem;
-$donate-button-break: 50rem;
+$hamburger-break: 48rem;
 
 $banner-clearance: 5rem;
 
 $adminbar-height: 3.2rem;
+
+$default-padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
