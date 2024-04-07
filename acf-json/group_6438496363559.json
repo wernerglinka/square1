@@ -384,6 +384,34 @@
                                     "ui_on_text": "Has Screen",
                                     "ui_off_text": "No Screen",
                                     "ui": 1
+                                },
+                                {
+                                    "key": "field_6611e9c3fab99",
+                                    "label": "Dark Screen",
+                                    "name": "dark_screen",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_66119cb111d73",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui_on_text": "Dark",
+                                    "ui_off_text": "Light",
+                                    "ui": 1
                                 }
                             ]
                         }
@@ -4793,5 +4821,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1712430298
+    "modified": 1712450420
 }

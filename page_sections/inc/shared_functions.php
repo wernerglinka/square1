@@ -105,10 +105,18 @@
     if(isset($params['media_position']) && $params['media_position'] == "media_left") {
       $string .= " is-reversed";
     };
-    // check for special case of 'with_background_image' and add class if true
-    if(isset($params['common_section_fields']['background_image']) && $params['common_section_fields']['background_image']['url'] != "") {
-      $string .= " has-background-image";
+    // section has a screen in front of the background image
+    if (isset($params['has_screen']) && $params['has_screen']) {
+      if ($params['dark_screen']) {
+        $string .= " has-dark-screen";
+      } else {
+        $string .= " has-light-screen";
+      }
     }
+
+    //echo "<pre>";
+    //print_r($string); 
+    //echo "</pre>";
 
     return $string;
   } // end build_section_class_string

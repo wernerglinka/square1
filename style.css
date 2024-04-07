@@ -385,18 +385,18 @@ html {
 
 html {
   scroll-behavior: smooth;
-  scroll-margin: -10rem;
-  scroll-padding-top: 10rem;
+  scroll-margin: -8rem;
+  scroll-padding-top: 8rem;
 }
 
 body {
   margin: 0;
-  padding-top: 10rem;
+  padding-top: 8rem;
   background: #fff;
 }
 @media (max-width: 76.7rem) {
   body {
-    padding-top: 8rem;
+    padding-top: 6rem;
   }
 }
 body.hamburger-active {
@@ -404,7 +404,7 @@ body.hamburger-active {
 }
 
 #page {
-  min-height: calc(100vh - 10rem);
+  min-height: calc(100vh - 8rem);
   display: flex;
   flex-direction: column;
 }
@@ -842,7 +842,7 @@ button.wpforms-submit, .button.wpforms-submit {
 
 .search-wrapper {
   position: relative;
-  height: 10rem;
+  height: 8rem;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -1127,7 +1127,7 @@ button.wpforms-submit, .button.wpforms-submit {
   left: 0;
   z-index: 100;
   width: 100%;
-  height: 10rem;
+  height: 8rem;
   /* the background */
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
@@ -1135,7 +1135,7 @@ button.wpforms-submit, .button.wpforms-submit {
 }
 @media (max-width: 76.7rem) {
   #masthead {
-    height: 8rem;
+    height: 6rem;
   }
 }
 #masthead .container {
@@ -1143,11 +1143,11 @@ button.wpforms-submit, .button.wpforms-submit {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10rem;
+  height: 8rem;
 }
 @media (max-width: 76.7rem) {
   #masthead .container {
-    height: 8rem;
+    height: 6rem;
   }
 }
 #masthead .site-branding {
@@ -1176,9 +1176,26 @@ button.wpforms-submit, .button.wpforms-submit {
 .page-section {
   position: relative;
   margin: 5rem 0;
+  background-image: var(--bg-image);
+  color: #fff;
   transform: translateY(0);
   opacity: 1;
   transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+}
+.page-section.has-light-screen {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5)), var(--bg-image);
+}
+.page-section.has-light-screen :is(h1, h2, h3, h4, h5, h6) {
+  color: #00080f;
+}
+.page-section.has-dark-screen {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), var(--bg-image);
+}
+.page-section.has-dark-screen :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+}
+.page-section.is-dark :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
 }
 .page-section.in-container {
   max-width: 144rem;
@@ -1298,8 +1315,6 @@ button.wpforms-submit, .button.wpforms-submit {
 
 .page-section.banner {
   min-height: 20rem;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), var(--bg-image);
-  color: #fff;
 }
 
 .page-section.media .media-wrapper {
