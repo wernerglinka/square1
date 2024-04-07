@@ -14,6 +14,10 @@
   // Get the current section
   $section = get_row_layout();
 
+  //echo "<pre>";
+  //print_r($section);
+  //echo "</pre>";
+
   // Get the properties for the current section
   $props = get_sub_field($section);
 

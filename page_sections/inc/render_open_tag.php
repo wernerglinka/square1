@@ -2,10 +2,6 @@
 
 function render_open_tag($section) {
 
-  //echo "<pre>";
-  //print_r(get_sub_field($section));
-  //echo "</pre>";
-
   // Get the properties for the current section
   $props = get_sub_field($section);
 

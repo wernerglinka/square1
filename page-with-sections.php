@@ -4,7 +4,7 @@
  * Template for a sectioned page
  * 
  * Template Name: Sectioned Page
- * Template Post Type: page, post
+ * Template Post Type: page
  *
  * @package square1
  */
@@ -15,8 +15,6 @@
 
   get_header();
 ?>
-
-
 		<main id="primary" class="site-main">
     
 		<?php	
@@ -28,9 +26,7 @@
         
         // loop through the selected ACF layouts and display the matching section
         while ( have_rows( 'sections', $id ) ) : the_row();
-          
           include(get_template_directory() . '/page_sections/inc/render_layout.php');
-
         endwhile;
       elseif ( get_the_content() ) :
         echo "No sections found.";
