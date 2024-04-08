@@ -2,7 +2,6 @@
   position: relative;
   margin: 5rem 0;
   background-image: var(--bg-image);
-  color: $color__background-body;
 
   &.has-light-screen {
     background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5)), var(--bg-image);
@@ -10,7 +9,6 @@
     :is(h1, h2, h3, h4, h5, h6) {
       color: $color__text-screen;
     }
-    
   }
   &.has-dark-screen {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), var(--bg-image);
@@ -31,7 +29,8 @@
   transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
 
   &.in-container {
-    max-width: $max-content-width;
+    width: 100%;
+    max-width: $max-content-width-in-container;
     margin: 0 auto;
   }
 
@@ -164,7 +163,7 @@
     }
   }
 
-  p {
+  p, li {
     @include animate-p;
   }
 }

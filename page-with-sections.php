@@ -35,5 +35,9 @@
 		
 		</main><!-- #main -->
     
-<?php
-get_footer();
+</div><!-- #page -->
+
+<?php wp_footer(); ?>
+
+</body>
+</html>

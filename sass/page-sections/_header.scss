@@ -8,12 +8,9 @@
   /* the background */
   @include glass($color__glass);
   
-  @media (max-width: $hamburger-break) {
-    height: $header-height-small-screen;
-  }
-
   .container {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0 $default-padding;
@@ -44,10 +41,18 @@
   }
 
   .button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  
+    display: none;
+  }
+
+  @media (max-width: $hamburger-break) {
+    height: $header-height-small-screen;
+
+    .button-wrapper {
+      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 

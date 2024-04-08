@@ -1,0 +1,38 @@
+.page-section.footer {
+  margin-top: auto !important;
+  padding-bottom: 5rem !important;
+
+  .wp-block-column {
+    padding: 0 2rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    @media (max-width: $tablet-width-portrait) {
+      padding: 4rem 0 0;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  a {
+    color: $color__text-dark-background;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  .copyright-notice {
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.9em;
+  }
+
+  &.is-dark * {
+    color: $color__text-dark-background;
+  }
+}

@@ -3,21 +3,12 @@
    * Render a title and append a period if it's missing
    */
   function render_title($title, $header_level) {
-    if ($header_level == "h1") : ?>
-      <h1 class="text-title"><?php echo $title; ?></h1>
-    <?php elseif ($header_level == "h2") : ?>
-      <h2 class="text-title"><?php echo $title; ?></h2>
-    <?php elseif ($header_level == "h3") : ?>
-      <h3 class="text-title"><?php echo $title; ?></h3>
-    <?php elseif ($header_level == "h4") : ?>
-      <h4 class="text-title"><?php echo $title; ?></h4>
-    <?php elseif ($header_level == "h5") : ?>
-      <h5 class="text-title"><?php echo $title; ?></h5>
-    <?php elseif ($header_level == "h6") : ?>
-      <h6 class="text-title"><?php echo $title; ?></h6>
-    <?php endif; ?> 
-<?php
-  } // end resource_card
+    $title = preg_replace('/^<[^>]+>|<\/[^>]+>$/', '', $title);
+
+    echo "<" . $header_level . " class='text-title'>";
+    echo $title;
+    echo "</" . $header_level . ">";
+  }
 ?>
 
 <?php
@@ -100,11 +91,22 @@
     }
     if(isset($params['common_section_fields']['section_classes']) && $params['common_section_fields']['section_classes'] != "") {
       $string .= " " . $params['common_section_fields']['section_classes'];
-    };
+    }
     // media section has image on the right by default. set is-reverse if image is on the left
     if(isset($params['media_position']) && $params['media_position'] == "media_left") {
       $string .= " is-reversed";
-    };
+    }
+    // Check if a background color is set and not "none"
+    if (isset($params['common_section_fields']['background_color'])
+      && !empty($params['common_section_fields']['background_color'])
+      && $params['common_section_fields']['background_color'] !== "none") {
+      $string .= " has-background-color";
+    }
+    // Check if a background image is set, then add it to the styles string
+    if (isset($params['common_section_fields']['background_image']['url'])
+      && !empty($params['common_section_fields']['background_image']['url'])) {
+      $string .= " has-background-image";
+    }
     // section has a screen in front of the background image
     if (isset($params['has_screen']) && $params['has_screen']) {
       if ($params['dark_screen']) {

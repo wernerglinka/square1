@@ -391,6 +391,7 @@ body {
   margin: 0;
   padding-top: 9rem;
   background: #fff;
+  min-height: 100vh;
 }
 @media (max-width: 48rem) {
   body {
@@ -401,7 +402,7 @@ body.hamburger-active {
   overflow: hidden;
 }
 
-#page {
+#primary {
   min-height: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
@@ -712,6 +713,11 @@ button:hover, .button:hover {
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
 }
 button.primary, .button.primary {
+  background-color: #3f2787;
+  border-color: #3f2787;
+  color: #fff;
+}
+button.secondary, .button.secondary {
   background-color: #c0d878;
   border-color: #c0d878;
   color: #0d081c !important;
@@ -721,38 +727,12 @@ button.inverted, .button.inverted {
   border-color: #3f2787;
   color: #3f2787;
 }
-button.secondary, button.wpforms-submit, .button.secondary, .button.wpforms-submit {
-  background-color: #3f2787;
-  border-color: #3f2787;
-  color: #fff;
-}
-button.wpforms-submit, .button.wpforms-submit {
-  margin-top: 2rem;
-}
 
 .is-dark button.inverted,
 .is-dark .button.inverted {
   background-color: transparent;
   border-color: #fff;
   color: #fff;
-}
-
-/* cc form */
-.ctct-form-embed.form_2 .ctct-form-custom .ctct-form-button {
-  background-color: #3f2787 !important;
-  border: 1px solid #3f2787 !important;
-  color: #fff !important;
-  display: inline-block;
-  width: auto;
-  font-size: 1.8rem;
-  font-weight: 500;
-  line-height: 1.25;
-  padding: calc(1rem - 1px) calc(3rem - 1px);
-  text-align: left;
-}
-.ctct-form-embed.form_2 .ctct-form-custom .ctct-form-button:hover, .ctct-form-embed.form_2 .ctct-form-custom .ctct-form-button:focus {
-  transform: scale(0.95);
-  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
 }
 
 .text-link {
@@ -885,7 +865,7 @@ button.wpforms-submit, .button.wpforms-submit {
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease-in-out;
   /* the background */
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
 }
@@ -1091,7 +1071,7 @@ button.wpforms-submit, .button.wpforms-submit {
   padding: 40px 0 40px 40px;
   list-style: none;
   /* the background */
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
 }
@@ -1127,17 +1107,13 @@ button.wpforms-submit, .button.wpforms-submit {
   width: 100%;
   height: 9rem;
   /* the background */
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
 }
-@media (max-width: 48rem) {
-  #masthead {
-    height: 7rem;
-  }
-}
 #masthead .container {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0 clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
@@ -1166,13 +1142,55 @@ button.wpforms-submit, .button.wpforms-submit {
   }
 }
 #masthead .button-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  display: none;
+}
+@media (max-width: 48rem) {
+  #masthead {
+    height: 7rem;
+  }
+  #masthead .button-wrapper {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .admin-bar.logged-in #masthead {
   top: 3.2rem;
+}
+
+.page-section.footer {
+  margin-top: auto !important;
+  padding-bottom: 5rem !important;
+}
+.page-section.footer .wp-block-column {
+  padding: 0 2rem;
+}
+.page-section.footer .wp-block-column:first-child {
+  padding-left: 0;
+}
+@media (max-width: 76.7rem) {
+  .page-section.footer .wp-block-column {
+    padding: 4rem 0 0;
+  }
+  .page-section.footer .wp-block-column:first-child {
+    padding-left: 0;
+  }
+}
+.page-section.footer a {
+  color: #fff;
+}
+.page-section.footer strong {
+  font-weight: bold;
+}
+.page-section.footer .copyright-notice {
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.9em;
+}
+.page-section.footer.is-dark * {
+  color: #fff;
 }
 
 @keyframes fadeIn {
@@ -1225,7 +1243,7 @@ button.wpforms-submit, .button.wpforms-submit {
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   transition: all 0.5s ease-in-out;
   /* the background */
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
 }
@@ -1337,7 +1355,6 @@ button.wpforms-submit, .button.wpforms-submit {
   position: relative;
   margin: 5rem 0;
   background-image: var(--bg-image);
-  color: #fff;
   transform: translateY(0);
   opacity: 1;
   transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
@@ -1358,7 +1375,8 @@ button.wpforms-submit, .button.wpforms-submit {
   color: #fff;
 }
 .page-section.in-container {
-  max-width: 144rem;
+  width: 100%;
+  max-width: 136rem;
   margin: 0 auto;
 }
 .page-section.no-top-margin {
@@ -1451,7 +1469,7 @@ button.wpforms-submit, .button.wpforms-submit {
   transform: translateY(0);
   animation: p-anime 0.8s ease-in-out;
 }
-.page-section p {
+.page-section p, .page-section li {
   transform: translateY(0);
   animation: p-anime 0.8s ease-in-out;
 }
@@ -1476,6 +1494,10 @@ button.wpforms-submit, .button.wpforms-submit {
 .page-section.banner {
   height: 30rem;
   z-index: 1;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .page-section.banner .container {
   height: 100%;
@@ -1504,79 +1526,62 @@ button.wpforms-submit, .button.wpforms-submit {
   opacity: 1;
   animation: fadein 2s ease-in-out;
 }
+.page-section.banner.has-background-image .text {
+  background: rgba(13, 8, 28, 0.5);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+}
 
 .page-section.media .media-wrapper {
   container: media/inline-size;
 }
-.page-section.media .media__image {
-  grid-area: image;
-}
-.page-section.media .media__image .image-wrapper {
-  height: 100%;
+.page-section.media .media-wrapper .media {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 5rem;
 }
-.page-section.media .media__image img {
+.page-section.media .image img {
   display: block;
 }
-.page-section.media .media__title {
-  grid-area: title;
-  margin: 2rem 2rem 0 0;
-  align-self: end;
+.page-section.media .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
-.page-section.media .media__sub-title {
-  grid-area: sub-title;
-  margin: 0 2rem 0 0;
-  align-self: start;
+.page-section.media .text .text-title {
+  margin: 0;
 }
-.page-section.media .media__prose {
-  grid-area: prose;
-  margin: 0 2rem 2rem 0;
-  align-self: start;
+.page-section.media .text .text-subtitle {
+  margin: 0;
 }
-.page-section.media .media__prose p:first-child {
+.page-section.media .text .text-prose {
+  margin: 0;
+}
+.page-section.media .text .text-prose p:first-child {
   margin-top: 0;
 }
-.page-section.media .media__prose p:last-child {
+.page-section.media .text .text-prose p:last-child {
   margin-bottom: 0;
 }
-.page-section.media .media__cta {
-  grid-area: cta;
-  margin: 0 2rem 2rem 0;
-  align-self: start;
-}
-.page-section.media .media {
-  display: grid;
-  grid-template-columns: [first] 1fr [second] 1fr [last];
-  grid-template-rows: [row1] auto [row2] 2rem [row3] auto [row4] auto [end];
-  grid-template-areas: "title image" "sub-title image" "prose image" "cta image";
-  column-gap: 5rem;
-  row-gap: 2rem;
+.page-section.media .text .text-cta {
+  margin: 2rem 0 0;
 }
 .page-section.media.is-reversed .media {
-  grid-template-areas: "image title" "image sub-title" "image prose" "image cta";
+  flex-direction: row-reverse;
+}
+.page-section.media.has-background-image .text {
+  background: rgba(13, 8, 28, 0.5);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
 }
 @container media (max-width: 76.7rem) {
-  .page-section.media .media {
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    grid-template-areas: "title" "image" "sub-title" "prose" "cta";
+  .page-section.media .media-wrapper .media {
+    flex-direction: column-reverse;
   }
-  .page-section.media.is-reversed .media {
-    grid-template-areas: "title" "image" "sub-title" "prose" "cta";
-  }
-  .page-section.media .media__title,
-  .page-section.media .media__sub-title,
-  .page-section.media .media__prose,
-  .page-section.media .media__cta {
-    margin: 2rem 2rem 2rem 0;
-  }
-  .page-section.media .media__sub-title {
-    margin: 1rem 2rem;
-  }
-  .page-section.media .media__prose {
-    margin-top: 0;
+  .page-section.media .media-wrapper .media .image {
+    padding-bottom: 3rem;
   }
 }
 

@@ -1,5 +1,5 @@
 @mixin glass($color) {
-  background: rgba($color, 0.9);
+  background: rgba($color, 0.5);
   box-shadow: $color__drop-shadow;
   backdrop-filter: blur(5px);
 }

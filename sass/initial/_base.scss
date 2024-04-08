@@ -8,6 +8,7 @@ body {
 	margin: 0;
 	padding-top: $header-height;
 	background: $color__background-body;
+	min-height: 100vh;
 
 	@media (max-width: $hamburger-break) {
 		padding-top: $header-height-small-screen;
@@ -18,7 +19,7 @@ body {
 	}
 }
 
-#page {
+#primary {
 	// ensure that footer is at the bottom of the page even if content doesn't fill the viewport
 	min-height: calc(100vh - #{$header-height});
 	display: flex;

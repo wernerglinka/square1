@@ -1,6 +1,5 @@
 <?php
-  include_once get_template_directory() . '/page_sections/inc/render_open_tag.php';
-  include_once get_template_directory() . '/page_sections/inc/render_close_tag.php';
+  include_once get_template_directory() . '/page_sections/inc/render_section_tag.php';
 
   /**
    * Render Section
@@ -14,12 +13,12 @@
   // Get the current section
   $section = get_row_layout();
 
-  //echo "<pre>";
-  //print_r($section);
-  //echo "</pre>";
-
   // Get the properties for the current section
   $props = get_sub_field($section);
+
+  //echo "<pre>";
+  //print_r($props);
+  //echo "</pre>";
 
   // Check if common section fields are set, if not set to false
   $common_fields = isset($props['common_section_fields']) ? $props['common_section_fields'] : false;
