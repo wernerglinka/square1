@@ -1,0 +1,33 @@
+.page-section.cta-banner {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // fluid padding if the viewport is wider than 767px then the padding is 40px,
+    // if it's smaller than 767px then the padding is reduced until it sticks at 20px
+    padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+
+    * {
+      position: relative;
+      z-index: 1;
+      margin-top: 0;
+      text-align: center;
+
+      &.text-title {
+        margin-bottom: 1rem;
+      }
+
+      &.cta-wrapper {
+        margin-top: 3rem;
+      }
+    }
+  }
+  // end of default cta banner section styling. Special cases will 
+  // be defined by optional section classes and will be defined below
+}

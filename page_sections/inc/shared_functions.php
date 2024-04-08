@@ -103,8 +103,8 @@
       $string .= " has-background-color";
     }
     // Check if a background image is set, then add it to the styles string
-    if (isset($params['common_section_fields']['background_image']['url'])
-      && !empty($params['common_section_fields']['background_image']['url'])) {
+    if (isset($params['common_section_fields']['background_image']['id'])
+      && !empty($params['common_section_fields']['background_image']['id'])) {
       $string .= " has-background-image";
     }
     // section has a screen in front of the background image
@@ -137,9 +137,10 @@
     }
 
     // Check if a background image is set, then add it to the styles string
-    if (isset($params['common_section_fields']['background_image']['url'])
-      && !empty($params['common_section_fields']['background_image']['url'])) {
-        $styles .= "--bg-image: url(" . $params['common_section_fields']['background_image']['url'] . ");";
+    if (isset($params['common_section_fields']['background_image']['id'])
+      && !empty($params['common_section_fields']['background_image']['id'])) {
+        $image_id = $params['common_section_fields']['background_image']['id'];
+        $styles .= "--bg-image: url(" . wp_get_attachment_image_url($image_id, 'full size') . ");";
     }
 
     return $styles;

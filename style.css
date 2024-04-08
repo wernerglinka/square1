@@ -1355,6 +1355,9 @@ button.inverted, .button.inverted {
   position: relative;
   margin: 5rem 0;
   background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transform: translateY(0);
   opacity: 1;
   transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
@@ -1377,7 +1380,7 @@ button.inverted, .button.inverted {
 .page-section.in-container {
   width: 100%;
   max-width: 136rem;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 .page-section.no-top-margin {
   margin-top: 0;
@@ -1540,10 +1543,14 @@ button.inverted, .button.inverted {
   display: flex;
   gap: 5rem;
 }
+.page-section.media .image {
+  flex: 0 0 50%;
+}
 .page-section.media .image img {
   display: block;
 }
 .page-section.media .text {
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1583,6 +1590,32 @@ button.inverted, .button.inverted {
   .page-section.media .media-wrapper .media .image {
     padding-bottom: 3rem;
   }
+}
+
+.page-section.cta-banner {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.page-section.cta-banner .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+}
+.page-section.cta-banner .container * {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  text-align: center;
+}
+.page-section.cta-banner .container *.text-title {
+  margin-bottom: 1rem;
+}
+.page-section.cta-banner .container *.cta-wrapper {
+  margin-top: 3rem;
 }
 
 /*# sourceMappingURL=style.css.map */

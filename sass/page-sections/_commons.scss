@@ -2,6 +2,9 @@
   position: relative;
   margin: 5rem 0;
   background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   &.has-light-screen {
     background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5)), var(--bg-image);
@@ -31,7 +34,7 @@
   &.in-container {
     width: 100%;
     max-width: $max-content-width-in-container;
-    margin: 0 auto;
+    margin: 5rem auto;
   }
 
   &.no-top-margin {

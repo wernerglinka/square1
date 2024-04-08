@@ -1,5 +1,5 @@
 <?php
-  include_once get_template_directory() . '/page_sections/inc/render_section_tag.php';
+  include_once get_template_directory() . '/page_sections/inc/section_components.php';
 
   /**
    * Render Section

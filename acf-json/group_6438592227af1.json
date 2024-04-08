@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_6438592279c2d",
-            "label": "URL",
-            "name": "url",
+            "label": "ID",
+            "name": "id",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -16,8 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "show_in_graphql": 1,
-            "return_format": "url",
+            "return_format": "id",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -89,9 +88,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "show_in_graphql": 0,
-    "graphql_field_name": "mediaComponent",
-    "map_graphql_types_from_location_rules": 0,
-    "graphql_types": "",
-    "modified": 1682951114
+    "modified": 1712616356
 }
