@@ -114,12 +114,23 @@ add_action( 'widgets_init', 'square1_widgets_init' );
  * Enqueue scripts and styles.
  */
 function square1_scripts() {
-	wp_enqueue_style( 'square1-style', get_stylesheet_uri(), array(), _S_VERSION );
+	$version = filemtime(get_template_directory() . '/style.css');
+	wp_enqueue_style( 'square1-style', get_stylesheet_uri(), array(), $version );
 
-	wp_enqueue_script('square1-scripts', get_template_directory_uri() . '/scripts.js', array(), _S_VERSION, true);
+	$version = filemtime(get_template_directory() . '/scripts.js');
+	wp_enqueue_script('square1-scripts', get_template_directory_uri() . '/scripts.js', array(), $version, true);
 
 }
 add_action( 'wp_enqueue_scripts', 'square1_scripts' );
+
+//Replace style-login.css with the name of your custom CSS file
+function my_custom_login_stylesheet()
+{
+    wp_enqueue_style('custom-login', get_stylesheet_directory_uri() . '/style-login.css');
+}
+//This loads the function above on the login page
+add_action('login_enqueue_scripts', 'my_custom_login_stylesheet');
+
 
 /**
  * Custom template tags for this theme.

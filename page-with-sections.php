@@ -4,7 +4,7 @@
  * Template for a sectioned page
  * 
  * Template Name: Sectioned Page
- * Template Post Type: page
+ * Template Post Type: page, component
  *
  * @package square1
  */

@@ -1,0 +1,70 @@
+
+body.login {
+  /* add a background image and cover view port */
+  background-size: cover, cover;
+  background-position: top center, center center;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/login/background-2500.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat, no-repeat;
+}
+@media (max-width: 1000px) {
+  body.login {
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/background-login/1000.jpg');
+  }
+}
+@media (max-width: 500px) {
+  body.login {
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%), url('images/background-login/500.jpg');
+  }
+}
+#login {
+  max-width: 320px;
+  width: auto;
+}
+
+body.login div#login h1 a {
+  /* change the login logo */
+  background-image: url('images/login/square1-logo.png');
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+body.login div#login form#loginform {
+  padding: 36px 34px 44px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+@media (max-width: 400px) {
+  body.login {
+    padding: 20px;
+  }
+  body.login div#login form#loginform {
+    padding: 20px 20px 30px;
+  }
+}
+body.login div#login form#loginform input {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+body.login #wp-submit {
+  background-color: #005798 !important;
+}
+#login #nav,
+#login #backtoblog {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login .message, .login .notice, .login .success {
+    background: none;
+    border-left: none;
+    padding: 0;
+    margin: 20px auto;
+    box-shadow: none;
+    word-wrap: break-word;
+    text-align: center;
+}

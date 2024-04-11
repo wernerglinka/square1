@@ -44,5 +44,12 @@
       @include glass($color__brand_very-dark);
       padding: 2rem;
     }
+    &.has-light-screen {
+      .text {
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+    }
   }
 }
