@@ -91,20 +91,38 @@
    * External links will be rendered with target="_blank" and rel="noopener noreferrer" 
    */
   function render_cta_component($cta) {
-    if( $cta['target'] ){
+    if( isset($cta['link']) ){
       echo "<span class='cta-wrapper'>";
-    
+
       $button_class = !empty($cta['is_button']) ? "button " . $cta['button_type'] . " " : "text-link ";
       $button_class = !empty($cta['cta_classes']) ? $button_class . $cta['cta_classes'] : $button_class;
-      $external_attributes = !empty($cta['is_external']) ? "target='_blank' rel='noopener noreferrer'" : null;
-      $hint = !empty($cta['is_external']) ? "<span class='screen-reader-text'>Opens a new tab</span>" : null;
+      $external_attributes = isset($cta['link']['target']) ? "target='_blank' rel='noopener noreferrer'" : null;
+      $hint = $cta['link']['target'] === "_blank" ? "<span class='screen-reader-text'>Opens a new tab</span>" : null;
 
-      echo "<a class='cta " . $button_class . "' href='" . $cta['target'] . "' $external_attributes>" . $cta['label'] . $hint . "</a>";
+      echo "<a class='cta " . $button_class . "' href='" . $cta['link']['url'] . "' $external_attributes>" . $cta['link']['title'] . $hint . "</a>";
 
       echo "</span>";
     }
   }
 
+  /**
+   * Render an icon link list component
+   */
+  function render_icon_link_list_component($links) {
+      if( !empty($links) ) {
+        echo "<ul class='icon-links'>";
+        foreach($links as $link) {
+          echo "<li>";
+            echo "<a href='" . $link['target']['url'] . "' target='" . $link['target']['target'] . "'>";
+              echo file_get_contents(get_template_directory() . '/icons/' . $link['icon'] . '.svg');
+              echo "<span>" . $link['label'] . "</span>";
+            echo "</a>";
+          echo "</li>";
+        }
+        echo "</ul>";
+      }
+    }
+  
   /**
    * Render an audio component with optional thumbnail
    */

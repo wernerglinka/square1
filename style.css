@@ -409,7 +409,7 @@ body.hamburger-active {
 }
 
 .container {
-  max-width: 144rem;
+  max-width: 120rem;
   margin: 0 auto;
   padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
 }
@@ -434,6 +434,14 @@ textarea {
   font-size: clamp(1.6rem, 0.6cqw + 1.369rem, 2rem);
   font-weight: 300;
   line-height: 1.4;
+}
+
+strong {
+  font-weight: bold;
+}
+
+code {
+  font-size: 0.9em;
 }
 
 .is-dark :is(h1, h2, h3, h4, h5, h6, p) {
@@ -1379,7 +1387,7 @@ button.inverted, .button.inverted {
 }
 .page-section.in-container {
   width: 100%;
-  max-width: 136rem;
+  max-width: 112rem;
   margin: 5rem auto;
 }
 .page-section.no-top-margin {
@@ -1535,7 +1543,7 @@ button.inverted, .button.inverted {
   backdrop-filter: blur(5px);
   padding: 2rem;
 }
-.page-section.banner.has-background-image.has-light-screen .text {
+.page-section.banner.has-background-image.has-light-screen .text, .page-section.banner.has-background-image.has-dark-screen .text {
   background: none;
   box-shadow: none;
   backdrop-filter: none;
@@ -1621,6 +1629,21 @@ button.inverted, .button.inverted {
 }
 .page-section.cta-banner .container *.cta-wrapper {
   margin-top: 3rem;
+}
+
+.page-section.icon-link-list .icon-links li {
+  margin-bottom: 1rem;
+}
+.page-section.icon-link-list .icon-links a {
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.page-section.icon-link-list .icon-links svg {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

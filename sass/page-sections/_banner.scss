@@ -44,7 +44,8 @@
       @include glass($color__brand_very-dark);
       padding: 2rem;
     }
-    &.has-light-screen {
+    &.has-light-screen,
+    &.has-dark-screen {
       .text {
         background: none;
         box-shadow: none;
