@@ -10,22 +10,22 @@
   $text = $props['text'];
   $cta = $props['cta'];
   $image = $props['image'];
-  $has_image = isset($image['url']) ? true : false;
-  $with_background_image = !isset($props['with_background_image']) ? false : $props['with_background_image'];
+  $has_image = isset($image['id']) ? true : false;
+
+  //echo "<pre>";
+  //print_r($props);
+  //echo "</pre>";
 ?>
 
-<div class="media-wrapper">
-  <div class="media">
+
     <div class="text">
       <?php render_text_component($text); ?>
       <?php render_cta_component($cta); ?>
     </div><!-- .text -->
 
-    <div class="image">
-      <?php
-        $image['alt_text'] = ""; // This is a decorative image, force alt text to be empty so screen readers ignore it
-        render_image_component($image);
-      ?>
-    </div><!-- .image -->
-  </div>
-</div>
+    <?php if ($has_image) : ?>
+      <div class="image">
+        <?php render_image_component($image); ?>
+      </div><!-- .image -->
+    <?php endif; ?>
+ 

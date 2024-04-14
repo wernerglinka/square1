@@ -91,17 +91,13 @@
    * External links will be rendered with target="_blank" and rel="noopener noreferrer" 
    */
   function render_cta_component($cta) {
-    if( isset($cta['link']) ){
-      echo "<span class='cta-wrapper'>";
-
+    if( $cta['link'] ){
       $button_class = !empty($cta['is_button']) ? "button " . $cta['button_type'] . " " : "text-link ";
       $button_class = !empty($cta['cta_classes']) ? $button_class . $cta['cta_classes'] : $button_class;
       $external_attributes = isset($cta['link']['target']) ? "target='_blank' rel='noopener noreferrer'" : null;
       $hint = $cta['link']['target'] === "_blank" ? "<span class='screen-reader-text'>Opens a new tab</span>" : null;
-
+      
       echo "<a class='cta " . $button_class . "' href='" . $cta['link']['url'] . "' $external_attributes>" . $cta['link']['title'] . $hint . "</a>";
-
-      echo "</span>";
     }
   }
 

@@ -65,9 +65,6 @@
     // build the body classes string
     $string= "";
 
-    if (isset($params['common_section_fields']['settings']) && in_array("is_animated", $params['common_section_fields']['settings'])) {
-      $string .= " js-is-animated";
-    }
     if (isset($params['common_section_fields']['settings']) && in_array("in_container", $params['common_section_fields']['settings'])) {
       $string .= " in-container";
     }

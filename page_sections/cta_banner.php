@@ -5,19 +5,15 @@
  * @package hlwp
  */
 
-
   $props = $args['props'];
   $text = $props['text'];
   $cta = $props['cta'];
-  //$background_image = $props['common_section_fields']['background_image'];
-
-  //echo "<pre>";
-  //print_r($props);
-  //echo "</pre>";
- 
+  $hasCTA = $cta['link']; 
 ?>
 
-
-<?php render_text_component($text); ?>
-<?php render_cta_component($cta); ?>
-
+<div class="text">
+  <?php render_text_component($text); ?>
+  <?php if ($hasCTA) : ?>
+      <?php render_cta_component($cta); ?>
+  <?php endif; ?>
+</div>  

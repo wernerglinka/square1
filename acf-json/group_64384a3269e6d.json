@@ -55,9 +55,7 @@
             },
             "choices": {
                 "is_disabled": "Is Disabled",
-                "is_animated": "Is Animated",
                 "in_container": "In Container",
-                "no_top_padding": "No Top Padding",
                 "no_top_margin": "No Top Margin",
                 "no_bottom_margin": "No Bottom Margin",
                 "narrow_width": "Narrow Content Width"
@@ -271,5 +269,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1712531326
+    "modified": 1713037380
 }

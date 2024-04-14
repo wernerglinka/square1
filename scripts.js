@@ -34,9 +34,72 @@
   }();
   var navigation_default = navigation;
 
+  // js/modules/debounce.js
+  function debounce(func, wait, immediate) {
+    let timeout;
+    return function() {
+      const context = this;
+      const args = arguments;
+      const later = function() {
+        timeout = null;
+        if (!immediate) {
+          func.apply(context, args);
+        }
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        func.apply(context, args);
+      }
+    };
+  }
+  var debounce_default = debounce;
+
+  // js/modules/section-animation.js
+  var sectionAnimations = function() {
+    "use strict";
+    const showSection = (entries, observer) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const thisSection = entry.target;
+          thisSection.classList.remove("is-hidden");
+          observer.unobserve(thisSection);
+        }
+      }
+    };
+    const updateSections = debounce_default(function() {
+      const observer = new IntersectionObserver(showSection);
+      const allSections = document.querySelectorAll(".js-is-animated");
+      for (const section of allSections) {
+        observer.observe(section);
+      }
+    }, 500);
+    const init = () => {
+      console.log("init section animations");
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const allSections = document.querySelectorAll(".js-is-animated");
+      for (const section of allSections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top > viewportHeight) {
+          console.log("hide section");
+          section.classList.add("is-hidden");
+        }
+      }
+      const resizeObserver = new ResizeObserver(updateSections);
+      const resizeElement = document.body;
+      resizeObserver.observe(resizeElement);
+    };
+    return {
+      init
+    };
+  }();
+  var section_animation_default = sectionAnimations;
+
   // js/main.js
   function initPage() {
     navigation_default.init();
+    section_animation_default.init();
   }
   window.addEventListener("load", function() {
     initPage();

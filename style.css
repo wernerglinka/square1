@@ -411,7 +411,6 @@ body.hamburger-active {
 .container {
   max-width: 120rem;
   margin: 0 auto;
-  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
 }
 .container.narrow-width {
   max-width: 90rem;
@@ -1359,16 +1358,49 @@ button.inverted, .button.inverted {
     opacity: 0;
   }
 }
+/**
+ * Common styles for page sections
+ * A page section consists of a container and task-specific structure. The 
+ * task-specific structure is defined in separate files. It typically consists 
+ * of one or two columns, each with a specific layout.
+ */
 .page-section {
   position: relative;
-  margin: 5rem 0;
+  margin-block: 5rem;
   background-image: var(--bg-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /**
+   * add a light or dark screen overlay 
+   */
+  /**
+   * section "moving-up" animations.
+   */
   transform: translateY(0);
   opacity: 1;
   transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+  /**
+   * section width is constricted to max-content-width
+   */
+  /**
+   * section margins can be removed
+   */
+  /**
+   * all section content is centered
+   */
+  /**
+   * section container
+   */
+  /**
+   * mostly used for media sections
+   */
+  /**
+   * used for text only sections to prevent long lines
+   */
+  /**
+   * animate text content
+   */
 }
 .page-section.has-light-screen {
   background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5)), var(--bg-image);
@@ -1385,6 +1417,10 @@ button.inverted, .button.inverted {
 .page-section.is-dark :is(h1, h2, h3, h4, h5, h6) {
   color: #fff;
 }
+.page-section.is-hidden {
+  transform: translateY(100px);
+  opacity: 0;
+}
 .page-section.in-container {
   width: 100%;
   max-width: 112rem;
@@ -1396,63 +1432,20 @@ button.inverted, .button.inverted {
 .page-section.no-bottom-margin {
   margin-bottom: 0;
 }
-.page-section.no-top-padding .container {
-  padding-top: 0 !important;
+.page-section.center-text * {
+  text-align: center;
+  justify-content: center;
 }
-.page-section.extra-box-padding {
-  padding: 2rem 0;
-}
-.page-section.is-hidden {
-  transform: translateY(100px);
-  opacity: 0;
-}
-.page-section .columns {
+.page-section .container {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: stretch;
+  gap: 5rem;
+  /* select the container if more than one child */
 }
-.page-section .columns .column {
-  flex: 1;
-}
-.page-section.is-reversed .columns {
-  flex-direction: row-reverse;
-}
-.page-section img {
-  display: block;
-}
-.page-section .prose p:last-child {
-  margin-bottom: 0;
-}
-.page-section.has-background-image .background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-.page-section.has-background-image .background-image:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-.page-section.has-background-image .background-image figure {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  aspect-ratio: unset !important;
-}
-.page-section.has-background-image .background-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.page-section.has-background-image.no-screen-overlay .background-image:before, .page-section.has-background-image.banner .background-image:before {
-  background-color: transparent;
+.page-section .container:has(> * + *) {
+  justify-content: flex-start;
 }
 .page-section .container *:first-child {
   margin-top: 0;
@@ -1460,29 +1453,20 @@ button.inverted, .button.inverted {
 .page-section .container *:last-child {
   margin-bottom: 0;
 }
+.page-section.is-reversed .container {
+  flex-direction: row-reverse;
+}
 .page-section.narrow-width .container {
   max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
 }
-.page-section.center-text * {
-  text-align: center;
-  justify-content: center;
-}
-.page-section.simple-banner + .page-section {
-  padding-top: 5rem;
-}
-.page-section h2, .page-section h3, .page-section h4 {
+.page-section h2, .page-section h3, .page-section h4, .page-section p, .page-section li, .page-section a, .page-section img {
   transform: translateY(0);
   animation: header-anime 0.5s ease-in-out;
 }
-.page-section h2 ~ p, .page-section h3 ~ p, .page-section h4 ~ p {
-  transform: translateY(0);
-  animation: p-anime 0.8s ease-in-out;
-}
-.page-section p, .page-section li {
-  transform: translateY(0);
-  animation: p-anime 0.8s ease-in-out;
+.page-section .prose p:last-child {
+  margin-bottom: 0;
 }
 
 .page-section.alert-bar {
@@ -1505,13 +1489,8 @@ button.inverted, .button.inverted {
 .page-section.banner {
   height: 30rem;
   z-index: 1;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 .page-section.banner .container {
-  height: 100%;
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
@@ -1521,7 +1500,8 @@ button.inverted, .button.inverted {
   position: relative;
   width: 100%;
   max-width: 80rem;
-  margin: auto 0 2rem;
+  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  margin: auto 0 0;
 }
 @keyframes fadein {
   from {
@@ -1541,7 +1521,6 @@ button.inverted, .button.inverted {
   background: rgba(13, 8, 28, 0.5);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
-  padding: 2rem;
 }
 .page-section.banner.has-background-image.has-light-screen .text, .page-section.banner.has-background-image.has-dark-screen .text {
   background: none;
@@ -1549,12 +1528,8 @@ button.inverted, .button.inverted {
   backdrop-filter: none;
 }
 
-.page-section.media .media-wrapper {
+.page-section.media .container {
   container: media/inline-size;
-}
-.page-section.media .media-wrapper .media {
-  display: flex;
-  gap: 5rem;
 }
 .page-section.media .image {
   flex: 0 0 50%;
@@ -1569,12 +1544,8 @@ button.inverted, .button.inverted {
   justify-content: center;
   gap: 1rem;
 }
-.page-section.media .text .text-title {
-  margin: 0;
-}
-.page-section.media .text .text-subtitle {
-  margin: 0;
-}
+.page-section.media .text .text-title,
+.page-section.media .text .text-subtitle,
 .page-section.media .text .text-prose {
   margin: 0;
 }

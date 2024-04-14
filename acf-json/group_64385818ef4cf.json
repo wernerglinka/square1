@@ -61,13 +61,12 @@
                 "class": "",
                 "id": ""
             },
-            "show_in_graphql": 1,
             "choices": {
                 "default": "Default",
                 "inverted": "Inverted",
                 "primary": "Primary",
                 "secondary": "Secondary",
-                "tertiary: Tertiary": "tertiary: Tertiary"
+                "tertiary": "Tertiary"
             },
             "default_value": "default",
             "return_format": "value",
@@ -117,5 +116,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1712953464
+    "modified": 1713055511
 }

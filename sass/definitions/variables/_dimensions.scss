@@ -25,4 +25,8 @@ $banner-clearance: 5rem;
 
 $adminbar-height: 3.2rem;
 
+// fluid padding if the viewport is wider than 767px then the padding is 40px,
+// if it's smaller than 767px then the padding is reduced until it sticks at 20px
 $default-padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+
+$default-section-margin: 5rem;

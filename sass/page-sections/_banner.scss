@@ -1,13 +1,8 @@
 .page-section.banner  {
   height: 30rem;
   z-index: 1;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  background-attachment: fixed;
 
   .container {
-    height: 100%;
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -18,7 +13,8 @@
     position: relative;
     width: 100%;
     max-width: 80rem;
-    margin: auto 0 2rem;
+    padding: $default-padding;
+    margin: auto 0 0;
 
     // fadein animation for h1
     @keyframes fadein {
@@ -42,7 +38,6 @@
   &.has-background-image {
     .text {
       @include glass($color__brand_very-dark);
-      padding: 2rem;
     }
     &.has-light-screen,
     &.has-dark-screen {
