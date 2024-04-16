@@ -244,8 +244,7 @@
   /**
  * Render a logo card component
  */
-function render_logos_list_component($resources)
-{
+function render_logos_list_component($resources) {
     if (!empty($resources)) {
         $output = "<ul class='logos-cards'>";
         foreach ($resources as $resource) {

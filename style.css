@@ -1807,4 +1807,12 @@ button.inverted, .button.inverted {
   margin-bottom: 2rem;
 }
 
+.page-section.images-only .images {
+  width: 100%;
+}
+.page-section.images-only .images img {
+  width: 100%;
+  height: auto;
+}
+
 /*# sourceMappingURL=style.css.map */
