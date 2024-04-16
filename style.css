@@ -413,7 +413,7 @@ body.hamburger-active {
   margin: 0 auto;
 }
 .container.narrow-width {
-  max-width: 90rem;
+  max-width: 900px;
 }
 
 /* Base - elements and typography*/
@@ -1037,6 +1037,13 @@ button.inverted, .button.inverted {
   max-height: 0;
 }
 
+.ctas-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
 .accessibility-menu {
   position: fixed;
   bottom: 0;
@@ -1177,7 +1184,7 @@ button.inverted, .button.inverted {
 .page-section.footer .wp-block-column:first-child {
   padding-left: 0;
 }
-@media (max-width: 76.7rem) {
+@media (max-width: 767px) {
   .page-section.footer .wp-block-column {
     padding: 4rem 0 0;
   }
@@ -1441,7 +1448,7 @@ button.inverted, .button.inverted {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: 5rem;
+  gap: 3rem;
   /* select the container if more than one child */
 }
 .page-section .container:has(> * + *) {
@@ -1457,7 +1464,7 @@ button.inverted, .button.inverted {
   flex-direction: row-reverse;
 }
 .page-section.narrow-width .container {
-  max-width: 90rem;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1555,8 +1562,8 @@ button.inverted, .button.inverted {
 .page-section.media .text .text-prose p:last-child {
   margin-bottom: 0;
 }
-.page-section.media .text .text-cta {
-  margin: 2rem 0 0;
+.page-section.media .text .ctas-container {
+  margin-top: 4rem;
 }
 .page-section.media.is-reversed .media {
   flex-direction: row-reverse;
@@ -1567,13 +1574,16 @@ button.inverted, .button.inverted {
   backdrop-filter: blur(5px);
   padding: 2rem;
 }
-@container media (max-width: 76.7rem) {
+@container media (max-width: 767px) {
   .page-section.media .media-wrapper .media {
     flex-direction: column-reverse;
   }
   .page-section.media .media-wrapper .media .image {
     padding-bottom: 3rem;
   }
+}
+.page-section.media.is-dark .cta {
+  color: #fff;
 }
 
 .page-section.cta-banner {
@@ -1598,8 +1608,12 @@ button.inverted, .button.inverted {
 .page-section.cta-banner .container *.text-title {
   margin-bottom: 1rem;
 }
-.page-section.cta-banner .container *.cta-wrapper {
-  margin-top: 3rem;
+.page-section.cta-banner .container .ctas-container {
+  justify-content: center;
+  margin-top: 4rem;
+}
+.page-section.cta-banner.is-dark .cta {
+  color: #fff;
 }
 
 .page-section.icon-link-list .icon-links li {
@@ -1615,6 +1629,104 @@ button.inverted, .button.inverted {
   width: 3rem;
   height: 3rem;
   margin-right: 2rem;
+}
+
+.page-section.resources-list .container {
+  flex-direction: column;
+}
+.page-section.resources-list h2 {
+  text-align: center;
+  padding-block: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
+  margin-bottom: 0;
+}
+.page-section.resources-list .resources-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.page-section.resources-list .resources-cards li {
+  flex: 0 0 28rem;
+  height: 40rem;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+}
+@media (max-width: 767px) {
+  .page-section.resources-list .resources-cards li {
+    height: 30rem;
+  }
+}
+.page-section.resources-list .resources-cards li .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  transition: all 0.3s linear;
+  padding-bottom: 20px;
+  background: rgba(13, 8, 28, 0.5);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+.page-section.resources-list .resources-cards li .header .category {
+  font-size: 1.5rem;
+  color: #dce9b3;
+  margin: 20px 0 0;
+  text-align: center;
+}
+.page-section.resources-list .resources-cards li .header .title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0;
+  color: #fff;
+}
+.page-section.resources-list .resources-cards li .image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s linear;
+}
+.page-section.resources-list .resources-cards li .image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .page-section.resources-list .resources-cards li .image {
+    height: 30rem;
+    overflow: hidden;
+  }
+}
+.page-section.resources-list .resources-cards li .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+.page-section.resources-list .resources-cards li .footer a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.page-section.resources-list .resources-cards li:hover .header {
+  left: 40px;
+  padding-right: 40px;
+}
+.page-section.resources-list .resources-cards li:hover .image {
+  transform-origin: top right;
+  transform: translate(40px, -40px);
+}
+.page-section.resources-list .ctas-container {
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -8,24 +8,29 @@
 
   $props = $args['props'];
   $text = $props['text'];
-  $cta = $props['cta'];
   $image = $props['image'];
   $has_image = isset($image['id']) ? true : false;
+  $ctas = isset($props['ctas']) && is_array($props['ctas']) ? $props['ctas'] : [];
+  $hasCTAs = count($ctas) > 0;
 
   //echo "<pre>";
-  //print_r($props);
+  //print_r($ctas);
   //echo "</pre>";
 ?>
 
+  <div class="text">
+    <?php render_text_component($text);?>
+    <?php if ($hasCTAs): ?>
+      <div class="ctas-container">
+      <?php foreach ($ctas as $cta): ?>
+        <?php render_cta_component($cta);?>
+      <?php endforeach;?>
+      </div>
+    <?php endif;?>
+  </div>
 
-    <div class="text">
-      <?php render_text_component($text); ?>
-      <?php render_cta_component($cta); ?>
-    </div><!-- .text -->
-
-    <?php if ($has_image) : ?>
-      <div class="image">
-        <?php render_image_component($image); ?>
-      </div><!-- .image -->
-    <?php endif; ?>
- 
+  <?php if ($has_image): ?>
+    <div class="image">
+      <?php render_image_component($image);?>
+    </div><!-- .image -->
+  <?php endif;?>

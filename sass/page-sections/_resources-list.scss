@@ -1,0 +1,108 @@
+.page-section.resources-list {
+  .container {
+    flex-direction: column;
+  }
+
+  h2 {
+    text-align: center;
+    padding-block: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)") 0;
+    margin-bottom: 0;
+  }
+
+  .resources-cards {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+    li {
+      flex: 0 0 28rem;
+      height: 40rem;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 2rem;
+      border: 1px solid $color__border;
+
+      @media (max-width: $tablet-width-portrait) {
+        height: 30rem;
+      }
+
+      .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        transition: all 0.3s linear;
+        padding-bottom: 20px;
+        @include glass($color__brand_very-dark);
+
+        .category {
+          font-size: 1.5rem;
+          color: $color__brand_highlight-light;
+          margin: 20px 0 0;
+          text-align: center;
+        }
+        .title {
+          font-size: 2rem;
+          text-align: center;
+          margin: 0;
+          color: $color__text-dark-background;
+        }
+      }
+
+      .image {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s linear;
+
+        img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+        }
+
+        @media (max-width: $tablet-width-portrait) {
+          height: 30rem;
+          overflow: hidden;
+        }
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 10px;
+
+        a {
+          text-decoration: none;
+          font-size: 1.4rem;
+          text-transform: uppercase;
+        }
+      }
+
+      &:hover {
+        .header {
+          left: 40px;
+          padding-right: 40px;
+        }
+        .image {
+          transform-origin: top right;
+          transform: translate(40px, -40px );
+        }
+      }
+    }
+  }
+
+  .ctas-container {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+}

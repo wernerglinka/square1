@@ -84,7 +84,7 @@
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 5rem;
+    gap: 3rem;
 
     /* select the container if more than one child */
     &:has(> * + *) {

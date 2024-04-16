@@ -1,14 +1,17 @@
+// for media queries use
+// Ref: https://medium.com/@barrypeng6/why-should-not-use-rem-unit-in-media-query-5645d0163ce5
+$mid-sized-screen: 1200px;
+$tablet-pro-width-landscape: 1360px;
+$tablet-pro-width-portrait: 1024px;
+$tablet-width-landscape: 1024px;
+$tablet-width-portrait: 767px;
+$narrow-content-width: 900px;
+$small-screen-width: 600px;
+$very-small-screen-width: 360px;
+
+
 $max-content-width: 120rem;
 $max-content-width-in-container: 120rem - 2 * 4rem;
-
-$mid-sized-screen: 120rem;
-$tablet-pro-width-landscape: 136rem;
-$tablet-pro-width-portrait: 102.4rem;
-$tablet-width-landscape: 102.4rem;
-$tablet-width-portrait: 76.7rem;
-$narrow-content-width: 90rem;
-$small-screen-width: 60rem;
-$very-small-screen-width: 36rem;
 
 $large-card-width: 40rem;
 $default-card-width: 30rem;

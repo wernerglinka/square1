@@ -73,17 +73,27 @@
    * <\/[^>]+>$   This removes the last closing tag
    */
   function render_text_component($text) {
-    if (isset($text['title']) && $text['title']) {
-        $title = preg_replace( '/^<[^>]+>|<\/[^>]+>$/', '',$text['title']);
-        render_title($title, $text['heading_level']); 
+    $output = '';
+
+    $title = $text['title'] ?? null;
+    if ($title) {
+        $title = preg_replace('/^<[^>]+>|<\/[^>]+>$/', '', $title);
+        render_title($title, $text['heading_level']);
     }
-    if(isset($text['sub_title']) && $text['sub_title']) {
-        echo "<p class='text-subtitle'>" . $text['sub_title'] . "</p>";
+
+    $sub_title = $text['sub_title'] ?? null;
+    if ($sub_title) {
+        $output .= "<p class='text-subtitle'>{$sub_title}</p>";
     }
-    if(isset($text['prose']) && $text['prose']) {
-        echo "<div class='text-prose'>" . $text['prose'] . "</div>";
+
+    $prose = $text['prose'] ?? null;
+    if ($prose) {
+        $output .= "<div class='text-prose'>{$prose}</div>";
     }
-}
+
+    echo $output;
+  }
+
 
   /**
    * Render a CTA component. 
@@ -91,58 +101,71 @@
    * External links will be rendered with target="_blank" and rel="noopener noreferrer" 
    */
   function render_cta_component($cta) {
-    if( $cta['link'] ){
-      $button_class = !empty($cta['is_button']) ? "button " . $cta['button_type'] . " " : "text-link ";
-      $button_class = !empty($cta['cta_classes']) ? $button_class . $cta['cta_classes'] : $button_class;
-      $external_attributes = isset($cta['link']['target']) ? "target='_blank' rel='noopener noreferrer'" : null;
-      $hint = $cta['link']['target'] === "_blank" ? "<span class='screen-reader-text'>Opens a new tab</span>" : null;
-      
-      echo "<a class='cta " . $button_class . "' href='" . $cta['link']['url'] . "' $external_attributes>" . $cta['link']['title'] . $hint . "</a>";
+    if (!$cta['link']) {
+      return;
     }
+
+    $url = $cta['link']['url'];
+    $label = $cta['link']['title'];
+    $button_class = !empty($cta['is_button']) ? "button " . $cta['button_type'] . " " : "text-link ";
+    $button_class .= $cta['cta_classes'] ?? '';
+    $external_attributes = isset($cta['link']['target']) ? "target='_blank' rel='noopener noreferrer'" : null;
+    $hint = $cta['link']['target'] === "_blank" ? "<span class='screen-reader-text'>Opens a new tab</span>" : null;
+
+    echo "<a class='cta " . esc_attr($button_class) . "' href='" . esc_url($url) . "' $external_attributes>" . esc_html($label) . $hint . "</a>";
   }
 
   /**
    * Render an icon link list component
    */
   function render_icon_link_list_component($links) {
-      if( !empty($links) ) {
-        echo "<ul class='icon-links'>";
-        foreach($links as $link) {
-          echo "<li>";
-            echo "<a href='" . $link['target']['url'] . "' target='" . $link['target']['target'] . "'>";
-              echo file_get_contents(get_template_directory() . '/icons/' . $link['icon'] . '.svg');
-              echo "<span>" . $link['label'] . "</span>";
-            echo "</a>";
-          echo "</li>";
-        }
-        echo "</ul>";
-      }
+    if (empty($links)) {
+      return;
     }
+
+    $output = "<ul class='icon-links'>";
+    foreach ($links as $link) {
+      $icon = file_get_contents(get_template_directory() . '/icons/' . $link['icon'] . '.svg');
+      $output .= "<li>
+        <a href='" . esc_url($link['target']['url']) . "' target='" . esc_attr($link['target']['target']) . "'>
+          {$icon}
+          <span>" . esc_html($link['label']) . "</span>
+        </a>
+      </li>";
+    }
+    $output .= "</ul>";
+    echo $output;
+  }
   
   /**
    * Render an audio component with optional thumbnail
    */
   function render_audio_component($audio) {
-    if (isset($audio['source'])) {
-      // get the audio file extension so we can form the proper mime type
-      // the url may include a query parameter, so we use parse_url to get the path
-      $audio_path = parse_url($audio['source'])['path'];
-      $audio_file_extension = trim(pathinfo($audio_path)['extension']);
+    if (!isset($audio['source'])) {
+      return;
+    }
 
-      echo "<audio controls>";
-      echo "<source src='" . $audio['source'] . "' 'type=audio/" . $audio_file_extension . "'/>";
-      echo "Your browser does not support the audio element.";
-      echo "</audio>";
-    } 
+    // get the audio file extension so we can form the proper mime type
+    // the url may include a query parameter, so we use parse_url to get the path
+    $audio_path = parse_url($audio['source'])['path'];
+    $audio_file_extension = trim(pathinfo($audio_path)['extension']);
+
+    echo "<audio controls>
+      <source src='" . esc_url($audio['source']) . "' type='audio/" . esc_attr($audio_file_extension) . "'/>
+      Your browser does not support the audio element.
+    </audio>";
   }
 
   /**
    * Render an icon component
    */
   function render_icon_component($icon) {
-    if (isset($icon['icons'])) {
-      echo include(get_template_directory() . '/icons/' . $icon['icons'] . '.svg');
-    } 
+    if (!isset($icon['icons'])) {
+      return;
+    }
+
+    $icon_path = get_template_directory() . '/icons/' . $icon['icons'] . '.svg';
+    echo file_get_contents($icon_path);
   }
 
   /**
@@ -151,64 +174,71 @@
   function render_image_component($image) {
     $image_id = $image['id'];
 
-    if ($image_id) {
-      $image_src = wp_get_attachment_image_url($image_id, 'large');
-      $image_srcset = wp_get_attachment_image_srcset($image_id, 'large');
-      $image_sizes = wp_get_attachment_image_sizes($image_id, 'large');
-
-      // Display image with src, srcset, sizes, and alt attributes.
-      echo '<img src="' . esc_url($image_src) . '" srcset="' . esc_attr($image_srcset) . '" sizes="' . esc_attr($image_sizes) . '" alt="' . esc_attr($image['alt_text']) . '">';
+    if (!$image_id) {
+      return;
     }
+
+    echo wp_get_attachment_image($image_id, 'large', false, ['alt' => $image['alt_text']]);
   }
 
   /**
    * Render an video component with optional thumbnail
    */
   function render_video_component($video) {
-    if ($video['inline']) : ?>
-      <div class="inline">
-        <div class="inline-video-wrapper js-inline-video-wrapper">
-          <div class="js-inline-video" data-videoid="<?php echo $video['id']; ?>"></div>
+      extract($video);
+
+      if ($inline) : ?>
+        <div class="inline">
+          <div class="inline-video-wrapper js-inline-video-wrapper">
+            <div class="js-inline-video" data-videoid="<?php echo esc_attr($id); ?>"></div>
+          </div>
+      
+          <button class="video-trigger">
+            <div class="play-button"></div>
+            <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt_text']); ?>" />
+          </button>
         </div>
-    
-        <button class="video-trigger">
+      <?php else : ?>
+        <button class="js-modal-video" data-videoid="<?php echo esc_attr($id); ?>" data-videosrc="<?php echo esc_url($source); ?>" >
           <div class="play-button"></div>
-          <img src="<?php echo $video['thumbnail']['url']; ?>" alt="<?php echo $video['thumbnail']['alt_text']; ?>" />
+          <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt_text']); ?>" />
         </button>
-      </div>
-    <?php else : ?>
-      <button class="js-modal-video" data-videoid="<?php echo $video['id']; ?>" data-videosrc="<?php echo $video['source']; ?>" >
-        <div class="play-button"></div>
-        <img src="<?php echo $video['thumbnail']['url']; ?>" alt="<?php echo $video['thumbnail']['alt_text']; ?>" />
-      </button>
-    <?php endif;  
+      <?php endif;  
   }
 
   /** 
    * Render a resourse card component
    */
-  function render_resource_cards_component($cards) {
-    if( !empty($cards) ) {
-      echo "<ul class='resource-cards'>";
-      foreach($cards as $card) {
-        $term_list = get_the_terms( $card->ID, 'resource_taxonomy' );
+  function render_resources_list_component($resources) {
+    if (!empty($resources)) {
+      $output = "<ul class='resources-cards'>";
+      foreach ($resources as $resource) {
+        $resourceID = $resource->ID;
+        $title = get_the_title($resourceID);
+        $logoURL = get_the_post_thumbnail_url($resourceID);
+        $thumbnailURL = get_field('image', $resourceID);
+        $link = get_field('link', $resourceID)['link'];
+        $url = $link['url'];
+        $target = $link['target'];
+        $label = $link['title'];
+        $external_attributes = isset($target) ? "target='_blank' rel='noopener noreferrer'" : null;
+        $term_list = get_the_terms($resourceID, 'resource-taxonomy');
         $category = $term_list[0]->slug;
 
-        echo "<li class='resource-card'>";
-          echo "<div class='resource-card__header'>";
-            echo "<div class='resource-card__category'>" . $category . "</div>";
-            echo "<p class='resource-card__title'>" . get_field('title', $card->ID) . "</p>";
-          echo "</div>";
-
-          echo "<div class='resource-card__image'>";
-            echo "<img src='" . get_field('image', $card->ID)['url'] . "' alt='" . get_field('title', $card->ID) . "'/>";
-          echo "</div>";
-          
-          echo "<div class='resource-card__footer'>";
-            $external_attributes = !empty(get_field('cta', $card->ID)['is_external']) ? "target='_blank' rel='noopener noreferrer'" : null;
-            echo "<a class='resource-card__cta' href='" . get_field('cta', $card->ID)['target'] . "'" . $external_attributes . ">" . get_field('cta', $card->ID)['label'] . "</a>";
-        echo "</li>";
+        $output .= "<li class='card'>
+            <div class='header'>
+                <div class='category'>{$category}</div>
+                <p class='title'>{$title}</p>
+            </div>
+            <div class='image'>
+                <img src='{$thumbnailURL}' alt='{$title}'/>
+            </div>
+            <div class='footer'>
+                <a class='cta' href='{$url}' {$external_attributes}>{$label}</a>
+            </div>
+        </li>";
       }
-      echo "</ul>";
+      $output .= "</ul>";
+      echo $output;
     }
   }

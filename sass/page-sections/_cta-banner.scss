@@ -18,15 +18,21 @@
       z-index: 1;
       margin-top: 0;
       text-align: center;
+      
 
       &.text-title {
         margin-bottom: 1rem;
       }
-
-      &.cta-wrapper {
-        margin-top: 3rem;
-      }
     }
+
+    .ctas-container {
+      justify-content: center;
+      margin-top: 4rem;
+    }
+  }
+
+  &.is-dark .cta {
+    color: $color__text-dark-background;
   }
   // end of default cta banner section styling. Special cases will 
   // be defined by optional section classes and will be defined below
