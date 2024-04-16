@@ -1,12 +1,17 @@
 .page-section.resources-list {
   .container {
     flex-direction: column;
+    gap: 2rem;
   }
 
-  h2 {
+  .text-title {
     text-align: center;
     padding-block: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)") 0;
     margin-bottom: 0;
+  }
+  .text-subtitle {
+    text-align: center;
+    margin: 0;
   }
 
   .resources-cards {

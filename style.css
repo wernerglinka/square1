@@ -1633,11 +1633,16 @@ button.inverted, .button.inverted {
 
 .page-section.resources-list .container {
   flex-direction: column;
+  gap: 2rem;
 }
-.page-section.resources-list h2 {
+.page-section.resources-list .text-title {
   text-align: center;
   padding-block: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
   margin-bottom: 0;
+}
+.page-section.resources-list .text-subtitle {
+  text-align: center;
+  margin: 0;
 }
 .page-section.resources-list .resources-cards {
   list-style: none;

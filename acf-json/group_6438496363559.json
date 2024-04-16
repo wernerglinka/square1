@@ -1227,7 +1227,15 @@
                                     "type": "relationship",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_661d6cc58863b",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1753,5 +1761,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713205295
+    "modified": 1713227612
 }
