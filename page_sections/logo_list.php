@@ -23,12 +23,12 @@ if ($all) {
         'orderby' => 'date',
         'order' => 'DESC',
     );
-    $resources = get_posts($args);
+    $items = get_posts($args);
 }
 ?>
 
 <?php render_text_component($text);?>
-<?php render_logos_list_component($resources);?>
+<?php render_logos_list_component($items);?>
 <?php if ($cta): ?>
   <div class="ctas-container">
   <?php render_cta_component($cta);?>

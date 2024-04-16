@@ -16,9 +16,9 @@
                 "class": "",
                 "id": ""
             },
-            "show_in_graphql": 1,
             "choices": {
                 "none": "None",
+                "accessibility": "Accessibility",
                 "add-circle": "Add Circle",
                 "arrow-circle-up": "Arrow Circle Up",
                 "arrow-circle-right": "Arrow Circle Right",
@@ -26,9 +26,8 @@
                 "arrow-down": "Arrow Down",
                 "arrow-left": "Arrow Left",
                 "arrow-right": "Arrow Right",
-                "bridge": "Bridge",
+                "backup": "Backup",
                 "cancel": "Cancel",
-                "chat": "Chat",
                 "check": "Check",
                 "chevron-down": "Chevron Down",
                 "chevron-up": "Chevron Up",
@@ -36,14 +35,23 @@
                 "chevron-right": "Chevron Right",
                 "code": "Code",
                 "cloudinary": "Cloudinarty",
+                "desktop": "Desktop",
                 "facebook": "Facebook",
-                "feather": "Feather",
+                "gray-scale": "Gray Scale",
+                "laptop": "Laptop",
                 "linkedin": "LinkedIn",
-                "trees": "Trees",
+                "mail": "Mail",
+                "phone": "Phone",
+                "reset": "Reset",
+                "scale": "Scale",
+                "search": "Search",
+                "tablet": "Tablet",
                 "twitter": "Twitter",
+                "underline": "Underline",
                 "user": "User",
                 "vimeo": "Vimeo",
-                "youtube": "YouTube"
+                "youtube": "YouTube",
+                "zoom-in": "Zoom In"
             },
             "default_value": "none",
             "return_format": "value",
@@ -52,27 +60,6 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
-        },
-        {
-            "key": "field_644fef4db31d2",
-            "label": "Icon Classes",
-            "name": "icon_classes",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "show_in_graphql": 1,
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -93,9 +80,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "show_in_graphql": 1,
-    "graphql_field_name": "iconSelectComponent",
-    "map_graphql_types_from_location_rules": 0,
-    "graphql_types": "",
-    "modified": 1685401396
+    "modified": 1713302583
 }

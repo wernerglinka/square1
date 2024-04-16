@@ -124,7 +124,7 @@
 
     $output = "<ul class='icon-links'>";
     foreach ($links as $link) {
-      $icon = file_get_contents(get_template_directory() . '/icons/' . $link['icon'] . '.svg');
+      $icon = file_get_contents(get_template_directory() . '/icons/' . $link['icons'] . '.svg');
       $output .= "<li>
         <a href='" . esc_url($link['target']['url']) . "' target='" . esc_attr($link['target']['target']) . "'>
           {$icon}
@@ -279,3 +279,46 @@ function render_logos_list_component($resources) {
     }
 }
 
+/** 
+ * Render a flip card component
+ */
+function render_flip_card_component($card) {
+  $icon_path = get_template_directory() . '/icons/' . $card['icons'] . ".svg";
+  $title = $card['front']['title'] ?? null;
+  $sub_title = $card['front']['sub_title'] ?? null;
+  $prose = $card['front']['prose'] ?? null;
+  $backside_title = $card['back']['title'] ?? null;
+  $backside_sub_title = $card['back']['sub_title'] ?? null;
+  $backside_prose = $card['back']['prose'] ?? null;
+
+  $output = "<li>
+    <div class='flip-card-wrapper'>
+      <div class='flip-card'>
+        <span class='icon'>" . file_get_contents($icon_path) . "</span>";
+  if ($title) {
+    $output .= "<h3>" . $title . "</h3>";
+  }
+  if ($sub_title) {
+    $output .= "<p class='sub-title'>" . $sub_title . "</p>";
+  }
+  if ($prose) {
+    $output .= "<div class='prose'>" . $prose . "</div>";
+  }
+  $output .= "  </div>
+      <div class='flip-card-back'>";
+  if ($backside_title) {
+    $output .= "<h3>" . $backside_title . "</h3>";
+  }
+  if ($backside_sub_title) {
+    $output .= "<p class='sub-title'>" . $backside_sub_title . "</p>";
+  }
+  if ($backside_prose) {
+    $output .= "<div class='prose'>" . $backside_prose . "</div>";
+  }
+  $output .= "  </div>
+    </div>
+  </li>";
+
+  echo $output;
+}
+?>

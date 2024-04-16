@@ -96,10 +96,33 @@
   }();
   var section_animation_default = sectionAnimations;
 
+  // js/modules/mobileFlipcardSupport.js
+  var mobileFlipCardSupport = /* @__PURE__ */ function($) {
+    const init = () => {
+      const flipcards = document.querySelectorAll(".flip-card-wrapper");
+      flipcards.forEach((flipcard) => {
+        flipcard.addEventListener("touchstart", function() {
+          flipcard.classList.toggle("flip");
+        });
+        flipcard.addEventListener("mouseenter", function() {
+          flipcard.classList.add("flip");
+        });
+        flipcard.addEventListener("mouseleave", function() {
+          flipcard.classList.remove("flip");
+        });
+      });
+    };
+    return {
+      init
+    };
+  }();
+  var mobileFlipcardSupport_default = mobileFlipCardSupport;
+
   // js/main.js
   function initPage() {
     navigation_default.init();
     section_animation_default.init();
+    mobileFlipcardSupport_default.init();
   }
   window.addEventListener("load", function() {
     initPage();
