@@ -1,0 +1,83 @@
+.page-section.logo-list {
+  .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .text-title {
+    text-align: center;
+    padding-block: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)") 0;
+    margin-bottom: 0;
+  }
+  .text-subtitle {
+    text-align: center;
+    margin: 0;
+  }
+
+  .logos-cards {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+    li {
+      flex: 0 0 28rem;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 4rem;
+      margin-bottom: 2rem;
+      border: 1px solid $color__border;
+
+      .image {
+        width: 100%;
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+          max-height: 6rem;
+          max-width: 60%;
+        }
+      }
+      .category {
+        font-size: 1.5rem;
+        color: $color__brand_highlight-light;
+        margin: 0;
+        text-align: center;
+      }
+      .title {
+        font-size: 2rem;
+        text-align: center;
+        margin: 0;
+      }
+      .synopsis {
+        padding: 1rem;
+        margin: 0;
+      }
+      
+      
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+
+        a {
+          text-decoration: none;
+          font-size: 1.4rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .ctas-container {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+}

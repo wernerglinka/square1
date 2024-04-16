@@ -1734,4 +1734,77 @@ button.inverted, .button.inverted {
   margin-bottom: 2rem;
 }
 
+.page-section.logo-list .container {
+  flex-direction: column;
+  gap: 2rem;
+}
+.page-section.logo-list .text-title {
+  text-align: center;
+  padding-block: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
+  margin-bottom: 0;
+}
+.page-section.logo-list .text-subtitle {
+  text-align: center;
+  margin: 0;
+}
+.page-section.logo-list .logos-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.page-section.logo-list .logos-cards li {
+  flex: 0 0 28rem;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 4rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+}
+.page-section.logo-list .logos-cards li .image {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-section.logo-list .logos-cards li .image img {
+  max-height: 6rem;
+  max-width: 60%;
+}
+.page-section.logo-list .logos-cards li .category {
+  font-size: 1.5rem;
+  color: #dce9b3;
+  margin: 0;
+  text-align: center;
+}
+.page-section.logo-list .logos-cards li .title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0;
+}
+.page-section.logo-list .logos-cards li .synopsis {
+  padding: 1rem;
+  margin: 0;
+}
+.page-section.logo-list .logos-cards li .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.page-section.logo-list .logos-cards li .footer a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.page-section.logo-list .ctas-container {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 /*# sourceMappingURL=style.css.map */
