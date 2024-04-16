@@ -1866,22 +1866,18 @@ button.inverted, .button.inverted {
 }
 .flip-cards-list .flip-card,
 .flip-cards-list .flip-card-back {
+  position: absolute;
   display: inline-block;
-  position: relative;
-  height: 100%;
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 30px 40px;
+  height: 100%;
+  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  background-color: #fff;
+  border: 1px solid #ccc;
   color: #00080f;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-}
-@media (max-width: 500px) {
-  .flip-cards-list .flip-card,
-  .flip-cards-list .flip-card-back {
-    padding: 20px;
-  }
 }
 .flip-cards-list .flip-card h3,
 .flip-cards-list .flip-card-back h3 {
@@ -1912,24 +1908,14 @@ button.inverted, .button.inverted {
 .flip-cards-list .flip-card-back svg path {
   fill: #fff;
 }
-.flip-cards-list .flip-card-back p {
-  color: #00080f;
-}
-.flip-cards-list .flip-card-wrapper.flip .flip-card {
+.flip-cards-list .flip-card-back {
+  background-color: #0d081c;
   transform: rotateY(180deg);
 }
-.flip-cards-list .flip-card,
-.flip-cards-list .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  background-color: #fff;
-  border: 1px solid #ccc;
+.flip-cards-list .flip-card-back p {
+  color: #fff;
 }
-.flip-cards-list .flip-card-back {
-  background-color: #f1eefa;
+.flip-cards-list .flip-card-wrapper.flip .flip-card {
   transform: rotateY(180deg);
 }
 .flip-cards-list .flip-card-wrapper.flip .flip-card-back {
