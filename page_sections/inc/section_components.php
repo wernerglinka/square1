@@ -124,7 +124,7 @@
 
     $output = "<ul class='icon-links'>";
     foreach ($links as $link) {
-      $icon = file_get_contents(get_template_directory() . '/icons/' . $link['icons'] . '.svg');
+      $icon = get_icon($link['icon']);
       $output .= "<li>
         <a href='" . esc_url($link['target']['url']) . "' target='" . esc_attr($link['target']['target']) . "'>
           {$icon}
@@ -155,16 +155,19 @@
     </audio>";
   }
 
+  function get_icon($icon) {
+    $icon_path = get_template_directory() . '/icons/' . $icon . ".svg";
+    return file_get_contents($icon_path);
+  }
+
   /**
    * Render an icon component
    */
   function render_icon_component($icon) {
-    if (!isset($icon['icons'])) {
+    if (!isset($icon['icon'])) {
       return;
     }
-
-    $icon_path = get_template_directory() . '/icons/' . $icon['icons'] . '.svg';
-    echo file_get_contents($icon_path);
+    echo get_icon($icon['icon']);
   }
 
   /**
@@ -283,7 +286,6 @@ function render_logos_list_component($resources) {
  * Render a flip card component
  */
 function render_flip_card_component($card) {
-  $icon_path = get_template_directory() . '/icons/' . $card['icons'] . ".svg";
   $title = $card['front']['title'] ?? null;
   $sub_title = $card['front']['sub_title'] ?? null;
   $prose = $card['front']['prose'] ?? null;
@@ -294,7 +296,7 @@ function render_flip_card_component($card) {
   $output = "<li>
     <div class='flip-card-wrapper'>
       <div class='flip-card'>
-        <span class='icon'>" . file_get_contents($icon_path) . "</span>";
+        <span class='icon'>" . get_icon($card['icon']) . "</span>";
   if ($title) {
     $output .= "<h3>" . $title . "</h3>";
   }
@@ -321,4 +323,62 @@ function render_flip_card_component($card) {
 
   echo $output;
 }
+
+/**
+ * Render a manual card component
+ */
+function render_manual_card_component($card) {
+  $decoration = $card['decoration'] ?? null;
+  $title = $card['text']['title'] ? preg_replace('/^<[^>]+>|<\/[^>]+>$/', '', $card['text']['title']) : null;
+
+  $sub_title = $card['text']['sub_title'] ?? null;
+  $prose = $card['text']['prose'] ?? null;
+  $ctas = $card['ctas'] ?? [];
+  $is_horizontal = $card['is_horizontal'] ?? false;
+
+  $output = "<li class='card'>
+    <div class='header'>";
+  if ($decoration === 'icon' && isset($card['icon']['icon'])) {
+    $icon = get_icon($card['icon']['icon']);
+    $output .= "{$icon}";
+  }
+  if ($decoration === 'image' && isset($card['image']['id'])) {
+    $image = wp_get_attachment_image($card['image']['id'], 'large', false, ['alt' => $card['image']['alt_text']]);
+    $output .= "{$image}";
+  }
+
+  $output .= "</div>
+              <div class='card-text'>
+                <div class='body'>";
+
+  if ($title) {
+    $output .= "<h3 class='title'>{$title}</h3>";
+  }
+  if ($sub_title) {
+    $output .= "<p class='subtitle'>{$sub_title}</p>";
+  }
+  if ($prose) {
+    $output .= "<div class='prose'>{$prose}</div>";
+  }
+  $output .= "</div>";
+
+  if (!empty($ctas)) {
+    $output .= "<div class='footer'>";
+    foreach ($ctas as $cta) {
+      $link = $cta['link'] ?? null;
+      if ($link && isset($link['url']) && isset($link['title'])) {
+        $external_attributes = isset($link['target']) ? "target='_blank' rel='noopener noreferrer'" : null;
+        $hint = isset($link['target']) && $link['target'] === "_blank" ? "<span class='screen-reader-text'>Opens a new tab</span>" : null;
+        $output .= "<a class='cta' href='{$link['url']}' {$external_attributes}>{$link['title']}{$hint}</a>";
+      }
+    }
+    $output .= "</div>";
+  }
+
+  $output .= "</div></li>";
+
+  echo $output;
+}
+
 ?>
+ 

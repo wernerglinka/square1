@@ -68,9 +68,6 @@
     if (isset($params['common_section_fields']['settings']) && in_array("in_container", $params['common_section_fields']['settings'])) {
       $string .= " in-container";
     }
-    if (isset($params['common_section_fields']['settings']) && in_array("no_top_padding", $params['common_section_fields']['settings'])) {
-      $string .= " no-top-padding";
-    }
     if (isset($params['common_section_fields']['settings']) && in_array("no_top_margin", $params['common_section_fields']['settings'])) {
       $string .= " no-top-margin";
     }
@@ -85,6 +82,11 @@
     }
     if (!empty($params['common_section_fields']['is_dark'])) {
       $string .= " is-dark";
+    }
+    if (isset($params['is_horizontal']) && $params['is_horizontal']) {
+      $string .= " is-horizontal";
+    } else {
+      $string .= " is-vertical";
     }
     if(isset($params['common_section_fields']['section_classes']) && $params['common_section_fields']['section_classes'] != "") {
       $string .= " " . $params['common_section_fields']['section_classes'];

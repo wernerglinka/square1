@@ -1,0 +1,170 @@
+.page-section.manual-cards {
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .container {
+    flex-direction: column;
+  }
+
+
+  .text-title {
+    text-align: center;
+    padding-block: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)") 0;
+    margin-bottom: 0;
+  }
+  .text-subtitle {
+    text-align: center;
+    margin: 0;
+  }
+  .text-prose {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .manual-cards-list { // default style is vertical cards arrangement
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      max-width: $default-card-width;
+      margin-bottom: 2rem; // in case they wrap to the next line
+      border: $default-border;
+
+      .header {
+        height: 15rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        svg {
+          height: 6rem;
+        }
+      }
+
+      .card-text {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+      }
+
+      .body {
+        font-size: 1.8rem;
+        text-align: center;
+        padding: 2rem;
+
+        .title {
+          font-size: 2rem;
+          margin: 0;
+        }
+        .subtitle {
+          font-size: 1.6rem;
+          font-style: italic;
+          margin: 0 0 2rem;
+        }
+      }
+
+      .footer {
+        height: 5rem;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        margin-top: auto;
+
+        a {
+          text-decoration: none;
+          font-size: 1.4rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .ctas-container {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  &.is-horizontal {
+    .container {
+      flex-direction: row;
+    }
+    .section-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    :first-child {
+      flex: 0 0 40%;
+    }
+
+    .section-header {
+      * {
+        text-align: left;
+      }
+      .text-title,
+      .text-subtitle {
+        margin: 0 0 1rem;
+      }
+    }
+    .ctas-container {
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+
+    .manual-cards-list {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: $default-padding 0;
+
+      .card {
+        max-width: none;
+        flex-direction: row;
+        margin: 0;
+        background-color: $color__background-body;
+        border: 1px solid $color__border;
+
+        * {
+          text-align: left;
+        }
+        .header {
+          height: 100%;
+        }
+
+        .card-text {
+          display: block;
+        }
+
+        .footer {
+          justify-content: flex-start;
+          padding: 2rem;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &.is-dark {
+    color: $color__text-dark-background;
+
+    svg {
+      g {
+        fill: $color__text-dark-background;
+      }
+    }
+  }
+}

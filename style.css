@@ -406,6 +406,7 @@ body.hamburger-active {
   min-height: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
 }
 
 .container {
@@ -1920,6 +1921,147 @@ button.inverted, .button.inverted {
 }
 .flip-cards-list .flip-card-wrapper.flip .flip-card-back {
   transform: rotateY(0deg);
+}
+
+.page-section.manual-cards {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page-section.manual-cards .container {
+  flex-direction: column;
+}
+.page-section.manual-cards .text-title {
+  text-align: center;
+  padding-block: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
+  margin-bottom: 0;
+}
+.page-section.manual-cards .text-subtitle {
+  text-align: center;
+  margin: 0;
+}
+.page-section.manual-cards .text-prose {
+  text-align: center;
+  margin: 0 auto;
+}
+.page-section.manual-cards .manual-cards-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.page-section.manual-cards .manual-cards-list .card {
+  display: flex;
+  flex-direction: column;
+  max-width: 28rem;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+}
+.page-section.manual-cards .manual-cards-list .card .header {
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.page-section.manual-cards .manual-cards-list .card .header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-section.manual-cards .manual-cards-list .card .header svg {
+  height: 6rem;
+}
+.page-section.manual-cards .manual-cards-list .card .card-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.page-section.manual-cards .manual-cards-list .card .body {
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 2rem;
+}
+.page-section.manual-cards .manual-cards-list .card .body .title {
+  font-size: 2rem;
+  margin: 0;
+}
+.page-section.manual-cards .manual-cards-list .card .body .subtitle {
+  font-size: 1.6rem;
+  font-style: italic;
+  margin: 0 0 2rem;
+}
+.page-section.manual-cards .manual-cards-list .card .footer {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+.page-section.manual-cards .manual-cards-list .card .footer a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.page-section.manual-cards .ctas-container {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.page-section.manual-cards.is-horizontal .container {
+  flex-direction: row;
+}
+.page-section.manual-cards.is-horizontal .section-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page-section.manual-cards.is-horizontal :first-child {
+  flex: 0 0 40%;
+}
+.page-section.manual-cards.is-horizontal .section-header * {
+  text-align: left;
+}
+.page-section.manual-cards.is-horizontal .section-header .text-title,
+.page-section.manual-cards.is-horizontal .section-header .text-subtitle {
+  margin: 0 0 1rem;
+}
+.page-section.manual-cards.is-horizontal .ctas-container {
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+.page-section.manual-cards.is-horizontal .manual-cards-list {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
+}
+.page-section.manual-cards.is-horizontal .manual-cards-list .card {
+  max-width: none;
+  flex-direction: row;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.page-section.manual-cards.is-horizontal .manual-cards-list .card * {
+  text-align: left;
+}
+.page-section.manual-cards.is-horizontal .manual-cards-list .card .header {
+  height: 100%;
+}
+.page-section.manual-cards.is-horizontal .manual-cards-list .card .card-text {
+  display: block;
+}
+.page-section.manual-cards.is-horizontal .manual-cards-list .card .footer {
+  justify-content: flex-start;
+  padding: 2rem;
+  margin-top: 0;
+}
+.page-section.manual-cards.is-dark {
+  color: #fff;
+}
+.page-section.manual-cards.is-dark svg g {
+  fill: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

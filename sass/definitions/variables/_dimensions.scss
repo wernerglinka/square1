@@ -7,14 +7,14 @@ $tablet-width-landscape: 1024px;
 $tablet-width-portrait: 767px;
 $narrow-content-width: 900px;
 $small-screen-width: 600px;
-$very-small-screen-width: 360px;
+$very-small-screen-width: 400px;
 
 
 $max-content-width: 120rem;
 $max-content-width-in-container: 120rem - 2 * 4rem;
 
 $large-card-width: 40rem;
-$default-card-width: 30rem;
+$default-card-width: 28rem; // 280px wide matches old phones with 320px screen and 20px padding
 
 $header-height: 9rem;
 $header-clearance: 4rem;
@@ -33,3 +33,5 @@ $adminbar-height: 3.2rem;
 $default-padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
 
 $default-section-margin: 5rem;
+
+$default-border: 1px solid $color__border;
