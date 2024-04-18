@@ -118,11 +118,58 @@
   }();
   var mobileFlipcardSupport_default = mobileFlipCardSupport;
 
+  // js/modules/tabs.js
+  var tabs = /* @__PURE__ */ function() {
+    const init = () => {
+      const allTabsContainers = document.querySelectorAll(".js-tabs");
+      allTabsContainers.forEach((tabsContainer) => {
+        const allTabs = tabsContainer.querySelectorAll(".tab-label");
+        const allTabContents = tabsContainer.querySelectorAll(".tab-content");
+        let tallestTabContent = 0;
+        allTabContents.forEach((tabContent) => {
+          if (tabContent.offsetHeight > tallestTabContent) {
+            tallestTabContent = tabContent.offsetHeight;
+          }
+        });
+        document.querySelector(".tabs-content").style.height = `${tallestTabContent}px`;
+        const resizeObserver = new ResizeObserver((entries) => {
+          entries.forEach((entry) => {
+            tallestTabContent = 0;
+            allTabContents.forEach((tabContent) => {
+              if (tabContent.offsetHeight > tallestTabContent) {
+                tallestTabContent = tabContent.offsetHeight;
+              }
+            });
+            document.querySelector(".tabs-content").style.height = `${tallestTabContent}px`;
+          });
+        });
+        resizeObserver.observe(document.body);
+        allTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            allTabs.forEach((tab2) => tab2.classList.remove("active"));
+            tab.classList.add("active");
+            const clickedTabIndex = Array.prototype.slice.call(allTabs).indexOf(tab);
+            allTabContents.forEach((tabContent) => tabContent.classList.remove("active"));
+            allTabContents[clickedTabIndex].classList.add("active");
+          });
+        });
+      });
+    };
+    return { init };
+  }();
+  var tabs_default = tabs;
+
   // js/main.js
   function initPage() {
     navigation_default.init();
     section_animation_default.init();
-    mobileFlipcardSupport_default.init();
+    if (document.querySelector(".flip-card-wrapper")) {
+      mobileFlipcardSupport_default.init();
+    }
+    if (document.querySelector(".js-tabs")) {
+      console.log("tabs init");
+      tabs_default.init();
+    }
   }
   window.addEventListener("load", function() {
     initPage();
