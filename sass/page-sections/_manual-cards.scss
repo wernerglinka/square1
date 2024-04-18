@@ -35,6 +35,7 @@
       flex-direction: column;
       max-width: $default-card-width;
       margin-bottom: $gap-width; // in case they wrap to the next line
+      background-color: $color__background-body;
       border: $default-border;
 
       .header { // image or icon
@@ -51,7 +52,7 @@
         }
 
         svg {
-          height: 6rem;
+          height: 12rem;
         }
       }
 
@@ -145,7 +146,6 @@
         max-width: none;
         flex-direction: row;
         margin: 0;
-        background-color: $color__background-body;
         border: 1px solid $color__border;
 
         @media (max-width: $small-screen-width) {

@@ -38,6 +38,9 @@
                 "desktop": "Desktop",
                 "facebook": "Facebook",
                 "gray-scale": "Gray Scale",
+                "house1": "House 1",
+                "house2": "House 2",
+                "house3": "house 3",
                 "laptop": "Laptop",
                 "linkedin": "LinkedIn",
                 "mail": "Mail",
@@ -80,5 +83,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713367332
+    "modified": 1713465965
 }
