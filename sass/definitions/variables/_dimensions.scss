@@ -31,7 +31,10 @@ $adminbar-height: 3.2rem;
 // fluid padding if the viewport is wider than 767px then the padding is 40px,
 // if it's smaller than 767px then the padding is reduced until it sticks at 20px
 $default-padding: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)");
+$small-padding: unquote("clamp(1rem, 0.2841rem + 2.2371vw, 2rem)");
 
 $default-section-margin: 5rem;
+$text-margin: 0.5em;
+$gap-width: 2rem;
 
 $default-border: 1px solid $color__border;

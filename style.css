@@ -406,12 +406,12 @@ body.hamburger-active {
   min-height: calc(100vh - 9rem);
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
 }
 
 .container {
   max-width: 120rem;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 .container.narrow-width {
   max-width: 900px;
@@ -1926,22 +1926,29 @@ button.inverted, .button.inverted {
 .page-section.manual-cards {
   background-position: center;
   background-repeat: no-repeat;
+  padding: clamp(1rem, 0.2841rem + 2.2371vw, 2rem);
+  /**
+   * card list default style is vertical cards arrangement
+   */
+  /**
+   * horizontal cards arrangement
+   */
+  /**
+   * dark background forces all text to be light
+   */
 }
 .page-section.manual-cards .container {
   flex-direction: column;
 }
-.page-section.manual-cards .text-title {
-  text-align: center;
-  padding-block: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
-  margin-bottom: 0;
-}
-.page-section.manual-cards .text-subtitle {
-  text-align: center;
-  margin: 0;
-}
+.page-section.manual-cards .text-title,
+.page-section.manual-cards .text-subtitle,
 .page-section.manual-cards .text-prose {
   text-align: center;
-  margin: 0 auto;
+  margin-bottom: 0.5em;
+}
+.page-section.manual-cards .ctas-container {
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 .page-section.manual-cards .manual-cards-list {
   list-style: none;
@@ -1978,12 +1985,12 @@ button.inverted, .button.inverted {
   flex: 1 1 auto;
 }
 .page-section.manual-cards .manual-cards-list .card .body {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-align: center;
   padding: 2rem;
 }
 .page-section.manual-cards .manual-cards-list .card .body .title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: 0;
 }
 .page-section.manual-cards .manual-cards-list .card .body .subtitle {
@@ -1992,10 +1999,11 @@ button.inverted, .button.inverted {
   margin: 0 0 2rem;
 }
 .page-section.manual-cards .manual-cards-list .card .footer {
-  height: 5rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  align-items: center;
+  padding: 0 2rem;
   margin-top: auto;
 }
 .page-section.manual-cards .manual-cards-list .card .footer a {
@@ -2003,38 +2011,47 @@ button.inverted, .button.inverted {
   font-size: 1.4rem;
   text-transform: uppercase;
 }
-.page-section.manual-cards .ctas-container {
-  justify-content: center;
-  margin-bottom: 2rem;
-}
 .page-section.manual-cards.is-horizontal .container {
   flex-direction: row;
 }
+@media (max-width: 767px) {
+  .page-section.manual-cards.is-horizontal .container {
+    flex-direction: column;
+    padding-top: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  }
+}
 .page-section.manual-cards.is-horizontal .section-text {
+  flex: 0 0 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.page-section.manual-cards.is-horizontal :first-child {
-  flex: 0 0 40%;
-}
 .page-section.manual-cards.is-horizontal .section-header * {
   text-align: left;
 }
+@media (max-width: 600px) {
+  .page-section.manual-cards.is-horizontal .section-header * {
+    text-align: center;
+  }
+}
 .page-section.manual-cards.is-horizontal .section-header .text-title,
 .page-section.manual-cards.is-horizontal .section-header .text-subtitle {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
 }
 .page-section.manual-cards.is-horizontal .ctas-container {
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 2rem;
 }
+@media (max-width: 600px) {
+  .page-section.manual-cards.is-horizontal .ctas-container {
+    justify-content: center;
+    align-items: center;
+  }
+}
 .page-section.manual-cards.is-horizontal .manual-cards-list {
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1rem;
-  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
 }
 .page-section.manual-cards.is-horizontal .manual-cards-list .card {
   max-width: none;
@@ -2043,18 +2060,45 @@ button.inverted, .button.inverted {
   background-color: #fff;
   border: 1px solid #ccc;
 }
+@media (max-width: 600px) {
+  .page-section.manual-cards.is-horizontal .manual-cards-list .card {
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .page-section.manual-cards.is-horizontal .manual-cards-list .card {
+    max-width: 28rem;
+    margin: 0 auto 2rem;
+  }
+}
 .page-section.manual-cards.is-horizontal .manual-cards-list .card * {
   text-align: left;
 }
+@media (max-width: 600px) {
+  .page-section.manual-cards.is-horizontal .manual-cards-list .card * {
+    text-align: center;
+  }
+}
 .page-section.manual-cards.is-horizontal .manual-cards-list .card .header {
+  flex: 0 0 40%;
   height: 100%;
+}
+@media (max-width: 767px) {
+  .page-section.manual-cards.is-horizontal .manual-cards-list .card .header {
+    height: auto;
+  }
+}
+@media (max-width: 600px) {
+  .page-section.manual-cards.is-horizontal .manual-cards-list .card .header {
+    height: 15rem;
+  }
 }
 .page-section.manual-cards.is-horizontal .manual-cards-list .card .card-text {
   display: block;
 }
 .page-section.manual-cards.is-horizontal .manual-cards-list .card .footer {
-  justify-content: flex-start;
-  padding: 2rem;
+  display: block;
+  padding: 0 2rem;
   margin-top: 0;
 }
 .page-section.manual-cards.is-dark {

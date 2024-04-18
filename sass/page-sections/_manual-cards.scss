@@ -1,41 +1,43 @@
 .page-section.manual-cards {
   background-position: center;
   background-repeat: no-repeat;
+  padding: $small-padding;
 
   .container {
     flex-direction: column;
   }
 
-
-  .text-title {
-    text-align: center;
-    padding-block: unquote("clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem)") 0;
-    margin-bottom: 0;
-  }
-  .text-subtitle {
-    text-align: center;
-    margin: 0;
-  }
+  .text-title,
+  .text-subtitle,
   .text-prose {
     text-align: center;
-    margin: 0 auto;
+    margin-bottom: $text-margin;
   }
 
-  .manual-cards-list { // default style is vertical cards arrangement
+  .ctas-container {
+    justify-content: center;
+    margin-bottom: $gap-width;
+  }
+
+  /**
+   * card list default style is vertical cards arrangement
+   */ 
+
+  .manual-cards-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: $gap-width;
 
     .card {
       display: flex;
       flex-direction: column;
       max-width: $default-card-width;
-      margin-bottom: 2rem; // in case they wrap to the next line
+      margin-bottom: $gap-width; // in case they wrap to the next line
       border: $default-border;
 
-      .header {
+      .header { // image or icon
         height: 15rem;
         display: flex;
         align-items: center;
@@ -60,26 +62,27 @@
       }
 
       .body {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         text-align: center;
-        padding: 2rem;
+        padding: $gap-width;
 
         .title {
-          font-size: 2rem;
+          font-size: 1.8rem;
           margin: 0;
         }
         .subtitle {
           font-size: 1.6rem;
           font-style: italic;
-          margin: 0 0 2rem;
+          margin: 0 0 $gap-width;
         }
       }
 
       .footer {
-        height: 5rem;
+        height: 2 * $gap-width;
         display: flex;
         justify-content: center;
-        padding: 1rem;
+        align-items: center;
+        padding: 0 $gap-width;
         margin-top: auto;
 
         a {
@@ -91,45 +94,52 @@
     }
   }
 
-  .ctas-container {
-    justify-content: center;
-    margin-bottom: 2rem;
-  }
-
+  /**
+   * horizontal cards arrangement
+   */
   &.is-horizontal {
     .container {
       flex-direction: row;
+
+      @media (max-width: $tablet-width-portrait) {
+        flex-direction: column;
+        padding-top: $default-padding;
+      }
     }
+
     .section-text {
+      flex: 0 0 40%;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
-    :first-child {
-      flex: 0 0 40%;
-    }
-
     .section-header {
       * {
         text-align: left;
+
+        @media (max-width: $small-screen-width) {
+          text-align: center;
+        }
       }
       .text-title,
       .text-subtitle {
-        margin: 0 0 1rem;
+        margin: 0 0 $gap-width;
       }
     }
     .ctas-container {
       justify-content: flex-start;
       align-items: flex-start;
-      margin-top: 2rem;
+      margin-top: $gap-width;
+
+      @media (max-width: $small-screen-width) {
+        justify-content: center;
+        align-items: center;
+      }
     }
 
     .manual-cards-list {
       flex-direction: column;
       justify-content: flex-start;
-      gap: 1rem;
-      padding: $default-padding 0;
 
       .card {
         max-width: none;
@@ -138,11 +148,31 @@
         background-color: $color__background-body;
         border: 1px solid $color__border;
 
+        @media (max-width: $small-screen-width) {
+          display: block;
+        }
+        @media (max-width: $small-screen-width) {
+          max-width: $default-card-width;
+          margin: 0 auto $gap-width;
+        }
+
         * {
           text-align: left;
+
+          @media (max-width: $small-screen-width) {
+            text-align: center;
+          }
         }
         .header {
+          flex: 0 0 40%;
           height: 100%;
+
+          @media (max-width: $tablet-width-portrait) {
+            height: auto; // important height: auto allows .header to strech to the height of the container
+          }
+          @media (max-width: $small-screen-width) {
+            height: 15rem;
+          }
         }
 
         .card-text {
@@ -150,14 +180,17 @@
         }
 
         .footer {
-          justify-content: flex-start;
-          padding: 2rem;
+          display: block;
+          padding: 0 $gap-width;
           margin-top: 0;
         }
       }
     }
   }
 
+  /**
+   * dark background forces all text to be light
+   */
   &.is-dark {
     color: $color__text-dark-background;
 
