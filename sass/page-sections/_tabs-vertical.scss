@@ -1,0 +1,146 @@
+.page-section.tabs {
+
+  .container {
+    flex-direction: column;
+  }
+  
+  h2, 
+  .text-subtitle {
+    text-align: center;
+    margin: 0 0 1rem;
+  }
+
+  .text-prose {
+    text-align: center;
+    margin: 0 auto 4rem;
+  }
+
+  .is-vertical {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin: 0 auto;
+    position: relative;
+
+    @media (max-width: $tablet-width-portrait) {
+      display: block;
+    }
+
+    > * {
+      flex: 0 0 50%;
+      list-style: none;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    li {
+      /**
+       * reset the transform from the li so we can position  
+       * the media absolutely with reference to flex container.
+       * li's have a transform applied to them globally to 
+       * animate them on page load 
+       */
+      transform: none;
+      padding-left: $default-padding;
+      border-left: 4px solid $color__border;
+
+      &.active {
+        border-left-color: $color__brand_dark;
+      }
+
+      h4 {
+        position: relative;
+        font-size: 1.5625rem;
+        font-weight: bold;
+        margin: 0;
+        padding: 2rem 0;
+        cursor: pointer;
+        //color: $color__text-dark-background;
+        
+        .status {
+          float: right;
+        }
+
+        & + div {
+          max-height: 1px;
+          overflow: hidden;
+          border-bottom: 1px solid #ccc;
+          transition: all 0.3s ease-in-out;
+          //color: $color__text-dark-background;
+
+          @media (max-width: $tablet-width-portrait) {
+            max-height: 0;
+            width: 100%;
+          }
+        }
+      }
+
+      &.active h4 {
+        cursor: default;
+        pointer-events: none;
+
+        .status {
+          display: none;
+        }
+      }
+
+      .text-prose {
+        text-align: left;
+        margin: 0 0 2rem;
+      }
+
+      @media (max-width: $tablet-width-portrait) {
+        padding: 0;
+        border: none;
+      }
+
+      &.active {
+        h4 + div {
+          max-height: 800px;
+          padding-bottom: 20px;
+        }
+      }
+
+      &:last-of-type  h4 + div{
+        border-bottom: none;
+      }
+
+      .media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 400px;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $default-padding;
+        transition: opacity 0.3s ease-in-out;
+
+        @media (max-width: $tablet-width-portrait) {
+          position: static;
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &.active {
+        .media {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -85,8 +85,6 @@
     }
     if (isset($params['is_horizontal']) && $params['is_horizontal']) {
       $string .= " is-horizontal";
-    } else {
-      $string .= " is-vertical";
     }
     if(isset($params['common_section_fields']['section_classes']) && $params['common_section_fields']['section_classes'] != "") {
       $string .= " " . $params['common_section_fields']['section_classes'];

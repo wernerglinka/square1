@@ -83,7 +83,8 @@ h3 {
 	color: var(--color-secondary);
 }
 
-.sub-title {
+.subtitle, 
+.text-subtitle {
 	// fluid type scale - sub title font size 1.8rem to 2.4rem
 	font-size: unquote("clamp(1.8rem, 0.6cqw + 1.569rem, 2.4rem)");
 	font-weight: 300;

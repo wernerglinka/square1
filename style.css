@@ -483,13 +483,15 @@ h3 {
   color: var(--color-secondary);
 }
 
-.sub-title {
+.subtitle,
+.text-subtitle {
   font-size: clamp(1.8rem, 0.6cqw + 1.569rem, 2.4rem);
   font-weight: 300;
   font-style: italic;
   color: var(--color-secondary);
 }
-.sub-title span {
+.subtitle span,
+.text-subtitle span {
   white-space: nowrap;
 }
 
@@ -1449,7 +1451,6 @@ button.inverted, .button.inverted {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: 3rem;
   /* select the container if more than one child */
 }
 .page-section .container:has(> * + *) {
@@ -2108,22 +2109,28 @@ button.inverted, .button.inverted {
   fill: #fff;
 }
 
-.page-section.tabs {
-  /**
-   * Tab content
-   * During the initial page render, we use JS to find the tallest tab-content
-   * elements. That height is then added as an inline style to the .tabs-content
-   * container. Setting the height of every .tab-content container to 100% allows
-   * for a smooth transition between tabs.
-   */
-}
 .page-section.tabs .container {
   flex-direction: column;
 }
-.page-section.tabs h2, .page-section.tabs .text-subtitle {
+.page-section.tabs h2,
+.page-section.tabs .text-subtitle {
   text-align: center;
+  margin: 0 0 1rem;
 }
-.page-section.tabs .tabs {
+.page-section.tabs .text-prose {
+  text-align: center;
+  margin: 0 auto 4rem;
+}
+.page-section.tabs .is-horizontal {
+  /**
+  * Tab content
+  * During the initial page render, we use JS to find the tallest tab-content
+  * elements. That height is then added as an inline style to the .tabs-content
+  * container. Setting the height of every .tab-content container to 100% allows
+  * for a smooth transition between tabs.
+  */
+}
+.page-section.tabs .is-horizontal .tabs {
   padding: 0 0 5rem;
   margin: 0;
   list-style: none;
@@ -2133,11 +2140,11 @@ button.inverted, .button.inverted {
   cursor: pointer;
 }
 @media (max-width: 600px) {
-  .page-section.tabs .tabs {
+  .page-section.tabs .is-horizontal .tabs {
     display: none;
   }
 }
-.page-section.tabs .tabs li {
+.page-section.tabs .is-horizontal .tabs li {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2148,20 +2155,20 @@ button.inverted, .button.inverted {
   text-align: center;
   margin: 0;
 }
-.page-section.tabs .tabs li.active {
+.page-section.tabs .is-horizontal .tabs li.active {
   border-bottom: 3px solid #ff0000;
 }
-.page-section.tabs .tabs-content {
+.page-section.tabs .is-horizontal .tabs-content {
   position: relative;
   min-height: 400px;
 }
 @media (max-width: 600px) {
-  .page-section.tabs .tabs-content {
+  .page-section.tabs .is-horizontal .tabs-content {
     height: auto !important;
     padding-top: 0;
   }
 }
-.page-section.tabs .tab-content {
+.page-section.tabs .is-horizontal .tab-content {
   height: 100%;
   display: flex;
   opacity: 0;
@@ -2176,38 +2183,166 @@ button.inverted, .button.inverted {
   box-shadow: var(--default-box-shadow);
 }
 @media (max-width: 600px) {
-  .page-section.tabs .tab-content {
+  .page-section.tabs .is-horizontal .tab-content {
     position: static;
     opacity: 1;
     margin-bottom: 2rem;
     flex-direction: column;
   }
 }
-.page-section.tabs .tab-content.active {
+.page-section.tabs .is-horizontal .tab-content.active {
   opacity: 1;
   pointer-events: all;
 }
-.page-section.tabs .tab-content .text {
+.page-section.tabs .is-horizontal .tab-content .text {
   flex: 0 0 50%;
   padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
 }
-.page-section.tabs .tab-content .text * {
+.page-section.tabs .is-horizontal .tab-content .text * {
   margin-top: 0;
 }
-.page-section.tabs .tab-content .text .ctas-container {
+.page-section.tabs .is-horizontal .tab-content .text .text-prose {
+  text-align: left;
+  margin: 0 0 2rem;
+}
+.page-section.tabs .is-horizontal .tab-content .text .ctas-container {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
 }
-.page-section.tabs .tab-content .media {
+.page-section.tabs .is-horizontal .tab-content .media {
   flex: 0 0 50%;
   aspect-ratio: 16/9;
   overflow: hidden;
 }
-.page-section.tabs .tab-content .media img {
+.page-section.tabs .is-horizontal .tab-content .media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.page-section.tabs .container {
+  flex-direction: column;
+}
+.page-section.tabs h2,
+.page-section.tabs .text-subtitle {
+  text-align: center;
+  margin: 0 0 1rem;
+}
+.page-section.tabs .text-prose {
+  text-align: center;
+  margin: 0 auto 4rem;
+}
+.page-section.tabs .is-vertical {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .page-section.tabs .is-vertical {
+    display: block;
+  }
+}
+.page-section.tabs .is-vertical > * {
+  flex: 0 0 50%;
+  list-style: none;
+}
+.page-section.tabs .is-vertical ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.page-section.tabs .is-vertical li {
+  /**
+   * reset the transform from the li so we can position  
+   * the media absolutely with reference to flex container.
+   * li's have a transform applied to them globally to 
+   * animate them on page load 
+   */
+  transform: none;
+  padding-left: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  border-left: 4px solid #ccc;
+}
+.page-section.tabs .is-vertical li.active {
+  border-left-color: #3f2787;
+}
+.page-section.tabs .is-vertical li h4 {
+  position: relative;
+  font-size: 1.5625rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 2rem 0;
+  cursor: pointer;
+}
+.page-section.tabs .is-vertical li h4 .status {
+  float: right;
+}
+.page-section.tabs .is-vertical li h4 + div {
+  max-height: 1px;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 767px) {
+  .page-section.tabs .is-vertical li h4 + div {
+    max-height: 0;
+    width: 100%;
+  }
+}
+.page-section.tabs .is-vertical li.active h4 {
+  cursor: default;
+  pointer-events: none;
+}
+.page-section.tabs .is-vertical li.active h4 .status {
+  display: none;
+}
+.page-section.tabs .is-vertical li .text-prose {
+  text-align: left;
+  margin: 0 0 2rem;
+}
+@media (max-width: 767px) {
+  .page-section.tabs .is-vertical li {
+    padding: 0;
+    border: none;
+  }
+}
+.page-section.tabs .is-vertical li.active h4 + div {
+  max-height: 800px;
+  padding-bottom: 20px;
+}
+.page-section.tabs .is-vertical li:last-of-type h4 + div {
+  border-bottom: none;
+}
+.page-section.tabs .is-vertical li .media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 400px;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  transition: opacity 0.3s ease-in-out;
+}
+@media (max-width: 767px) {
+  .page-section.tabs .is-vertical li .media {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+.page-section.tabs .is-vertical li .media img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.page-section.tabs .is-vertical li.active .media {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=style.css.map */
