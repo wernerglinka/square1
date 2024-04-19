@@ -8,7 +8,7 @@
     text-align: center;
   }
 
-  .tabs-labels {
+  .tabs {
     padding: 0 0 5rem;
     margin: 0;
     list-style: none;
@@ -48,7 +48,15 @@
     }
   }
   
+  /**
+   * Tab content
+   * During the initial page render, we use JS to find the tallest tab-content
+   * elements. That height is then added as an inline style to the .tabs-content
+   * container. Setting the height of every .tab-content container to 100% allows
+   * for a smooth transition between tabs.
+   */
   .tab-content {
+    height: 100%; 
     display: flex;
     opacity: 0;
     pointer-events: none;

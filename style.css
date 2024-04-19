@@ -2108,13 +2108,22 @@ button.inverted, .button.inverted {
   fill: #fff;
 }
 
+.page-section.tabs {
+  /**
+   * Tab content
+   * During the initial page render, we use JS to find the tallest tab-content
+   * elements. That height is then added as an inline style to the .tabs-content
+   * container. Setting the height of every .tab-content container to 100% allows
+   * for a smooth transition between tabs.
+   */
+}
 .page-section.tabs .container {
   flex-direction: column;
 }
 .page-section.tabs h2, .page-section.tabs .text-subtitle {
   text-align: center;
 }
-.page-section.tabs .tabs-labels {
+.page-section.tabs .tabs {
   padding: 0 0 5rem;
   margin: 0;
   list-style: none;
@@ -2124,11 +2133,11 @@ button.inverted, .button.inverted {
   cursor: pointer;
 }
 @media (max-width: 600px) {
-  .page-section.tabs .tabs-labels {
+  .page-section.tabs .tabs {
     display: none;
   }
 }
-.page-section.tabs .tabs-labels li {
+.page-section.tabs .tabs li {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2139,7 +2148,7 @@ button.inverted, .button.inverted {
   text-align: center;
   margin: 0;
 }
-.page-section.tabs .tabs-labels li.active {
+.page-section.tabs .tabs li.active {
   border-bottom: 3px solid #ff0000;
 }
 .page-section.tabs .tabs-content {
@@ -2153,6 +2162,7 @@ button.inverted, .button.inverted {
   }
 }
 .page-section.tabs .tab-content {
+  height: 100%;
   display: flex;
   opacity: 0;
   pointer-events: none;

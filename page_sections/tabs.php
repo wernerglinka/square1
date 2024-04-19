@@ -18,7 +18,7 @@
 <?php render_text_component($text); ?>
 
 <div class="js-tabs">
-<ul class="tabs-labels">
+<ul class="tabs">
   <?php foreach($tabs as $index=>$tab) : ?>
     <li class="tab-label <?php if($index == 0) echo 'active';  ?>">
       <?php echo $tab['label']; ?>
