@@ -1,0 +1,23 @@
+.audio {
+
+  $audio-controls-height: 5.4rem;
+  $audio-controls-width: 30rem;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $tablet-width-portrait) {
+    max-height: 300px;
+  }
+
+  audio {
+    position: absolute;
+    top: calc(50% - ($audio-controls-height / 2));
+    left: calc(50% - ($audio-controls-width / 2));
+    width: $audio-controls-width;
+  }
+}

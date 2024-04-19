@@ -1,0 +1,71 @@
+.page-section.multi-media {
+  .container {
+    container: media / inline-size;
+  }
+
+  .media {
+    flex: 0 0 50%;
+
+    img {
+      display: block;
+    }
+  }
+
+  .text {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding-right: $default-padding;
+
+    .text-title,
+    .text-subtitle,
+    .text-prose {
+      margin: 0;
+    }
+     
+    .text-prose {
+      p:first-child {
+        margin-top: 0;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .ctas-container {
+      margin-top: 4rem;
+    }
+  }
+
+  &.is-reversed {
+    .text {
+      padding-right: 0;
+      padding-left: $default-padding;
+    }
+    .media {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &.has-background-image {
+    .text {
+      @include glass($color__brand_very-dark);
+      padding: 2rem;
+    }
+  }
+
+  @container media (max-width: #{$tablet-width-portrait}) {
+    .media-wrapper .media {
+      flex-direction: column-reverse;
+
+      .media {
+        padding-bottom: 3rem;
+      }
+    }  
+  }
+  &.is-dark .cta {
+    color: $color__text-dark-background;
+  }
+}

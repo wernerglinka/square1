@@ -1274,7 +1274,7 @@ button.inverted, .button.inverted {
 }
 #site-navigation #primary-menu > li:hover > .sub-menu {
   padding: 2rem 0;
-  max-height: 30rem;
+  max-height: 80rem;
 }
 #site-navigation #primary-menu > li:hover > .sub-menu li:hover {
   background-color: #f1eefa;
@@ -1478,6 +1478,26 @@ button.inverted, .button.inverted {
   margin-bottom: 0;
 }
 
+.audio {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .audio {
+    max-height: 300px;
+  }
+}
+.audio audio {
+  position: absolute;
+  top: calc(50% - 2.7rem);
+  left: calc(50% - 15rem);
+  width: 30rem;
+}
+
 .page-section.alert-bar {
   color: #00080f;
 }
@@ -1585,6 +1605,62 @@ button.inverted, .button.inverted {
   }
 }
 .page-section.media.is-dark .cta {
+  color: #fff;
+}
+
+.page-section.multi-media .container {
+  container: media/inline-size;
+}
+.page-section.multi-media .media {
+  flex: 0 0 50%;
+}
+.page-section.multi-media .media img {
+  display: block;
+}
+.page-section.multi-media .text {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding-right: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+}
+.page-section.multi-media .text .text-title,
+.page-section.multi-media .text .text-subtitle,
+.page-section.multi-media .text .text-prose {
+  margin: 0;
+}
+.page-section.multi-media .text .text-prose p:first-child {
+  margin-top: 0;
+}
+.page-section.multi-media .text .text-prose p:last-child {
+  margin-bottom: 0;
+}
+.page-section.multi-media .text .ctas-container {
+  margin-top: 4rem;
+}
+.page-section.multi-media.is-reversed .text {
+  padding-right: 0;
+  padding-left: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+}
+.page-section.multi-media.is-reversed .media {
+  flex-direction: row-reverse;
+}
+.page-section.multi-media.has-background-image .text {
+  background: rgba(13, 8, 28, 0.5);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+}
+@container media (max-width: 767px) {
+  .page-section.multi-media .media-wrapper .media {
+    flex-direction: column-reverse;
+  }
+  .page-section.multi-media .media-wrapper .media .media {
+    padding-bottom: 3rem;
+  }
+}
+.page-section.multi-media.is-dark .cta {
   color: #fff;
 }
 

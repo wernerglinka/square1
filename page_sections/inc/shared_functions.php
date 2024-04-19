@@ -90,7 +90,7 @@
       $string .= " " . $params['common_section_fields']['section_classes'];
     }
     // media section has image on the right by default. set is-reverse if image is on the left
-    if(isset($params['media_position']) && $params['media_position'] == "media_left") {
+    if(isset($params['media_position']) && $params['media_position'] == "left") {
       $string .= " is-reversed";
     }
     // Check if a background color is set and not "none"
