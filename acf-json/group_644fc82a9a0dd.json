@@ -33,6 +33,7 @@
                 "chevron-up": "Chevron Up",
                 "chevron-left": "Chevron Left",
                 "chevron-right": "Chevron Right",
+                "cloud-sun-rain": "Cloud Sun Rain",
                 "code": "Code",
                 "cloudinary": "Cloudinarty",
                 "desktop": "Desktop",
@@ -83,5 +84,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713465965
+    "modified": 1713644668
 }
