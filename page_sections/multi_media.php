@@ -13,7 +13,7 @@
   $hasCTAs = count($ctas) > 0;
   $icon = $props['icon'];
   $image = $props['image'];
-  $lottie = !isset($props['lottie_animation']) ? [] : $props['lottie_animation'];
+  $lottie = !isset($props['lottie']) ? [] : $props['lottie'];
   $text = $props['text'];
   $video = $props['video'];
 
@@ -25,8 +25,6 @@
   //echo "</pre>";
 
 ?>
-
-
 
   <div class="text">
     <?php render_text_component($text); ?>
@@ -56,9 +54,15 @@
   <?php endif;?>
 
   <?php if ($media_type == "icon"): ?>
-      <div class="media icon">
-        <div class="icon-wrapper">
-          <?php render_icon_component($icon);?>
-        </div>
+    <div class="media icon">
+      <div class="icon-wrapper">
+        <?php render_icon_component($icon);?>
       </div>
-    <?php endif;?>
+    </div>
+  <?php endif;?>
+
+  <?php if ($media_type == "lottie"): ?>
+    <div class="media image">
+      <?php render_lottie_component($lottie);?>
+    </div>
+  <?php endif;?>

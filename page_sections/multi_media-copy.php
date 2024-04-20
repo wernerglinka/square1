@@ -19,54 +19,58 @@
   $media_type = $props['media_type'];
   */
 
-  echo "<pre>";
-  print_r($props);
-  echo "</pre>";
+  //echo "<pre>";
+  //print_r($props);
+  //echo "</pre>";
 
 ?>
 
-<div class="container">
-  <div class="columns">
-    <div class="column text">
-      <?php render_text_component($text); ?>
-      <?php render_cta_component($cta); ?>
+
+  <div class="text">
+    <?php render_text_component($text); ?>
+    <?php render_cta_component($cta); ?>
+  </div>
+
+  <?php if ($media_type == "audio") : ?>
+    <div class="media audio">
+      <?php if ($audio['thumbnail']) : ?>
+        <?php render_image_component($audio['thumbnail']); ?>
+      <?php endif; ?>
+        
+      <?php render_audio_component($audio); ?>
     </div>
+  <?php endif; ?>
 
-    <?php if ($media_type == "audio") : ?>
-      <div class="column media audio">
-        <?php if ($audio['thumbnail']) : ?>
-          <?php render_image_component($audio['thumbnail']); ?>
-        <?php endif; ?>
-          
-        <?php render_audio_component($audio); ?>
-      </div>
-    <?php endif; ?>
+  <?php if ($media_type == "lottie") : ?>
+    <div class="media lottie">
 
-    <?php if ($media_type == "lottie") : ?>
-      <div class="column media lottie">
-        <?php render_lottie_component($lottie); ?>
-      </div>
-    <?php endif; ?>
+    <?php
+      echo "<pre>";
+      print_r($lottie);
+      echo "</pre>";
 
-    <?php if ($media_type == "image") : ?>
-      <div class="column media image">
-        <?php render_image_component($image); ?>
-      </div>
-    <?php endif; ?>
+    ?>
+      <?php render_lottie_component($lottie); ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($media_type == "icon") : ?>
-      <div class="column media icon">
-        <div class="icon-wrapper <?php echo $icon['icon_classes']; ?>">
-          <?php render_icon_component($icon); ?>
-        </div> 
-      </div>
-    <?php endif; ?>
+  <?php if ($media_type == "image") : ?>
+    <div class="media image">
+      <?php render_image_component($image); ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($media_type == "video") : ?>
-      <div class="column media video">
-        <?php render_video_component($video); ?>
-      </div>
-    <?php endif; ?>
+  <?php if ($media_type == "icon") : ?>
+    <div class="media icon">
+      <div class="icon-wrapper <?php echo $icon['icon_classes']; ?>">
+        <?php render_icon_component($icon); ?>
+      </div> 
+    </div>
+  <?php endif; ?>
 
-  </div> <!-- .columns -->
-</div><!-- .container -->
+  <?php if ($media_type == "video") : ?>
+    <div class="media video">
+      <?php render_video_component($video); ?>
+    </div>
+  <?php endif; ?>
+

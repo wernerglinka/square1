@@ -184,6 +184,16 @@
   }
 
   /**
+   * Render a lottie animation component
+   */
+  function render_lottie_component($lottie) {
+    if (!isset($lottie['source'])) {
+        return;
+    }
+    echo "<lottie-player class='js-lottie' src='" . $lottie['source'] . "' background='transparent'  'speed=1' autoplay=true loop=true ></lottie-player>";
+  }
+
+  /**
    * Render an video component with optional thumbnail
    */
   function render_video_component($video) {

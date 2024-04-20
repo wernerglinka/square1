@@ -159,6 +159,40 @@
   }();
   var tabs_default = tabs;
 
+  // js/modules/lottieAnimation.js
+  var lottieAnimations = function($) {
+    const playLottie = (entries, observer) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const thisLottie = entry.target;
+          setTimeout(() => {
+            thisLottie.play();
+            observer.unobserve(thisLottie);
+          }, 500);
+        }
+      }
+    };
+    const watchLottie = debounce_default(function() {
+      const observer = new IntersectionObserver(playLottie);
+      const allLotties = document.querySelectorAll(".js-lottie");
+      for (const lottie of allLotties) {
+        observer.observe(lottie);
+      }
+    }, 500);
+    const init = () => {
+      const options = {
+        threshold: 1
+      };
+      const resizeObserver = new ResizeObserver(watchLottie, options);
+      const resizeElement = document.body;
+      resizeObserver.observe(resizeElement);
+    };
+    return {
+      init
+    };
+  }();
+  var lottieAnimation_default = lottieAnimations;
+
   // js/main.js
   function initPage() {
     navigation_default.init();
@@ -167,8 +201,16 @@
       mobileFlipcardSupport_default.init();
     }
     if (document.querySelector(".js-tabs")) {
-      console.log("tabs init");
       tabs_default.init();
+    }
+    if (document.querySelector(".js-lottie")) {
+      const script = document.createElement("script");
+      script.src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
+      script.onload = function() {
+        console.log("lottie player loaded");
+        lottieAnimation_default.init();
+      };
+      document.head.appendChild(script);
     }
   }
   window.addEventListener("load", function() {

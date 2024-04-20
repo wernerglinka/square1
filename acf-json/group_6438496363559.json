@@ -2411,6 +2411,7 @@
                                         "audio": "Audio",
                                         "icon": "Icon",
                                         "image": "Image",
+                                        "lottie": "Lottie",
                                         "video": "Video"
                                     },
                                     "default_value": "image",
@@ -2557,6 +2558,54 @@
                                             },
                                             "clone": [
                                                 "group_6438592227af1"
+                                            ],
+                                            "display": "seamless",
+                                            "layout": "block",
+                                            "prefix_label": 0,
+                                            "prefix_name": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_66241b6d4174a",
+                                    "label": "Lottie",
+                                    "name": "lottie",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6622e1994f592",
+                                                "operator": "==",
+                                                "value": "lottie"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_66241b794174b",
+                                            "label": "Lottie",
+                                            "name": "lottie",
+                                            "aria-label": "",
+                                            "type": "clone",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "clone": [
+                                                "group_6622d4377d380"
                                             ],
                                             "display": "seamless",
                                             "layout": "block",
@@ -3421,5 +3470,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713562349
+    "modified": 1713642455
 }
