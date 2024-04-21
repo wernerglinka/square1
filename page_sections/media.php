@@ -9,12 +9,12 @@
   $props = $args['props'];
   $text = $props['text'];
   $image = $props['image'];
-  $has_image = isset($image['id']) ? true : false;
+  $has_image = $image['id'] ?? false;
   $ctas = isset($props['ctas']) && is_array($props['ctas']) ? $props['ctas'] : [];
   $hasCTAs = count($ctas) > 0;
 
   //echo "<pre>";
-  //print_r($ctas);
+  //print_r($props);
   //echo "</pre>";
 ?>
 

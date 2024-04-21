@@ -11,7 +11,7 @@
   $hasCTAs = count($ctas) > 0;
 
   //echo "<pre>";
-  //print_r($ctas);
+  //print_r($props);
   //echo "</pre>";
 ?>
 

@@ -80,7 +80,7 @@
     if (isset($params['common_section_fields']['usage']) && ($params['common_section_fields']['usage'] == "banner")) {
       $string .= " is-banner";
     }
-    if (!empty($params['common_section_fields']['is_dark'])) {
+    if (!empty($params['common_section_fields']['background_is_dark'])) {
       $string .= " is-dark";
     }
     if (isset($params['is_horizontal']) && $params['is_horizontal']) {
@@ -105,8 +105,8 @@
       $string .= " has-background-image";
     }
     // section has a screen in front of the background image
-    if (isset($params['has_screen']) && $params['has_screen']) {
-      if ($params['dark_screen']) {
+    if (isset($params['common_section_fields']['screen']['has_screen']) && $params['common_section_fields']['screen']['has_screen']) {
+      if ($params['common_section_fields']['screen']['dark_screen']) {
         $string .= " has-dark-screen";
       } else {
         $string .= " has-light-screen";

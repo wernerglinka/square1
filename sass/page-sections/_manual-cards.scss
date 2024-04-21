@@ -20,7 +20,7 @@
   }
 
   /**
-   * card list default style is vertical cards arrangement
+   * Card list default style is vertical cards arrangement
    */ 
 
   .manual-cards-list {
@@ -29,6 +29,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: $gap-width;
+    margin-top: 4rem;
 
     .card {
       display: flex;
@@ -37,6 +38,32 @@
       margin-bottom: $gap-width; // in case they wrap to the next line
       background-color: $color__background-body;
       border: $default-border;
+
+      /**
+       * Simple example of two CSS patterns as card backgrounds.
+       * The patterns are defined as mixins so they can be reused easily.
+       * With the background pattern, the color is known, so the text 
+       * color can be set appropriately. 
+       */
+       &[class *="pattern"] {
+        min-height: 40rem;
+        padding: $default-padding 0;
+        justify-content: space-between;
+
+        .body .title {
+          font-size: 2.4rem;
+          font-weight: bold;
+        }
+       }   
+       &.pattern1 {
+        @include css-background-p1();
+      }
+      &.pattern2 {
+        @include css-background-p2();
+        * {
+          color: $color__text-dark-background;
+        }
+      }
 
       .header { // image or icon
         height: 15rem;
@@ -96,7 +123,7 @@
   }
 
   /**
-   * horizontal cards arrangement
+   * Horizontal cards arrangement
    */
   &.is-horizontal {
     .container {

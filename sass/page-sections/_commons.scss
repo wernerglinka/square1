@@ -25,12 +25,12 @@
   &.has-dark-screen {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), var(--bg-image);
 
-    :is(h1, h2, h3, h4, h5, h6) {
+    :is(h1, h2, h3, h4, h5, h6, p, a) {
       color: $color__text-dark-background;
     }
   }
   &.is-dark {
-    :is(h1, h2, h3, h4, h5, h6) {
+    :is(h1, h2, h3, h4, h5, h6, p, a) {
       color: $color__text-dark-background;
     }
   }

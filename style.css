@@ -1450,10 +1450,10 @@ button.inverted, .button.inverted {
 .page-section.has-dark-screen {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), var(--bg-image);
 }
-.page-section.has-dark-screen :is(h1, h2, h3, h4, h5, h6) {
+.page-section.has-dark-screen :is(h1, h2, h3, h4, h5, h6, p, a) {
   color: #fff;
 }
-.page-section.is-dark :is(h1, h2, h3, h4, h5, h6) {
+.page-section.is-dark :is(h1, h2, h3, h4, h5, h6, p, a) {
   color: #fff;
 }
 .page-section.is-hidden {
@@ -1581,6 +1581,8 @@ button.inverted, .button.inverted {
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  padding-right: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  margin-left: auto;
 }
 .page-section.media .text .text-title,
 .page-section.media .text .text-subtitle,
@@ -1596,11 +1598,27 @@ button.inverted, .button.inverted {
 .page-section.media .text .ctas-container {
   margin-top: 4rem;
 }
-.page-section.media.is-reversed .media {
-  flex-direction: row-reverse;
+.page-section.media.is-reversed .container {
+  justify-content: flex-end;
+}
+.page-section.media.is-reversed .text {
+  padding-left: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+  margin-left: 0;
 }
 .page-section.media.has-background-image .text {
-  background: rgba(13, 8, 28, 0.5);
+  background: rgba(241, 238, 250, 0.5);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+}
+.page-section.media.has-background-image.has-light-screen .text {
+  background: rgba(241, 238, 250, 0.5);
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+}
+.page-section.media.has-background-image.has-dark-screen .text {
+  background: rgba(241, 238, 250, 0.5);
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   padding: 2rem;
@@ -2014,10 +2032,10 @@ button.inverted, .button.inverted {
   background-repeat: no-repeat;
   padding: clamp(1rem, 0.2841rem + 2.2371vw, 2rem);
   /**
-   * card list default style is vertical cards arrangement
+   * Card list default style is vertical cards arrangement
    */
   /**
-   * horizontal cards arrangement
+   * Horizontal cards arrangement
    */
   /**
    * dark background forces all text to be light
@@ -2042,6 +2060,7 @@ button.inverted, .button.inverted {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+  margin-top: 4rem;
 }
 .page-section.manual-cards .manual-cards-list .card {
   display: flex;
@@ -2050,6 +2069,30 @@ button.inverted, .button.inverted {
   margin-bottom: 2rem;
   background-color: #fff;
   border: 1px solid #ccc;
+  /**
+   * Simple example of two CSS patterns as card backgrounds.
+   * The patterns are defined as mixins so they can be reused easily.
+   * With the background pattern, the color is known, so the text 
+   * color can be set appropriately. 
+   */
+}
+.page-section.manual-cards .manual-cards-list .card[class*=pattern] {
+  min-height: 40rem;
+  padding: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem) 0;
+  justify-content: space-between;
+}
+.page-section.manual-cards .manual-cards-list .card[class*=pattern] .body .title {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+.page-section.manual-cards .manual-cards-list .card.pattern1 {
+  background-image: radial-gradient(circle at 28% 90%, rgba(113, 113, 113, 0.03) 0%, rgba(113, 113, 113, 0.03) 24%, transparent 24%, transparent 100%), radial-gradient(circle at 84% 65%, rgba(173, 173, 173, 0.03) 0%, rgba(173, 173, 173, 0.03) 45%, transparent 45%, transparent 100%), radial-gradient(circle at 46% 12%, rgba(141, 141, 141, 0.03) 0%, rgba(141, 141, 141, 0.03) 22%, transparent 22%, transparent 100%), radial-gradient(circle at 26% 14%, rgba(119, 119, 119, 0.03) 0%, rgba(119, 119, 119, 0.03) 35%, transparent 35%, transparent 100%), radial-gradient(circle at 81% 90%, rgba(42, 42, 42, 0.03) 0%, rgba(42, 42, 42, 0.03) 40%, transparent 40%, transparent 100%), radial-gradient(circle at 28% 100%, rgba(234, 234, 234, 0.03) 0%, rgba(234, 234, 234, 0.03) 56%, transparent 56%, transparent 100%), linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+}
+.page-section.manual-cards .manual-cards-list .card.pattern2 {
+  background-image: radial-gradient(circle at 29% 55%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 4%, transparent 4%, transparent 44%, transparent 44%, transparent 100%), radial-gradient(circle at 85% 89%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 51%, transparent 51%, transparent 52%, transparent 52%, transparent 100%), radial-gradient(circle at 6% 90%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 53%, transparent 53%, transparent 64%, transparent 64%, transparent 100%), radial-gradient(circle at 35% 75%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 6%, transparent 6%, transparent 98%, transparent 98%, transparent 100%), radial-gradient(circle at 56% 75%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 16%, transparent 16%, transparent 23%, transparent 23%, transparent 100%), radial-gradient(circle at 42% 0%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 3%, transparent 3%, transparent 26%, transparent 26%, transparent 100%), radial-gradient(circle at 29% 28%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 51%, transparent 51%, transparent 75%, transparent 75%, transparent 100%), radial-gradient(circle at 77% 21%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 35%, transparent 35%, transparent 55%, transparent 55%, transparent 100%), radial-gradient(circle at 65% 91%, hsla(329, 0%, 99%, 0.05) 0%, hsla(329, 0%, 99%, 0.05) 46%, transparent 46%, transparent 76%, transparent 76%, transparent 100%), linear-gradient(45deg, rgb(83, 91, 235), rgb(76, 11, 174));
+}
+.page-section.manual-cards .manual-cards-list .card.pattern2 * {
+  color: #fff;
 }
 .page-section.manual-cards .manual-cards-list .card .header {
   height: 15rem;

@@ -340,25 +340,30 @@ function render_flip_card_component($card) {
 function render_manual_card_component($card) {
   $decoration = $card['decoration'] ?? null;
   $title = $card['text']['title'] ? preg_replace('/^<[^>]+>|<\/[^>]+>$/', '', $card['text']['title']) : null;
-
   $sub_title = $card['text']['sub_title'] ?? null;
   $prose = $card['text']['prose'] ?? null;
   $ctas = $card['ctas'] ?? [];
   $is_horizontal = $card['is_horizontal'] ?? false;
+  $css_pattern_background = $card['background']['background_pattern']['css_pattern'] !== 'none' ? $card['background']['background_pattern']['css_pattern'] : null;
 
-  $output = "<li class='card'>
-    <div class='header'>";
-  if ($decoration === 'icon' && isset($card['icon']['icon'])) {
-    $icon = get_icon($card['icon']['icon']);
-    $output .= "{$icon}";
-  }
-  if ($decoration === 'image' && isset($card['image']['id'])) {
-    $image = wp_get_attachment_image($card['image']['id'], 'large', false, ['alt' => $card['image']['alt_text']]);
-    $output .= "{$image}";
-  }
+  $output = "<li class='card {$css_pattern_background}'>";
 
-  $output .= "</div>
-              <div class='card-text'>
+  if ($decoration !== "none") {
+    $output .= "<div class='header'>"; // Use .= instead of =
+
+    if ($decoration === 'icon' && isset($card['icon']['icon'])) {
+      $icon = get_icon($card['icon']['icon']);
+      $output .= "{$icon}";
+    }
+    if ($decoration === 'image' && isset($card['image']['id'])) {
+      $image = wp_get_attachment_image($card['image']['id'], 'large', false, ['alt' => $card['image']['alt_text']]);
+      $output .= "{$image}";
+    }
+
+    $output .= "</div>"; // Use .= instead of =
+  } 
+
+  $output .= "<div class='card-text'>
                 <div class='body'>";
 
   if ($title) {

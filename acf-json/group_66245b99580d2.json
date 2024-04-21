@@ -17,11 +17,12 @@
                 "id": ""
             },
             "choices": {
+                "none": "None",
                 "pattern1": "Pattern 1",
                 "pattern2": "Pattern 2",
                 "pattern3": "Pattern 3"
             },
-            "default_value": "pattern1",
+            "default_value": "none",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -48,5 +49,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713658882
+    "modified": 1713723545
 }

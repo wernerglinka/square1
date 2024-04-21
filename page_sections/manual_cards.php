@@ -7,15 +7,15 @@
 
   $props = $args['props'];
 
-  //echo "<pre>";
-  //print_r($props);
-  //echo "</pre>";
-
   $text = $props['text'];
   $cards = $props['cards'];
   $ctas = isset($props['ctas']) && is_array($props['ctas']) ? $props['ctas'] : [];
   $hasCTAs = count($ctas) > 0;
   $is_horizontal = isset($props['is_horizontal']) && $props['is_horizontal'] ? true : false;
+
+  //echo "<pre>";
+  //print_r($cards);
+  //echo "</pre>";
 
 
 ?>

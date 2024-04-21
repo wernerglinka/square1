@@ -17,6 +17,11 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
+    padding-right: $default-padding;
+    // force the text to the right when no image is present
+    // with image present, both image and text use 50% of the space
+    // and margin-left doesn't do anything
+    margin-left: auto;
 
     .text-title,
     .text-subtitle,
@@ -39,15 +44,33 @@
   }
 
   &.is-reversed {
-    .media {
-      flex-direction: row-reverse;
+    .container {
+      justify-content: flex-end;
     }
+    .text {
+      padding-left: $default-padding;
+      // image needs to be on the left when reversed
+      margin-left: 0; 
+    } 
   }
 
   &.has-background-image {
     .text {
-      @include glass($color__brand_very-dark);
+      @include glass($color__brand_very-light);
       padding: 2rem;
+    }
+
+    &.has-light-screen {
+      .text {
+        @include glass($color__brand_very-light);
+        padding: 2rem;
+      }
+    }
+    &.has-dark-screen {
+      .text {
+        @include glass($color__brand_very-light);
+        padding: 2rem;
+      }
     }
   }
 
