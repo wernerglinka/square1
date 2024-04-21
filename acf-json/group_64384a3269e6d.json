@@ -90,6 +90,94 @@
             "ui": 1
         },
         {
+            "key": "field_66245a5e6c0ac",
+            "label": "Background Is",
+            "name": "background_is",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_643b13b1d8c54",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "color": "Color",
+                "image": "Image",
+                "css-pattern": "CSS Pattern"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_662459ce6c0ab",
+            "label": "Background Pattern",
+            "name": "background_pattern",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_643b13b1d8c54",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_66245a5e6c0ac",
+                        "operator": "==",
+                        "value": "css-pattern"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66245c31315a2",
+                    "label": "CSS Pattern Select",
+                    "name": "css_pattern_select",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_66245b99580d2"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        },
+        {
             "key": "field_64385509ac209",
             "label": "Background Color",
             "name": "background_color",
@@ -103,6 +191,11 @@
                         "field": "field_643b13b1d8c54",
                         "operator": "==",
                         "value": "1"
+                    },
+                    {
+                        "field": "field_66245a5e6c0ac",
+                        "operator": "==",
+                        "value": "color"
                     }
                 ]
             ],
@@ -144,6 +237,11 @@
                         "field": "field_643b13b1d8c54",
                         "operator": "==",
                         "value": "1"
+                    },
+                    {
+                        "field": "field_66245a5e6c0ac",
+                        "operator": "==",
+                        "value": "image"
                     }
                 ]
             ],
@@ -152,7 +250,6 @@
                 "class": "",
                 "id": ""
             },
-            "show_in_graphql": 1,
             "layout": "block",
             "sub_fields": [
                 {
@@ -269,5 +366,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713037380
+    "modified": 1713658966
 }
