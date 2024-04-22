@@ -34,6 +34,21 @@
       color: $color__text-dark-background;
     }
   }
+  /**
+   * Simple example of two CSS patterns as card backgrounds.
+   * The patterns are defined as mixins so they can be reused easily.
+   * With the background pattern, the color is known, so the text 
+   * color can be set appropriately. 
+   */ 
+  &.pattern1 {
+    @include css-background-p1();
+  }
+  &.pattern2 {
+    @include css-background-p2();
+    * {
+      color: $color__text-dark-background;
+    }
+  }
 
   /**
    * section "moving-up" animations.

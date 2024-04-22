@@ -104,6 +104,10 @@
       && !empty($params['common_section_fields']['background_image']['id'])) {
       $string .= " has-background-image";
     }
+    // Check if the section has a CSS Pattern background
+    if (isset($params['common_section_fields']['background_pattern']['css_pattern']) && !empty($params['common_section_fields']['background_pattern']['css_pattern'])) {
+      $string .= " " . $params['common_section_fields']['background_pattern']['css_pattern'];
+    }
     // section has a screen in front of the background image
     if (isset($params['common_section_fields']['screen']['has_screen']) && $params['common_section_fields']['screen']['has_screen']) {
       if ($params['common_section_fields']['screen']['dark_screen']) {
