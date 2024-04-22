@@ -2473,4 +2473,67 @@ button.inverted, .button.inverted {
   opacity: 1;
 }
 
+.page-section.testimonials .container {
+  flex-direction: column;
+}
+.page-section.testimonials .attribution {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+.page-section.testimonials .attribution img {
+  width: 8rem;
+  height: 8rem;
+}
+.page-section.testimonials .attribution .quotee {
+  padding-left: clamp(2rem, calc(2rem + (4 - 2) * (100vw - 40rem) / (76.8 - 40.0)), 4rem);
+}
+.page-section.testimonials .attribution .quotee .name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.page-section.testimonials .attribution p {
+  margin: 0;
+  font-size: 1.6rem;
+}
+.page-section.testimonials .testimonial-single {
+  display: flex;
+}
+.page-section.testimonials .testimonial-single blockquote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page-section.testimonials .testimonial-single blockquote > p {
+  font-size: 3rem;
+  font-style: italic;
+}
+.page-section.testimonials .testimonials-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 5rem 0;
+}
+.page-section.testimonials .testimonials-list .testimonial {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  max-width: 32rem;
+  margin: 0;
+}
+.page-section.testimonials .testimonials-list blockquote {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-top: 2rem;
+}
+.page-section.testimonials .testimonials-list blockquote footer {
+  margin-top: auto;
+}
+.page-section.testimonials .testimonials-list + .ctas-container {
+  justify-content: center;
+}
+
 /*# sourceMappingURL=style.css.map */
